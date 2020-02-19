@@ -1,0 +1,30 @@
+body{
+    background: #9ec9bd;
+}
+
+.panel-registro{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+
+
+@media (max-width: 640px){
+    .panel-registro{
+        width: 95%;
+    }
+}
+
+@media (min-width: 641px){
+    .panel-registro{
+        width: 70%;
+    }
+}
+
+@media (min-width: 1025px){
+    .panel-registro{
+        width: 40%;
+    }
+}
+

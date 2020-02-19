@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <header>
+        <p:menubar>
+            <p:submenu label="Administrar" >
+                <p:submenu label="Residentes">
+                    <p:menuitem value="Agregar Residente" url="agregar_residente.xhtml"/>
+                    <p:menuitem value="Lista Residentes" url="lista_residentes.xhtml"/>                   
+                </p:submenu>  
+                <p:submenu label="Apoderados">
+                    <p:menuitem value="Agregar Apoderado" url="agregar_apoderado.xhtml"/>
+                    <p:menuitem value="Listar Apoderados" url="listar_apoderados.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Prevision">
+                    <p:menuitem value="Agregar Prevision" url="agregar_prevision.xhtml"/>
+                    <p:menuitem value="Listar Previsiones" url="listar_previsiones.xhtml"/>
+                </p:submenu>
+            </p:submenu>
+            
+            <p:submenu label="Controles">
+                <p:menuitem value="Administracion Medicamentos" url="#"/>
+            </p:submenu>
+        </p:menubar>
+    </header>
+</ui:composition>
