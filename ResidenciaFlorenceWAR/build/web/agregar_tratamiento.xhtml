@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Registrar Tratamiento" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid">
+                
+                <p:outputLabel value="Residente"/>
+                <p:selectOneMenu value="#{agregarTratamientoManagedBean.rutResidente}" required="true" requiredMessage="Debe seleccionar un Residente">                    
+                    <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Medicamento"/>
+                <p:selectOneMenu value="#{agregarTratamientoManagedBean.idMedicamento}" required="true" requiredMessage="Debe ingresar Medicamento">
+                    <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{listarMedicamentosManagedBean.medicamentosCombo}"/>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Dosis"/>
+                <p:inputNumber value="#{agregarTratamientoManagedBean.dosis}"
+                               decimalPlaces="0"
+                               required="true"
+                               requiredMessage="Debe ingresar dosis"/>
+                
+                <p:outputLabel value="Hora"/>
+                <p:inputMask value="#{agregarTratamientoManagedBean.hora}"
+                             mask="99:99"
+                             required="true"
+                             requiredMessage="Debe ingrear hora"/>
+                
+            </p:panelGrid>
+            <p:commandButton value="Registrar" 
+                             actionListener="#{agregarTratamientoManagedBean.agregar}" 
+                             update="mensaje"
+                             style="margin-top: 1rem"/>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

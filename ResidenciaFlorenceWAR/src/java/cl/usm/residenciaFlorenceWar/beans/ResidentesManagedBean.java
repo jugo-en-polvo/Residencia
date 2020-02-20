@@ -13,7 +13,9 @@ import cl.usm.residenciaEjb.dto.Residente;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -38,6 +40,7 @@ public class ResidentesManagedBean implements Serializable{
     private ApoderadoDAOLocal apoderadoDAO;
     
     private List<Residente> residentes;
+    private Map<String, String> residentesCombo = new HashMap<String, String>();
     //atributos de residentes a agregar / estado por defecto es V
     private String rutResidente;
     private String Nombre;
@@ -48,6 +51,14 @@ public class ResidentesManagedBean implements Serializable{
     private long idPrevision;
     private String rutApoderado;
 
+    public Map<String, String> getResidentesCombo() {
+        return residentesCombo;
+    }
+
+    public void setResidentesCombo(Map<String, String> residentesCombo) {
+        this.residentesCombo = residentesCombo;
+    }
+    
     public String getRutResidente() {
         return rutResidente;
     }
@@ -107,6 +118,9 @@ public class ResidentesManagedBean implements Serializable{
     @PostConstruct
     public void init(){
         this.residentes = this.residenteDAO.findAll();
+        for(Residente re: residentes){
+            residentesCombo.put(re.getNombre_residente(), re.getRut_residente());
+        }
     }
     
     public ResidentesManagedBean() {

@@ -52,4 +52,19 @@ public class ResidenteDAO implements ResidenteDAOLocal {
         
     }
 
+    @Override
+    public Residente find(String rut) {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Residente.class, rut);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }finally{
+            em.close();
+        }
+        
+    }
+
 }

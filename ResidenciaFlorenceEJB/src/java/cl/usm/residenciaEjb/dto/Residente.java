@@ -7,16 +7,16 @@ package cl.usm.residenciaEjb.dto;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -49,6 +49,9 @@ public class Residente implements Serializable{
     @JoinColumn(name = "id_prevision", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Prevision prevision;
+   
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
+    private List<Tratamiento> tratamientos;
 
     public String getRut_residente() {
         return rut_residente;
@@ -113,6 +116,13 @@ public class Residente implements Serializable{
     public void setPrecision(Prevision precision) {
         this.prevision = precision;
     }
-    
+
+    public List<Tratamiento> getTratamientos() {
+        return tratamientos;
+    }
+
+    public void setTratamientos(List<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
+    }
     
 }

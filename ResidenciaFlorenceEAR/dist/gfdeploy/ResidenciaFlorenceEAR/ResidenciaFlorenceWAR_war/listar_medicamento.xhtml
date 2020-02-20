@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="index.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="contenido">
+
+        <h:panelGroup layout="block" class="ui-g">
+            <ui:repeat value="#{listarMedicamentosManagedBean.medicamentos}" var="medicamento">
+                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+
+                    <p:panel header="#{medicamento.nombre_medicamento}">
+                        
+                        <p:panelGrid columns="2" layout="grid">
+                            
+                            <p:outputLabel value="Tipo"/>
+                            <h:outputText value="#{medicamento.tipo}"/>                           
+                            
+                            <p:outputLabel value="Stock"/>
+                            <h:outputText value="#{medicamento.stock}"/>
+                            
+                            <p:outputLabel value="Stock Critico"/>
+                            <h:outputText value="#{medicamento.stock_critico}"/>
+                            
+                            <p:outputLabel value="Detalle"/>
+                            <h:outputText value="#{medicamento.detalle}"/>
+                            
+                        </p:panelGrid>
+                        
+                    </p:panel>
+
+                </h:panelGroup>
+            </ui:repeat>
+        </h:panelGroup>
+
+    </ui:define>
+
+</ui:composition>

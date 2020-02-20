@@ -22,7 +22,14 @@
             </p:submenu>
             
             <p:submenu label="Controles">
-                <p:menuitem value="Administracion Medicamentos" url="#"/>
+                <p:submenu label="Controles">
+                    <p:menuitem value="Agregar Medicamento" url="agregar_medicamento.xhtml"/>
+                    <p:menuitem value="Listar Medicamentos" url="listar_medicamento.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Tratamientos">
+                    <p:menuitem value="Agregar Tratamiento" url="agregar_tratamiento.xhtml"/>
+                    <p:menuitem value="Ver Tratamientos" url="ver_tratamientos.xhtml"/>
+                </p:submenu>
             </p:submenu>
         </p:menubar>
     </header>
