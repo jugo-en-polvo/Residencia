@@ -59,6 +59,7 @@ public class ApoderadoDAO implements ApoderadoDAOLocal {
         try {
             
             em.persist(a);
+            em.flush();
             
         } catch (Exception e) {
             System.out.println(e);

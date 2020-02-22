@@ -77,4 +77,5 @@ public class AgregarApoderadoManagedBean implements Serializable{
         this.apoderadosDAO.add(a);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agragado"));
     }
+    
 }

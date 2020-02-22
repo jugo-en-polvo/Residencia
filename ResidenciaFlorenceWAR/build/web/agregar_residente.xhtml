@@ -6,15 +6,34 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 template="index.xhtml">
-                
-    
+
+
     <ui:define name="contenido">
-        
+
         <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Residente" class="panel-registro">
             <p:panelGrid columns="2" layout="grid">
-                <p:outputLabel value="Rut"/>
+                
+                <p:outputLabel value="Rut Apoderado"/>
+                <p:selectOneMenu id="selector-apoderados" value="#{residentesManagedBean.rutApoderado}">
+                    <p:ajax update=":formulario" listener="#{residentesManagedBean.showOrHide}"/>
+                    <f:selectItem itemLabel="Selecione" itemValue="false" noSelectionOption="true"/>
+                    <f:selectItem itemLabel="Nuevo Apoderado" itemValue="true" noSelectionOption="true"/>
+                    <f:selectItems value="#{listarApoderadosManagedBean.apoderadosCombo}"/>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Rut Apoderado"
+                               rendered="#{!residentesManagedBean.hidden}"/>
+                <p:inputMask value="#{residentesManagedBean.rutApoderado}" 
+                             rendered="#{!residentesManagedBean.hidden}"
+                             required="true"
+                             requiredMessage="Debe ingresar un Rut de Apoderado"
+                             mask="99.999.999-*"/>
+                
+                <p:separator/><p:separator/>
+                
+                <p:outputLabel value="Rut Residente"/>
                 <p:inputMask value="#{residentesManagedBean.rutResidente}" 
                              required="true"
                              requiredMessage="Debe ingresar rut de Residente"
@@ -47,16 +66,45 @@
                     <f:selectItem itemLabel="ISAPRE" itemValue="2"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Rut Apoderado"/>
-                <p:inputMask value="#{residentesManagedBean.rutApoderado}"
-                             required="true"
-                             requiredMessage="debe ingresar rut del Apoderado"
-                             mask="99.999.999-*"/>                
             </p:panelGrid>
             <p:commandButton value="Registrar" 
-                                 actionListener="#{residentesManagedBean.agregarResidente}" 
-                                 update="mensaje"
-                                 style="margin-top: 1rem"/>
+                             actionListener="#{residentesManagedBean.agregarResidente}"
+                             rendered="#{!residentesManagedBean.hidden}"
+                             update="mensaje"
+                             style="margin-top: 1rem"/>
+        </p:panel>
+
+        <p:panel id="panel-residente" header="Nuevo Apoderado" rendered="#{residentesManagedBean.hidden}" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid">
+
+                <p:outputLabel value="Rut Apoderado"/>
+                <p:inputMask value="#{agregarApoderadoManagedBean.rutApoderado}"
+                             mask="99.999.999-*"
+                             required="true"
+                             requiredMessage="Debe ingresar el Rut Apoderado"/>
+
+                <p:outputLabel value="Nombre"/>                
+                <p:inputText value="#{agregarApoderadoManagedBean.nombreApoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar el Nombre de Apoderado"/>
+
+                <p:outputLabel value="Telefono"/>
+                <p:inputMask value="#{agregarApoderadoManagedBean.fonoApoderado}"
+                             mask="99999999999"
+                             required="true"
+                             requiredMessage="Debe ingresar un fono de contacto"/>
+
+                <p:outputLabel value="Direccion"/>
+                <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar una direccion"/>
+
+            </p:panelGrid>
+
+            <p:commandButton value="Registrar"
+                             update="mensaje"
+                             actionListener="#{agregarResidenteApoderadoManagedBean.agregar}"
+                             style="margin-top: 1rem"/>
         </p:panel>
 
     </ui:define>

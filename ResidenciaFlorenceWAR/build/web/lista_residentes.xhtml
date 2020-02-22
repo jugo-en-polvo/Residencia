@@ -16,36 +16,36 @@
                     <p:panel header="#{residente.nombre_residente}">
                         <p:panelGrid columns="2" layout="grid">
 
-                            <p:outputLabel value="Rut"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Rut:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.rut_residente}"/>
                             
-                            <p:outputLabel value="Nacimiento"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Nacimiento:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.fecha_nacimiento.time}">
                                 <f:convertDateTime type="both"  dateStyle="long"/>
                             </h:outputText>
                             
-                            <p:outputLabel value="Ingreso"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Ingreso:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.fecha_ingreso.time}">
                                 <f:convertDateTime type="both" dateStyle="long"/>
                             </h:outputText>
                             
-                            <p:outputLabel value="Prevision"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Prevision:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.precision.nombre_prevision}"/>
                             
-                            <p:outputLabel value="Sexo"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Sexo:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.sexo}"/>
                             
-                            <p:outputLabel value="Estado"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Estado:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.estado}"/>
                             
-                            <p:outputLabel value="Apoderado"
-                                           style="color: black; font-weight: bold"/>
+                            <p:outputLabel value="Apoderado:"
+                                           styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.apoderado.nombre_apoderado}"/>
 
                         </p:panelGrid>

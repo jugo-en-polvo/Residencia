@@ -8,7 +8,10 @@ body{
     margin-top: 2rem;
 }
 
-
+.texto-negrita{
+    color: black;
+    font-weight: bold;
+}
 
 @media (max-width: 640px){
     .panel-registro{

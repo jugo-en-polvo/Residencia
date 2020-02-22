@@ -50,6 +50,26 @@ public class ResidentesManagedBean implements Serializable{
     //claves foraneas de residentes
     private long idPrevision;
     private String rutApoderado;
+    
+    private boolean hidden = false;
+
+    public boolean isHidden() {
+        return hidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        this.hidden = hidden;
+    }
+    
+    public void showOrHide(){
+        if(rutApoderado.equals("true")){
+            hidden = true;
+        }else if(rutApoderado.equals("false")){
+            hidden = false;
+        }else{
+            hidden = false;
+        }
+    }
 
     public Map<String, String> getResidentesCombo() {
         return residentesCombo;

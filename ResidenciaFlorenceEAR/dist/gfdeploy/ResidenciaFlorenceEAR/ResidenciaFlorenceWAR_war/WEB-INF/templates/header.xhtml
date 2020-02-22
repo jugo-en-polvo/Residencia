@@ -5,8 +5,8 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <header>
-        <p:menubar>
-            <p:submenu label="Administrar" >
+        <p:menubar autoDisplay="true">
+            <p:submenu label="Administrar">
                 <p:submenu label="Residentes">
                     <p:menuitem value="Agregar Residente" url="agregar_residente.xhtml"/>
                     <p:menuitem value="Lista Residentes" url="lista_residentes.xhtml"/>                   
@@ -19,9 +19,6 @@
                     <p:menuitem value="Agregar Prevision" url="agregar_prevision.xhtml"/>
                     <p:menuitem value="Listar Previsiones" url="listar_previsiones.xhtml"/>
                 </p:submenu>
-            </p:submenu>
-            
-            <p:submenu label="Controles">
                 <p:submenu label="Controles">
                     <p:menuitem value="Agregar Medicamento" url="agregar_medicamento.xhtml"/>
                     <p:menuitem value="Listar Medicamentos" url="listar_medicamento.xhtml"/>
@@ -31,6 +28,11 @@
                     <p:menuitem value="Ver Tratamientos" url="ver_tratamientos.xhtml"/>
                 </p:submenu>
             </p:submenu>
+            
+            <p:submenu label="Controles">
+                
+            </p:submenu>
         </p:menubar>
+        
     </header>
 </ui:composition>
