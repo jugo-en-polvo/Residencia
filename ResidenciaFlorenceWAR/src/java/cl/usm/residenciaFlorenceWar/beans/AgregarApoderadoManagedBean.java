@@ -29,6 +29,7 @@ public class AgregarApoderadoManagedBean implements Serializable{
     private String nombreApoderado;
     private String fonoApoderado;
     private String direccionApoderado;
+    private String emailApoderado;
 
     public String getRutApoderado() {
         return rutApoderado;
@@ -64,7 +65,14 @@ public class AgregarApoderadoManagedBean implements Serializable{
     
     public AgregarApoderadoManagedBean() {
     }
-    
+
+    public String getEmailApoderado() {
+        return emailApoderado;
+    }
+
+    public void setEmailApoderado(String emailApoderado) {
+        this.emailApoderado = emailApoderado;
+    }
     
     public void agregar(ActionEvent e){
         
@@ -73,9 +81,10 @@ public class AgregarApoderadoManagedBean implements Serializable{
         a.setNombre_apoderado(nombreApoderado);
         a.setFono_apoderado(fonoApoderado);
         a.setDireccion_apoderado(direccionApoderado);
+        a.setEmail_apoderado(emailApoderado);
         
         this.apoderadosDAO.add(a);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agragado"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
     }
     
 }

@@ -1,5 +1,7 @@
 body{
-    background: #9ec9bd;
+    background: #e9e9f1;
+    margin: 0;
+    padding: 0;
 }
 
 .panel-registro{
@@ -17,17 +19,25 @@ body{
     .panel-registro{
         width: 95%;
     }
+    
+    .navbar-normal{
+        display: none !important;
+    }
 }
 
 @media (min-width: 641px){
     .panel-registro{
         width: 70%;
     }
+    
+    .navbar-pequeño{
+        display: none !important;
+    }
 }
 
 @media (min-width: 1025px){
     .panel-registro{
-        width: 40%;
+        width: 55%;
     }
 }
 

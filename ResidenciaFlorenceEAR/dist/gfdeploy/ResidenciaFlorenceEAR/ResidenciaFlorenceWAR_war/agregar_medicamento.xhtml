@@ -13,12 +13,17 @@
         <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Medicamento" class="panel-registro">
-            <p:panelGrid columns="2" layout="grid">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre"/>
-                <p:inputText value="#{agregarMedicamentoManagedBean.nombre_medicamento}"
+                <p:outputLabel value="Nombre Generico"/>
+                <p:inputText value="#{agregarMedicamentoManagedBean.nombreGenerico}"
                              required="true"
-                             requiredMessage="Debe llenar el campo"/>
+                             requiredMessage="Ingrese un Nombre Generico"/>
+                
+                <p:outputLabel value="Nombre Fantasia"/>
+                <p:inputText value="#{agregarMedicamentoManagedBean.nombreFantasia}"
+                             required="true"
+                             requiredMessage="Ingrese un Nombre de Fantasia"/>
                 
                 <p:outputLabel value="Tipo"/>
                 <p:inputText value="#{agregarMedicamentoManagedBean.tipo}"
@@ -30,19 +35,17 @@
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
-                               requiredMessage="Debe ingresar un stock"/>
+                               requiredMessage="Debe ingresar un Stock"/>
                 
                 <p:outputLabel value="Stock Critico"/>
-                <p:inputNumber value="#{agregarMedicamentoManagedBean.stock_critico}"
+                <p:inputNumber value="#{agregarMedicamentoManagedBean.stockCritico}"
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
-                               requiredMessage="Debe ingresar un stock critico"/>
+                               requiredMessage="Debe ingresar un Stock Critico"/>
                 
                 <p:outputLabel value="Detalle"/>
-                <p:inputTextarea value="#{agregarMedicamentoManagedBean.detalle}"
-                                 required="true"
-                                 requiredMessage="Debe ingresar un detalle"/>
+                <p:inputTextarea value="#{agregarMedicamentoManagedBean.detalle}"/>
 
             </p:panelGrid>
             <p:commandButton value="Registrar" 

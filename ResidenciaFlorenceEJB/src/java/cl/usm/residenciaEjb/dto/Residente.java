@@ -39,8 +39,12 @@ public class Residente implements Serializable{
     private Calendar fecha_nacimiento;
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar fecha_ingreso;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar fecha_egreso;
     private String sexo;
-    private String estado;
+    private String alergias;
+    private String observaciones;
+    private String regimen_alimentario;
     
     @JoinColumn(name = "rut_apoderado", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
@@ -93,14 +97,6 @@ public class Residente implements Serializable{
         this.sexo = sexo;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public Apoderado getApoderado() {
         return apoderado;
     }
@@ -109,12 +105,12 @@ public class Residente implements Serializable{
         this.apoderado = apoderado;
     }
 
-    public Prevision getPrecision() {
+    public Prevision getPrevision() {
         return prevision;
     }
 
-    public void setPrecision(Prevision precision) {
-        this.prevision = precision;
+    public void setPrevision(Prevision prevision) {
+        this.prevision = prevision;
     }
 
     public List<Tratamiento> getTratamientos() {
@@ -124,5 +120,38 @@ public class Residente implements Serializable{
     public void setTratamientos(List<Tratamiento> tratamientos) {
         this.tratamientos = tratamientos;
     }
+
+    public Calendar getFecha_egreso() {
+        return fecha_egreso;
+    }
+
+    public void setFecha_egreso(Calendar fecha_egreso) {
+        this.fecha_egreso = fecha_egreso;
+    }
+
+    public String getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public String getRegimen_alimentario() {
+        return regimen_alimentario;
+    }
+
+    public void setRegimen_alimentario(String regimen_alimentario) {
+        this.regimen_alimentario = regimen_alimentario;
+    }
+    
     
 }

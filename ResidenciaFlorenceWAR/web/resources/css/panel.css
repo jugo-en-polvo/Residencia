@@ -1,0 +1,25 @@
+.ui-panel{
+    padding: 0 !important;
+    border: 2px solid #8056f5;
+}
+
+.ui-panel-titlebar{
+    text-align: center;
+    background: #8056f5;
+    border-radius: 0 !important;
+    padding: 1.2rem !important;
+}
+
+.ui-button{
+    background: #8056f5 !important;
+    padding: .7rem !important;
+}
+
+.ui-button:hover{
+    background: #6c33d6 !important;
+    color: white !important;
+}
+
+.ui-button-text{
+    font-weight: bold;
+}

@@ -13,7 +13,7 @@
         <p:growl id="mensaje"/>
 
         <p:panel class="panel-registro" header="Registro Apoderado">
-            <p:panelGrid columns="2" layout="grid">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
                 <p:outputLabel value="Rut Apoderado"/>
                 <p:inputMask value="#{agregarApoderadoManagedBean.rutApoderado}"
@@ -36,6 +36,9 @@
                 <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
                              requiredMessage="Debe ingresar una direccion"/>
+                
+                <p:outputLabel value="Email"/>
+                <p:inputText value="#{agregarApoderadoManagedBean.emailApoderado}"/>
 
             </p:panelGrid>
 

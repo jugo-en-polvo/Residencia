@@ -13,16 +13,22 @@
         <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Tratamiento" class="panel-registro">
-            <p:panelGrid columns="2" layout="grid">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
                 
                 <p:outputLabel value="Residente"/>
-                <p:selectOneMenu value="#{agregarTratamientoManagedBean.rutResidente}" required="true" requiredMessage="Debe seleccionar un Residente">                    
+                <p:selectOneMenu value="#{agregarTratamientoManagedBean.rutResidente}" 
+                                 required="true"
+                                 requiredMessage="Debe seleccionar un Residente"
+                                 autoWidth="false"
+                                 style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
                 </p:selectOneMenu>
                 
                 <p:outputLabel value="Medicamento"/>
-                <p:selectOneMenu value="#{agregarTratamientoManagedBean.idMedicamento}" required="true" requiredMessage="Debe ingresar Medicamento">
+                <p:selectOneMenu value="#{agregarTratamientoManagedBean.idMedicamento}" 
+                                 required="true" 
+                                 requiredMessage="Debe ingresar Medicamento">
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{listarMedicamentosManagedBean.medicamentosCombo}"/>
                 </p:selectOneMenu>

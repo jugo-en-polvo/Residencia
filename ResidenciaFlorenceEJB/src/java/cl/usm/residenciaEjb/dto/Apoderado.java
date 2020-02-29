@@ -9,8 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -33,6 +31,8 @@ public class Apoderado implements Serializable{
     private String nombre_apoderado;
     private String fono_apoderado;
     private String direccion_apoderado;
+    private String email_apoderado;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "apoderado")
     private List<Residente> residentes;
 
@@ -75,7 +75,13 @@ public class Apoderado implements Serializable{
     public void setResidentes(List<Residente> residentes) {
         this.residentes = residentes;
     }
-    
-    
+
+    public String getEmail_apoderado() {
+        return email_apoderado;
+    }
+
+    public void setEmail_apoderado(String email_apoderado) {
+        this.email_apoderado = email_apoderado;
+    }
     
 }

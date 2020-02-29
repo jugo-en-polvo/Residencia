@@ -31,7 +31,8 @@ public class Medicamento implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_medicamento;
-    private String nombre_medicamento;
+    private String nombre_generico;
+    private String nombre_fantasia;
     private String tipo;
     private String detalle;
     private int stock;
@@ -48,13 +49,23 @@ public class Medicamento implements Serializable{
         this.id_medicamento = id_medicamento;
     }
 
-    public String getNombre_medicamento() {
-        return nombre_medicamento;
+    public String getNombre_generico() {
+        return nombre_generico;
     }
 
-    public void setNombre_medicamento(String nombre_medicamento) {
-        this.nombre_medicamento = nombre_medicamento;
+    public void setNombre_generico(String nombre_generico) {
+        this.nombre_generico = nombre_generico;
     }
+
+    public String getNombre_fantasia() {
+        return nombre_fantasia;
+    }
+
+    public void setNombre_fantasia(String nombre_fantasia) {
+        this.nombre_fantasia = nombre_fantasia;
+    }
+
+    
 
     public String getTipo() {
         return tipo;

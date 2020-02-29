@@ -25,19 +25,36 @@ public class AgregarMedicamentoManagedBean implements Serializable{
 
     @Inject
     private MedicamentoDAOLocal medicamentosDAO;
-    private String nombre_medicamento;
+    private String nombreGenerico;
+    private String nombreFantasia;
     private String tipo;
     private String detalle;
     private int stock;
-    private int stock_critico;
+    private int stockCritico;
 
-    public String getNombre_medicamento() {
-        return nombre_medicamento;
+    public String getNombreGenerico() {
+        return nombreGenerico;
     }
 
-    public void setNombre_medicamento(String nombre_medicamento) {
-        this.nombre_medicamento = nombre_medicamento;
+    public void setNombreGenerico(String nombreGenerico) {
+        this.nombreGenerico = nombreGenerico;
     }
+
+    public String getNombreFantasia() {
+        return nombreFantasia;
+    }
+
+    public void setNombreFantasia(String nombreFantasia) {
+        this.nombreFantasia = nombreFantasia;
+    }
+
+    public int getStockCritico() {
+        return stockCritico;
+    }
+
+    public void setStockCritico(int stockCritico) {
+        this.stockCritico = stockCritico;
+    } 
 
     public String getTipo() {
         return tipo;
@@ -62,14 +79,6 @@ public class AgregarMedicamentoManagedBean implements Serializable{
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-    public int getStock_critico() {
-        return stock_critico;
-    }
-
-    public void setStock_critico(int stock_critico) {
-        this.stock_critico = stock_critico;
-    }
     
     public AgregarMedicamentoManagedBean() {
     }
@@ -77,14 +86,15 @@ public class AgregarMedicamentoManagedBean implements Serializable{
     public void agregar(ActionEvent e){
         
         Medicamento m = new Medicamento();
-        m.setNombre_medicamento(nombre_medicamento);
+        m.setNombre_generico(nombreGenerico);
+        m.setNombre_fantasia(nombreFantasia);
         m.setTipo(tipo);
         m.setDetalle(detalle);
         m.setStock(stock);
-        m.setStock_critico(stock_critico);
+        m.setStock_critico(stockCritico);
         
         medicamentosDAO.add(m);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Medicamento agregdo"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Medicamento Agregado"));
         
     }
     

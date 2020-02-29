@@ -51,6 +51,7 @@ public class AgregarResidenteApoderadoManagedBean implements Serializable{
         a.setNombre_apoderado(apoderadoBean.getNombreApoderado());
         a.setFono_apoderado(apoderadoBean.getFonoApoderado());
         a.setDireccion_apoderado(apoderadoBean.getDireccionApoderado());
+        a.setEmail_apoderado(apoderadoBean.getEmailApoderado());
         
         this.apoderadosDAO.add(a);
         
@@ -67,9 +68,12 @@ public class AgregarResidenteApoderadoManagedBean implements Serializable{
         r.setFecha_ingreso(fechaIngresoConvertida);
         
         r.setSexo(residenteBean.getSexo());
-        r.setEstado("V");
+        r.setFecha_egreso(null);
+        r.setRegimen_alimentario(residenteBean.getRegimenAlimentario());
+        r.setAlergias(residenteBean.getAlergias());
+        r.setObservaciones(residenteBean.getObservaciones());
         r.setApoderado(apoderadosDAO.find(apoderadoBean.getRutApoderado()));
-        r.setPrecision(this.previsionDAO.find(residenteBean.getIdPrevision()));
+        r.setPrevision(this.previsionDAO.find(residenteBean.getIdPrevision()));
         this.residenteDAO.add(r);
                 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente y Apoderado ingresados"));

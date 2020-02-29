@@ -26,7 +26,7 @@ public class ResidenteDAO implements ResidenteDAOLocal {
         
         EntityManager em = emf.createEntityManager();
         try{
-            r.setPrecision(em.merge(r.getPrecision()));
+            r.setPrevision(em.merge(r.getPrevision()));
             r.setApoderado(em.merge(r.getApoderado()));
             em.persist(r);
         }catch(Exception e){

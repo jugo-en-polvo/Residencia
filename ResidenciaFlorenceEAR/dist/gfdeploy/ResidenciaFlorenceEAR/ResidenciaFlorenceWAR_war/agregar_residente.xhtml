@@ -13,36 +13,75 @@
         <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Residente" class="panel-registro">
-            <p:panelGrid columns="2" layout="grid">
-                
-                <p:outputLabel value="Rut Apoderado"/>
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Nombre Apoderado"/>
                 <p:selectOneMenu id="selector-apoderados" value="#{residentesManagedBean.rutApoderado}">
                     <p:ajax update=":formulario" listener="#{residentesManagedBean.showOrHide}"/>
-                    <f:selectItem itemLabel="Selecione" itemValue="false" noSelectionOption="true"/>
+
                     <f:selectItem itemLabel="Nuevo Apoderado" itemValue="true" noSelectionOption="true"/>
                     <f:selectItems value="#{listarApoderadosManagedBean.apoderadosCombo}"/>
                 </p:selectOneMenu>
-                
+
                 <p:outputLabel value="Rut Apoderado"
                                rendered="#{!residentesManagedBean.hidden}"/>
                 <p:inputMask value="#{residentesManagedBean.rutApoderado}" 
                              rendered="#{!residentesManagedBean.hidden}"
                              required="true"
+                             readonly="true"
                              requiredMessage="Debe ingresar un Rut de Apoderado"
                              mask="99.999.999-*"/>
-                
+
+                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
+                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
+
+                <p:outputLabel rendered="#{residentesManagedBean.hidden}"
+                               value="Rut Apoderado"/>
+                <p:inputMask rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.rutApoderado}"
+                             mask="99.999.999-*"
+                             required="true"
+                             requiredMessage="Debe ingresar el Rut del Apoderado"/>
+
+                <p:outputLabel rendered="#{residentesManagedBean.hidden}"
+                               value="Nombre"/>                
+                <p:inputText rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.nombreApoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar el Nombre del Apoderado"/>
+
+                <p:outputLabel rendered="#{residentesManagedBean.hidden}"
+                               value="Telefono"/>
+                <p:inputMask rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.fonoApoderado}"
+                             mask="99999999999"
+                             required="true"
+                             requiredMessage="Debe ingresar un Telefono de contacto"/>
+
+                <p:outputLabel rendered="#{residentesManagedBean.hidden}"
+                               value="Direccion"/>
+                <p:inputText rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.direccionApoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar una Direccion"/>
+
+                <p:outputLabel rendered="#{residentesManagedBean.hidden}"
+                               value="Email"/>
+                <p:inputText rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.emailApoderado}"/>
+
                 <p:separator/><p:separator/>
-                
+
                 <p:outputLabel value="Rut Residente"/>
                 <p:inputMask value="#{residentesManagedBean.rutResidente}" 
                              required="true"
-                             requiredMessage="Debe ingresar rut de Residente"
+                             requiredMessage="Debe ingresar el Rut del Residente"
                              mask="99.999.999-*"/>
 
-                <p:outputLabel value="Nombre"/>
+                <p:outputLabel value="Nombre completo"/>
                 <p:inputText value="#{residentesManagedBean.nombre}"
                              required="true"
-                             requiredMessage="Debe ingresar Nombre de Residente"/>
+                             requiredMessage="Debe ingresar el Nombre del Residente"/>
 
                 <p:outputLabel value="Fecha de Naciemiento"/>
                 <p:calendar value="#{residentesManagedBean.fechaNacimieto}" placeholder="Presione"
@@ -58,7 +97,13 @@
                 <p:selectOneMenu value="#{residentesManagedBean.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="M"/>
                     <f:selectItem itemLabel="Femenino" itemValue="F"/>
-                </p:selectOneMenu>                        
+                </p:selectOneMenu>   
+
+                <p:outputLabel value="Regimen Alimentario"/>
+                <p:selectOneMenu value="#{residentesManagedBean.regimenAlimentario}">
+                    <f:selectItem itemLabel="Dieta Normal" itemValue="normal"/>
+                    <f:selectItem itemLabel="Dieta Diabetica" itemValue="diabetica"/>
+                </p:selectOneMenu> 
 
                 <p:outputLabel value="Prevision"/>
                 <p:selectOneMenu value="#{residentesManagedBean.idPrevision}">
@@ -66,42 +111,21 @@
                     <f:selectItem itemLabel="ISAPRE" itemValue="2"/>
                 </p:selectOneMenu>
 
+                <p:outputLabel value="Alergias"/>
+                <p:inputTextarea value="#{residentesManagedBean.alergias}"/>                
+
+                <p:outputLabel value="Observaciones"/>
+                <p:inputTextarea value="#{residentesManagedBean.observaciones}"/>
             </p:panelGrid>
-            <p:commandButton value="Registrar" 
+            
+            <p:commandButton rendered="#{!residentesManagedBean.hidden}"
+                             value="Registrar Residente" 
                              actionListener="#{residentesManagedBean.agregarResidente}"
-                             rendered="#{!residentesManagedBean.hidden}"
                              update="mensaje"
                              style="margin-top: 1rem"/>
-        </p:panel>
-
-        <p:panel id="panel-residente" header="Nuevo Apoderado" rendered="#{residentesManagedBean.hidden}" class="panel-registro">
-            <p:panelGrid columns="2" layout="grid">
-
-                <p:outputLabel value="Rut Apoderado"/>
-                <p:inputMask value="#{agregarApoderadoManagedBean.rutApoderado}"
-                             mask="99.999.999-*"
-                             required="true"
-                             requiredMessage="Debe ingresar el Rut Apoderado"/>
-
-                <p:outputLabel value="Nombre"/>                
-                <p:inputText value="#{agregarApoderadoManagedBean.nombreApoderado}"
-                             required="true"
-                             requiredMessage="Debe ingresar el Nombre de Apoderado"/>
-
-                <p:outputLabel value="Telefono"/>
-                <p:inputMask value="#{agregarApoderadoManagedBean.fonoApoderado}"
-                             mask="99999999999"
-                             required="true"
-                             requiredMessage="Debe ingresar un fono de contacto"/>
-
-                <p:outputLabel value="Direccion"/>
-                <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
-                             required="true"
-                             requiredMessage="Debe ingresar una direccion"/>
-
-            </p:panelGrid>
-
-            <p:commandButton value="Registrar"
+            
+            <p:commandButton rendered="#{residentesManagedBean.hidden}"
+                             value="Registrar Residente y Apoderado"
                              update="mensaje"
                              actionListener="#{agregarResidenteApoderadoManagedBean.agregar}"
                              style="margin-top: 1rem"/>

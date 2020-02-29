@@ -11,11 +11,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="resources/img/rose.png"/>
         <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="menubar.css"/>
+        <h:outputStylesheet library="css" name="panel.css"/>
     </h:head>
+    
     <h:body>
         <h:panelGroup layout="block" class="ui-fluid">
             <h:form id="formulario">
                 <ui:include src="WEB-INF/templates/header.xhtml" />
+                <ui:include src="WEB-INF/templates/mini-header.xhtml"/>
                 <main>
                     <ui:insert name="contenido">
                         <h1 style="text-align: center">Bienvenido a la Residencia</h1>
@@ -23,6 +27,7 @@
                 </main>
             </h:form>
         </h:panelGroup>
- </h:body>
+    </h:body>
+    
 </html>
 

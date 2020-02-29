@@ -49,7 +49,7 @@ public class ListarMedicamentosManagedBean implements Serializable{
     public void init(){
         this.medicamentos = this.medicamentosDAO.findAll();
         for(Medicamento me: medicamentos){
-            medicamentosCombo.put(me.getNombre_medicamento(), String.valueOf(me.getId_medicamento()));
+            medicamentosCombo.put(me.getNombre_generico(), String.valueOf(me.getId_medicamento()));
         }
     }
     
