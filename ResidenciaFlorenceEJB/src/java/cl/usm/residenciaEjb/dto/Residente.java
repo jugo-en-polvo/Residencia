@@ -56,6 +56,9 @@ public class Residente implements Serializable{
    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
     private List<Tratamiento> tratamientos;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
+    private List<Control_Medico> controlesMedicos;
 
     public String getRut_residente() {
         return rut_residente;
@@ -152,6 +155,12 @@ public class Residente implements Serializable{
     public void setRegimen_alimentario(String regimen_alimentario) {
         this.regimen_alimentario = regimen_alimentario;
     }
-    
-    
+
+    public List<Control_Medico> getControlesMedicos() {
+        return controlesMedicos;
+    }
+
+    public void setControlesMedicos(List<Control_Medico> controlesMedicos) {
+        this.controlesMedicos = controlesMedicos;
+    }
 }
