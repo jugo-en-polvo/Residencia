@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -24,6 +25,7 @@ import javax.persistence.TemporalType;
  * @author Senpai
  */
 @Entity
+@IdClass(Control_MedicoID.class)
 @Table(name = "controles_medicos")
 @NamedQueries({
     @NamedQuery(name = "Control_Medico.findAll", query = "SELECT cm FROM Control_Medico cm"),

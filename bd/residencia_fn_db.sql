@@ -45,6 +45,95 @@ INSERT INTO `apoderado` VALUES ('20.000.000-0','Mama','11111111111','Su Casa','m
 UNLOCK TABLES;
 
 --
+-- Table structure for table `controles_medicos`
+--
+
+DROP TABLE IF EXISTS `controles_medicos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `controles_medicos` (
+  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `fecha_hora_control` datetime NOT NULL,
+  `id_lugar` int unsigned NOT NULL,
+  `estado_control` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'N',
+  `observaciones` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`rut_residente`,`fecha_hora_control`),
+  KEY `id_lugar` (`id_lugar`),
+  CONSTRAINT `controles_medicos_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
+  CONSTRAINT `controles_medicos_ibfk_2` FOREIGN KEY (`id_lugar`) REFERENCES `lugar` (`id_lugar`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `controles_medicos`
+--
+
+LOCK TABLES `controles_medicos` WRITE;
+/*!40000 ALTER TABLE `controles_medicos` DISABLE KEYS */;
+INSERT INTO `controles_medicos` VALUES ('19.014.691-k','2020-03-03 03:00:00',1,'N','Se pego en la cabeza'),('21.000.000-0','2020-03-11 03:00:00',1,'N','');
+/*!40000 ALTER TABLE `controles_medicos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dieta`
+--
+
+DROP TABLE IF EXISTS `dieta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dieta` (
+  `fecha_dieta` datetime NOT NULL,
+  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `desayuno` tinyint DEFAULT NULL,
+  `colacion_1` tinyint DEFAULT NULL,
+  `almuerzo` tinyint DEFAULT NULL,
+  `colacion_2` tinyint DEFAULT NULL,
+  `once` tinyint DEFAULT NULL,
+  `cena` tinyint DEFAULT NULL,
+  `observaciones` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`fecha_dieta`,`rut_residente`),
+  KEY `rut_residente` (`rut_residente`),
+  CONSTRAINT `dieta_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dieta`
+--
+
+LOCK TABLES `dieta` WRITE;
+/*!40000 ALTER TABLE `dieta` DISABLE KEYS */;
+INSERT INTO `dieta` VALUES ('2020-03-01 03:00:00','19.014.691-k',1,1,0,0,0,0,'le duele la guata\r\nle gusta el comino\r\nno anda muy feliz :('),('2020-03-01 03:00:00','21.000.000-0',0,0,1,1,0,0,'tiene dolor de cabeza\r\nle caigo mal');
+/*!40000 ALTER TABLE `dieta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lugar`
+--
+
+DROP TABLE IF EXISTS `lugar`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lugar` (
+  `id_lugar` int unsigned NOT NULL AUTO_INCREMENT,
+  `nombre_lugar` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `fono_lugar` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion_lugar` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id_lugar`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lugar`
+--
+
+LOCK TABLES `lugar` WRITE;
+/*!40000 ALTER TABLE `lugar` DISABLE KEYS */;
+INSERT INTO `lugar` VALUES (1,'Hospital Naval','123456789','Calle Falsa 123'),(2,'Hospital VanAlgo','123456789','Avenida CasaMucho 213');
+/*!40000 ALTER TABLE `lugar` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `medicamento`
 --
 
@@ -152,7 +241,7 @@ CREATE TABLE `tratamientos` (
   KEY `id_medicamento` (`id_medicamento`),
   CONSTRAINT `tratamientos_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
   CONSTRAINT `tratamientos_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamento` (`id_medicamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +250,7 @@ CREATE TABLE `tratamientos` (
 
 LOCK TABLES `tratamientos` WRITE;
 /*!40000 ALTER TABLE `tratamientos` DISABLE KEYS */;
+INSERT INTO `tratamientos` VALUES (7,'19.014.691-k',4,1,'12:00'),(8,'19.014.691-k',5,2,'22:00');
 /*!40000 ALTER TABLE `tratamientos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -173,4 +263,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-29  3:22:54
+-- Dump completed on 2020-03-01  6:30:40
