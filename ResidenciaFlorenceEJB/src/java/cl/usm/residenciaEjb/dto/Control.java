@@ -33,6 +33,9 @@ public class Control implements Serializable{
     @JoinColumn(name = "rut_residente", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Residente residente;
+    @JoinColumn(name = "rut_usuario", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private Usuario usuario;
     private String presion_arterial;
     private String pulso;
     private String saturacion;
@@ -42,6 +45,14 @@ public class Control implements Serializable{
     private String suero;
     private String observaciones;
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     public Calendar getFecha_hora_control() {
         return fecha_hora_control;
     }

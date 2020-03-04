@@ -6,6 +6,7 @@
 package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.Administrar_MedicamentoDAOLocal;
+import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Administrar_Medicamento;
 import java.io.IOException;
 import java.io.Serializable;
@@ -25,8 +26,14 @@ public class ActualizarMedicacionManagedBean implements Serializable {
 
     @Inject
     private Administrar_MedicamentoDAOLocal medicacionDAO;
+    @Inject
+    private LoginManagedBean usuarioConectado;
+    @Inject
+    private UsuariosDAOLocal usuarioDAO;
+    
     private String observaciones;
     private boolean estado;
+
     private Administrar_Medicamento amParaActualizar;
 
     public ActualizarMedicacionManagedBean() {
@@ -59,6 +66,7 @@ public class ActualizarMedicacionManagedBean implements Serializable {
     public void update(ActionEvent e) throws IOException{
         
         this.amParaActualizar.setEstado(estado);
+        this.amParaActualizar.setUsuario(usuarioDAO.find(usuarioConectado.getRut()));
         this.amParaActualizar.setObservaciones(observaciones);
         this.medicacionDAO.update(amParaActualizar);
         

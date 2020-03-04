@@ -41,4 +41,33 @@ public class UsuariosDAO implements UsuariosDAOLocal {
             em.close();
         }
     }
+    
+    @Override
+    public Usuario findByRutYClave(String rut, String clave) {
+        EntityManager em = this.emf.createEntityManager();
+        try{
+            return em.createNamedQuery("Usuario.findByRutYClave", Usuario.class)
+                    .setParameter("rut", rut).setParameter("clave", clave)
+                    .getSingleResult();
+        }catch(Exception ex){
+            return null;
+        }finally{
+            em.close();
+        }
+    }
+
+    @Override
+    public Usuario find(String rut) {
+    
+        EntityManager em = this.emf.createEntityManager();
+        try {
+            return em.find(Usuario.class, rut);
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }finally{
+            em.close();
+        }
+        
+    }
 }

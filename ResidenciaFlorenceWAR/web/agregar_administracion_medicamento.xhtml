@@ -30,23 +30,17 @@
             </p:panelGrid>
 
             <h:panelGroup id="vista-administrar" layout="block" style="margin-top: 1rem">
-                <p:panelGrid columns="5" layout="grid">
-                    <p:outputLabel value="Medicamento"/>
-                    <p:outputLabel value="Hora"/>
-                    <p:outputLabel value="Administrado"/>
-                    <p:outputLabel value="Observaciones"/>
-                    <p:outputLabel value="Acciones"/>
-                </p:panelGrid>
                 <p:repeat value="#{agregarAdministracionMedicacionManagedBean.medicacionFiltro}" var="medicacion">
-                    <p:panelGrid columns="5" layout="grid">
+                    <p:panelGrid columns="4" layout="grid" style="padding-bottom: 1rem">
 
-                        <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre_generico}"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre_generico}" style="text-align: center"/>
                         <p:outputLabel value="#{medicacion.tratamiento.hora}"/>
-                        <p:outputLabel value="#{medicacion.estado}"/>
+                        <p:outputLabel value="#{agregarAdministracionMedicacionManagedBean.verificarEstado(medicacion)}"/>
                         <p:inputTextarea value="#{medicacion.observaciones}"
                                          readonly="true"
                                          placeholder="Observaciones opcionales"/>
                         <p:commandLink value="Actualizar"
+                                       style="text-decoration: none; background: #8056f5; border-radius: 3px; color:white; border: 1px solid black"
                                        actionListener="#{agregarAdministracionMedicacionManagedBean.update(medicacion)}"/>
                     </p:panelGrid>
                     

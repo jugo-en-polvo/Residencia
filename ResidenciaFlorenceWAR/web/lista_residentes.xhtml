@@ -14,44 +14,54 @@
                 <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
 
                     <p:panel header="#{residente.nombre_residente}">
-                        <p:panelGrid columns="2" layout="grid">
+                        <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
                             <p:outputLabel value="Rut:"
                                            styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.rut_residente}"/>
-                            
-                            <p:outputLabel value="Nacimiento:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{residente.fecha_nacimiento.time}">
-                                <f:convertDateTime type="both"  dateStyle="long"/>
-                            </h:outputText>
-                            
-                            <p:outputLabel value="Ingreso:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{residente.fecha_ingreso.time}">
-                                <f:convertDateTime type="both" dateStyle="long"/>
-                            </h:outputText>
-                            
-                            <p:outputLabel value="Prevision:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{residente.prevision.nombre_prevision}"/>
-                            
-                            <p:outputLabel value="Sexo:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{residente.sexo}"/>
-                            
-                            <p:outputLabel value="Alergias:"
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{residente.alergias}"/>
-                            
-                            <p:outputLabel value="Observaciones:"
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{residente.observaciones}"/>
-                            
+
                             <p:outputLabel value="Apoderado:"
                                            styleClass="texto-negrita"/>
                             <h:outputText value="#{residente.apoderado.nombre_apoderado}"/>
 
+                            <p:outputLabel value="Nacimiento:"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{residente.fecha_nacimiento.time}">
+                                <f:convertDateTime type="date"  dateStyle="medium"/>
+                            </h:outputText>
+
+                            <p:outputLabel value="Ingreso:"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{residente.fecha_ingreso.time}">
+                                <f:convertDateTime type="date" dateStyle="medium"/>
+                            </h:outputText>
+
+                            <p:outputLabel value="Egreso:"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{residente.fecha_egreso.time}">
+                                <f:convertDateTime type="date" dateStyle="medium"/>
+                            </h:outputText>
+
+                            <p:outputLabel value="Prevision:"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{residente.prevision.nombre_prevision}"/>
+
+                            <p:outputLabel value="Sexo:"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{residente.sexo}"/>
+                            
+                            <p:outputLabel value="Tipo Dieta:"
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{residente.regimen_alimentario}"/>
+
+                            <p:outputLabel value="Alergias:"
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{residente.alergias}"/>
+
+                            <p:outputLabel value="Observaciones:"
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{residente.observaciones}"/>
+                            
                         </p:panelGrid>
                     </p:panel>
 

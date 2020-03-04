@@ -43,8 +43,20 @@ public class Administrar_Medicamento implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar fecha_administracion;
     
+    @JoinColumn(name = "rut_usuario", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private Usuario usuario;
+    
     private boolean estado;
     private String observaciones;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Tratamiento getTratamiento() {
         return tratamiento;

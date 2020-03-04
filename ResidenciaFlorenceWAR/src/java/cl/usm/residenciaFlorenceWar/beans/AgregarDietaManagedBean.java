@@ -159,16 +159,6 @@ public class AgregarDietaManagedBean implements Serializable {
                 mensaje("Registro para hoy creado");
             } else {
                 crearVista(dietaDAO.findByCompositeKey(fechaBuscarConvertida, rutResidente));
-                /*
-                laDieta = dietaDAO.findByCompositeKey(fechaBuscarConvertida, rutResidente);
-                desayuno = laDieta.isDesayuno();
-                colacion_1 = laDieta.isColacion_1();
-                almuerzo = laDieta.isAlmuerzo();
-                colacion_2 = laDieta.isColacion_2();
-                once = laDieta.isOnce();
-                cena = laDieta.isCena();
-                observaciones = laDieta.getObservaciones();
-*/
                 mensaje("Obteniendo datos de hoy");
             }
 

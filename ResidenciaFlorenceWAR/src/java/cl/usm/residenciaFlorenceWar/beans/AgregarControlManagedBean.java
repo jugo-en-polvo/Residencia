@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ControlDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
+import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Control;
 import java.io.Serializable;
 import java.text.ParseException;
@@ -32,6 +33,10 @@ public class AgregarControlManagedBean implements Serializable{
     private ControlDAOLocal controlDAO;
     @Inject
     private ResidenteDAOLocal residenteDAO;
+    @Inject
+    private UsuariosDAOLocal usuarioDAO;
+    @Inject
+    private LoginManagedBean UsuarioConectado;
     private String rutResidente;
     private String presionArterial;
     private String pulso;
@@ -130,6 +135,7 @@ public class AgregarControlManagedBean implements Serializable{
         
         c.setFecha_hora_control(fechaBuscarConvertida);
         c.setResidente(residenteDAO.find(rutResidente));
+        c.setUsuario(usuarioDAO.find(UsuarioConectado.getRut()));
         c.setPresion_arterial(presionArterial);
         c.setPulso(pulso);
         c.setSaturacion(saturacion);

@@ -107,6 +107,16 @@ public class AgregarAdministracionMedicacionManagedBean implements Serializable 
         FacesContext.getCurrentInstance().getExternalContext().redirect("editar_medicacion.xhtml");
 
     }
+    
+    public String verificarEstado(Administrar_Medicamento am){
+        
+        if(am.isEstado()){
+            return "Consumido";
+        }else{
+            return "No Consumido";
+        }
+        
+    }
 
     public void manejarFiltro() throws ParseException {
 

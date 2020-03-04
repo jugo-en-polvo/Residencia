@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Actualizar Residente" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Rut Residente"/>
+                <p:outputLabel value="#{actualizarResidenteManagedBean.residenteActualizado.rut_residente}" />
+
+                <p:outputLabel value="Nombre completo"/>
+                <p:inputText value="#{actualizarResidenteManagedBean.residenteActualizado.nombre_residente}"
+                             required="true"
+                             maxlength="60"
+                             requiredMessage="Debe ingresar el Nombre del Residente"/>
+
+                <p:outputLabel value="Fecha de Naciemiento"/>
+                <p:calendar value="#{actualizarResidenteManagedBean.residenteActualizado.fecha_nacimiento.time}" placeholder="Presione"
+                            required="true"
+                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"/>
+
+                <p:outputLabel value="Fecha de ingreso"/>
+                <p:calendar value="#{actualizarResidenteManagedBean.residenteActualizado.fecha_ingreso.time}" placeholder="Presione"
+                            required="true"
+                            requiredMessage="Debe ingresar fecha de ingreso del residente"/>
+                
+                
+                <p:outputLabel value="Sexo"/>
+                <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.sexo}">
+                    <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                    <f:selectItem itemLabel="Femenino" itemValue="F"/>
+                </p:selectOneMenu>   
+
+                <p:outputLabel value="Regimen Alimentario"/>
+                <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.regimen_alimentario}">
+                    <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
+                    <f:selectItem itemLabel="Dieta Diabetica" itemValue="Diabetica"/>
+                </p:selectOneMenu> 
+
+                <p:outputLabel value="Prevision"/>
+                <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.prevision.id_prevision}">
+                    <f:selectItem itemLabel="FONASA" itemValue="1"/>
+                    <f:selectItem itemLabel="ISAPRE" itemValue="2"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Alergias"/>
+                <p:inputTextarea value="#{actualizarResidenteManagedBean.residenteActualizado.alergias}"
+                                 maxlength="150"/>                
+
+                <p:outputLabel value="Observaciones"/>
+                <p:inputTextarea value="#{actualizarResidenteManagedBean.residenteActualizado.observaciones}"
+                                 maxlength="150"/>
+            </p:panelGrid>
+
+            <p:commandButton 
+                             value="Actualizar Residente" 
+                             actionListener="#{actualizarResidenteManagedBean.actualizarResidente}"
+                             update="mensaje"
+                             style="margin-top: 1rem"/>
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

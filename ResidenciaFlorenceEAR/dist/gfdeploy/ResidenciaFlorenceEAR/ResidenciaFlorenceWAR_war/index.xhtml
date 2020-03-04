@@ -22,7 +22,7 @@
                 <ui:include src="WEB-INF/templates/mini-header.xhtml"/>
                 <main>
                     <ui:insert name="contenido">
-                        <h1 style="text-align: center">Bienvenido a la Residencia</h1>
+                        <h1 style="text-align: center">Bienvenido a la Residencia #{loginManagedBean.usuarioLogueado.nombre_usuario}</h1>
                     </ui:insert>
                 </main>
             </h:form>

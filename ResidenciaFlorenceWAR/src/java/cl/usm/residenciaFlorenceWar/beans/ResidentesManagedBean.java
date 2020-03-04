@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dao.PrevisionDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Residente;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,6 +38,8 @@ public class ResidentesManagedBean implements Serializable {
     private PrevisionDAOLocal previsionDAO;
     @Inject
     private ApoderadoDAOLocal apoderadoDAO;
+    @Inject
+    private ActualizarResidenteManagedBean actualizarResidenteBean;
 
     private List<Residente> residentes;
     private Map<String, String> residentesCombo = new HashMap<String, String>();
@@ -217,6 +220,13 @@ public class ResidentesManagedBean implements Serializable {
             this.residenteDAO.add(r);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
         }
+    }
+    
+    public void actualizar(Residente r) throws IOException{
+        
+        this.actualizarResidenteBean.setResidenteActualizado(r);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_residente.xhtml");
+        
     }
 
 }

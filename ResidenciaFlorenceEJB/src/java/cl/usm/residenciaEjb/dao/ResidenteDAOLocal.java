@@ -19,5 +19,6 @@ public interface ResidenteDAOLocal {
     public void add(Residente r);
     public List<Residente> findAll();
     Residente find(String rut);
+    void update(Residente r);
     
 }

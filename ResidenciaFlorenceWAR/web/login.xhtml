@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"     
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      lang="es">
+    <h:head>
+        <title>Inicio de Sesión</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="icon" href="resources/img/rose.png"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="menubar.css"/>
+        <h:outputStylesheet library="css" name="panel.css"/>
+    </h:head>
+
+    <h:body style="background-image: url(resources/img/fondo.jpg)">
+        <h:panelGroup layout="block" class="ui-fluid">
+            <h:form id="formulario">
+                <p:growl id="mensajeGrowl" 
+                         showDetail="true"
+                         showSummary="true"
+                         sticky="true"/>
+                <p:panel styleClass="panel-registro" header="Bienvenido">
+                    <p:panelGrid columns="2" layout="grid">
+                        <p:outputLabel value="Rut Usuario"/>
+                        <p:inputMask value="#{loginManagedBean.rut}" 
+                                     mask="99.999.999-*"/>
+                        <p:outputLabel value="Contraseña" />
+                        <p:password value="#{loginManagedBean.clave}" 
+                                    placeholder="Ingrese Contraseña"/>
+
+                    </p:panelGrid>
+                    <p:commandButton value="Iniciar Sesión"
+                                     update="mensajeGrowl"
+                                     actionListener="#{loginManagedBean.iniciarSesion}"/>
+                </p:panel>
+            </h:form>
+        </h:panelGroup>
+    </h:body>
+</html>

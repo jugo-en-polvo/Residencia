@@ -3,40 +3,75 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <header>
 
         <p:menubar autoDisplay="false" styleClass="navbar-pequeño">
             <p:submenu label=" ||| " styleClass="hamburguesa">
                 <p:submenu label="Residentes">
-                    <p:menuitem value="Agregar Residente" url="agregar_residente.xhtml"/>
+                    <p:menuitem value="Agregar Residente" url="agregar_residente.xhtml" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}"/>
                     <p:menuitem value="Lista Residentes" url="lista_residentes.xhtml"/>                   
                 </p:submenu>  
-                <p:submenu label="Apoderados">
+                <p:submenu label="Apoderados" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
                     <p:menuitem value="Agregar Apoderado" url="agregar_apoderado.xhtml"/>
                     <p:menuitem value="Listar Apoderados" url="listar_apoderados.xhtml"/>
                 </p:submenu>
-                <p:submenu label="Prevision">
-                    <p:menuitem value="Agregar Prevision" url="agregar_prevision.xhtml"/>
-                    <p:menuitem value="Listar Previsiones" url="listar_previsiones.xhtml"/>
+                <p:submenu label="Usuarios" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Usuario" url="agregar_usuario.xhtml"/>
+           
                 </p:submenu>
-                <p:submenu label="Medicamentos">
-                    <p:menuitem value="Agregar Medicamento" url="agregar_medicamento.xhtml"/>
-                    <p:menuitem value="Listar Medicamentos" url="listar_medicamento.xhtml"/>
-                </p:submenu>
-                <p:submenu label="Controles Medicos">
-                    <p:menuitem value="Agregar Control Medico" url="agregar_control_medico.xhtml"/>
-                    <p:menuitem value="Ver Controles Medicos" url="#"/>
-                </p:submenu>
-                <p:submenu label="Tratamientos">
+                <p:submenu label="Tratamientos" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
                     <p:menuitem value="Agregar Tratamiento" url="agregar_tratamiento.xhtml"/>
                     <p:menuitem value="Ver Tratamientos" url="ver_tratamientos.xhtml"/>
                 </p:submenu>
-                <p:submenu label="Lugares">
+                <p:submenu label="Diagnosticos" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Diagnostico" url="agregar_diagnostico.xhtml"/>
+                    <p:menuitem value="Ver Diagnosticos" url="listar_diagnosticos.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Controles Medicos" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Control Medico" url="agregar_control_medico.xhtml"/>
+                  
+                </p:submenu>
+                <p:submenu label="Emergencias" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Emergencia" url="agregar_emergencia.xhtml"/>
+                    <p:menuitem value="Ver Emergencias" url="listar_emergencias.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Medicamentos" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Medicamento" url="agregar_medicamento.xhtml"/>
+                    <p:menuitem value="Lista de Medicamenos" url="listar_medicamento.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Lugares" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
                     <p:menuitem value="Agregar Lugar" url="agregar_lugar.xhtml"/>
-                    <p:menuitem value="Lista Lugares" url="listar_lugares.xhtml"/>                   
-                </p:submenu> 
+                    <p:menuitem value="Listar Lugar" url="listar_lugares.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Prevision" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
+                    <p:menuitem value="Agregar Prevision" url="agregar_prevision.xhtml"/>
+                    <p:menuitem value="Listar Previsiones" url="listar_previsiones.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Dietas">
+                    <p:menuitem value="Administrar comidas" url="agregar_dieta.xhtml"/>
+                    <p:menuitem value="Listado Historico" url="listar_dieta_historico.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Medicacion">
+                    <p:menuitem value="Administrar Medicamentos" url="agregar_administracion_medicamento.xhtml"/>
+              
+                </p:submenu>
+                <p:submenu label="Control Diario">
+                    <p:menuitem value="Realizar Nuevo Control" url="agregar_control.xhtml"/>
+                </p:submenu>
             </p:submenu>
+            <f:facet name="options">
+                <p:commandLink value="Cerrar Sesion"
+                               actionListener="#{loginManagedBean.cerrarSesion}"
+                               immediate="true"
+                               style="padding: 1.5rem;
+                               margin-top: .8rem;
+                               text-decoration: none;
+                               border-radius: 3px;
+                               border: 5px solid whitesmoke;
+                               background: whitesmoke"/>
+            </f:facet>
         </p:menubar>
 
     </header>

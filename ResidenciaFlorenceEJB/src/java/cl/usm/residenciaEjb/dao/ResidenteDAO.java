@@ -67,4 +67,18 @@ public class ResidenteDAO implements ResidenteDAOLocal {
         
     }
 
+    @Override
+    public void update(Residente r) {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.merge(r);
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+        
+    }
+
 }
