@@ -12,4 +12,5 @@ import javax.ejb.Local;
 public interface UsuariosDAOLocal {
     void add(Usuario usuario);
     List<Usuario> findAll();
+    Usuario findByRutYClave(String rut, String clave);
 }
