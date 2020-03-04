@@ -27,10 +27,13 @@ DROP TABLE IF EXISTS `administrar_medicamento`;
 CREATE TABLE `administrar_medicamento` (
   `id_tratamiento` int unsigned NOT NULL,
   `fecha_administracion` datetime NOT NULL,
+  `rut_usuario` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
   `estado` tinyint NOT NULL,
   `observaciones` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_tratamiento`,`fecha_administracion`),
-  CONSTRAINT `administrar_medicamento_ibfk_1` FOREIGN KEY (`id_tratamiento`) REFERENCES `tratamientos` (`id_tratamiento`)
+  KEY `administrar_medicamento_ibfk_2` (`rut_usuario`),
+  CONSTRAINT `administrar_medicamento_ibfk_1` FOREIGN KEY (`id_tratamiento`) REFERENCES `tratamientos` (`id_tratamiento`),
+  CONSTRAINT `administrar_medicamento_ibfk_2` FOREIGN KEY (`rut_usuario`) REFERENCES `usuarios` (`rut_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +43,7 @@ CREATE TABLE `administrar_medicamento` (
 
 LOCK TABLES `administrar_medicamento` WRITE;
 /*!40000 ALTER TABLE `administrar_medicamento` DISABLE KEYS */;
-INSERT INTO `administrar_medicamento` VALUES (7,'2020-03-03 03:00:00',0,''),(7,'2020-03-04 03:00:00',0,''),(7,'2020-03-05 03:00:00',0,''),(8,'2020-03-03 03:00:00',0,''),(8,'2020-03-04 03:00:00',0,''),(8,'2020-03-05 03:00:00',0,''),(9,'2020-03-03 03:00:00',0,''),(9,'2020-03-04 03:00:00',0,''),(9,'2020-03-05 03:00:00',0,''),(10,'2020-03-03 03:00:00',0,NULL),(10,'2020-03-04 03:00:00',1,'Se tomo todo'),(10,'2020-03-05 03:00:00',0,''),(11,'2020-03-03 03:00:00',0,''),(11,'2020-03-04 03:00:00',0,''),(11,'2020-03-05 03:00:00',0,''),(12,'2020-03-03 03:00:00',0,''),(12,'2020-03-04 03:00:00',0,''),(12,'2020-03-05 03:00:00',0,''),(13,'2020-03-03 03:00:00',0,NULL),(13,'2020-03-04 03:00:00',0,''),(13,'2020-03-05 03:00:00',0,''),(14,'2020-03-03 03:00:00',0,''),(14,'2020-03-04 03:00:00',0,''),(14,'2020-03-05 03:00:00',0,''),(15,'2020-03-03 03:00:00',0,''),(15,'2020-03-04 03:00:00',0,''),(15,'2020-03-05 03:00:00',0,''),(16,'2020-03-03 03:00:00',1,'rthj'),(16,'2020-03-04 03:00:00',0,''),(16,'2020-03-05 03:00:00',0,'');
+INSERT INTO `administrar_medicamento` VALUES (7,'2020-03-04 00:00:00',NULL,0,''),(8,'2020-03-04 00:00:00',NULL,0,''),(9,'2020-03-04 00:00:00',NULL,0,''),(10,'2020-03-04 00:00:00','20.000.000-0',1,'Todo Conforme'),(11,'2020-03-04 00:00:00',NULL,0,''),(12,'2020-03-04 00:00:00',NULL,0,''),(13,'2020-03-04 00:00:00',NULL,0,''),(14,'2020-03-04 00:00:00',NULL,0,''),(15,'2020-03-04 00:00:00',NULL,0,''),(16,'2020-03-04 00:00:00',NULL,0,'');
 /*!40000 ALTER TABLE `administrar_medicamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,6 +84,7 @@ DROP TABLE IF EXISTS `control`;
 CREATE TABLE `control` (
   `fecha_hora_control` datetime NOT NULL,
   `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `rut_usuario` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
   `presion_arterial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
   `pulso` varchar(5) COLLATE utf8_spanish_ci DEFAULT NULL,
   `saturacion` varchar(4) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -91,7 +95,9 @@ CREATE TABLE `control` (
   `observaciones` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`fecha_hora_control`,`rut_residente`),
   KEY `rut_residente` (`rut_residente`),
-  CONSTRAINT `control_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
+  KEY `rut_usuario` (`rut_usuario`),
+  CONSTRAINT `control_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
+  CONSTRAINT `control_ibfk_2` FOREIGN KEY (`rut_usuario`) REFERENCES `usuarios` (`rut_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,7 +107,7 @@ CREATE TABLE `control` (
 
 LOCK TABLES `control` WRITE;
 /*!40000 ALTER TABLE `control` DISABLE KEYS */;
-INSERT INTO `control` VALUES ('2020-03-02 12:08:41','19.014.691-k','','200','','','','','',NULL),('2020-03-03 12:21:17','21.000.000-0','','','','','','','',NULL);
+INSERT INTO `control` VALUES ('2020-03-04 06:44:08','21.000.000-0','20.000.000-0','1','1','1','1','1','1','1',NULL);
 /*!40000 ALTER TABLE `control` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +137,6 @@ CREATE TABLE `controles_medicos` (
 
 LOCK TABLES `controles_medicos` WRITE;
 /*!40000 ALTER TABLE `controles_medicos` DISABLE KEYS */;
-INSERT INTO `controles_medicos` VALUES ('19.014.691-k','2020-03-03 03:00:00',1,'N','Se pego en la cabeza'),('19.014.691-k','2020-03-10 03:00:00',1,'N','Hola'),('21.000.000-0','2020-03-03 03:00:00',1,'N','Todo bien'),('21.000.000-0','2020-03-11 03:00:00',1,'N','');
 /*!40000 ALTER TABLE `controles_medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +197,7 @@ CREATE TABLE `dieta` (
 
 LOCK TABLES `dieta` WRITE;
 /*!40000 ALTER TABLE `dieta` DISABLE KEYS */;
-INSERT INTO `dieta` VALUES ('2020-03-04 03:00:00','19.014.691-k',0,1,1,0,0,0,NULL),('2020-03-04 03:00:00','21.000.000-0',0,0,0,0,0,0,NULL);
+INSERT INTO `dieta` VALUES ('2020-03-04 00:00:00','19.014.691-k',0,0,0,0,0,0,NULL),('2020-03-04 03:00:00','19.014.691-k',0,1,1,0,0,0,NULL),('2020-03-04 03:00:00','21.000.000-0',0,1,0,0,0,0,NULL);
 /*!40000 ALTER TABLE `dieta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +305,7 @@ CREATE TABLE `prevision` (
 
 LOCK TABLES `prevision` WRITE;
 /*!40000 ALTER TABLE `prevision` DISABLE KEYS */;
-INSERT INTO `prevision` VALUES (1,'FONASA'),(2,'ISAPRE'),(4,'Mauricio');
+INSERT INTO `prevision` VALUES (1,'FONASA'),(2,'FONASA'),(4,'Mauricio');
 /*!40000 ALTER TABLE `prevision` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +342,7 @@ CREATE TABLE `residente` (
 
 LOCK TABLES `residente` WRITE;
 /*!40000 ALTER TABLE `residente` DISABLE KEYS */;
-INSERT INTO `residente` VALUES ('19.014.691-k','20.000.000-0',1,'Andreas Demian Manriquez Ramirez','2020-02-18 03:00:00','2020-02-24 03:00:00',NULL,'M','polvo, el mismo.','diabetica','esta medio guaton'),('21.000.000-0','22.000.000-0',2,'Salyan Demian Manriquez Ramirez','2020-02-04 03:00:00','2020-02-18 03:00:00',NULL,'F','perros, dogs.','normal','no le gustan los perros.');
+INSERT INTO `residente` VALUES ('19.014.691-k','20.000.000-0',1,'Andreas Demian Manriquez Ramirez','2020-02-18 03:00:00','2020-02-24 03:00:00',NULL,'F','polvo, el mismo, los gatos','Normal','esta medio guaton, se le esta callendo el pelo'),('21.000.000-0','22.000.000-0',2,'Salyan Demian Manriquez Ramirez','2020-02-04 03:00:00','2020-02-18 03:00:00',NULL,'F','perros, dogs.','Normal','no le gustan los perros.'),('21.212.121-2','22.000.000-0',2,'Pepe Pepe Pepe','1973-10-15 00:00:00','1910-03-03 00:00:00',NULL,'F','Polvo','Diabetica','Nada');
 /*!40000 ALTER TABLE `residente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,7 +400,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('19.014.691-k','Andreas Manriquez','0iROh+5CiCSpAi1HtA1AMSBi/CNHIvgOD49IMFfUhS8=',0,0),('21116123k','Estobon','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',0,0),('998887776','asd','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',1,1);
+INSERT INTO `usuarios` VALUES ('19.014.691-k','Andreas Manriquez','0iROh+5CiCSpAi1HtA1AMSBi/CNHIvgOD49IMFfUhS8=',0,0),('20.000.000-0','Andreas','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0),('21116123k','Estobon','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',0,0),('30.000.000-0','Esteban','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',0,0),('998887776','asd','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',1,1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -408,4 +413,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-05 13:28:26
+-- Dump completed on 2020-03-04 20:53:15
