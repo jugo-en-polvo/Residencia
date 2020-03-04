@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Registro de Medicamentos" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Residente"/>
+                <p:selectOneMenu id="selector" value="#{agregarAdministracionMedicacionManagedBean.rutResidente}" 
+                                 autoWidth="false"
+                                 style="width: 100%">    
+                    <p:ajax listener="#{agregarAdministracionMedicacionManagedBean.manejarCreacionRegistro}"
+                            partialSubmit="true"
+                            process="selector"
+                            update="mensaje :formulario:vista-administrar"/>
+
+                    <f:selectItem itemLabel="Selecciona" itemValue="vacio" noSelectionOption="true"/>
+                    <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
+                </p:selectOneMenu>
+
+            </p:panelGrid>
+
+            <h:panelGroup id="vista-administrar" layout="block" style="margin-top: 1rem">
+                <p:panelGrid columns="5" layout="grid">
+                    <p:outputLabel value="Medicamento"/>
+                    <p:outputLabel value="Hora"/>
+                    <p:outputLabel value="Administrado"/>
+                    <p:outputLabel value="Observaciones"/>
+                    <p:outputLabel value="Acciones"/>
+                </p:panelGrid>
+                <p:repeat value="#{agregarAdministracionMedicacionManagedBean.medicacionFiltro}" var="medicacion">
+                    <p:panelGrid columns="5" layout="grid">
+
+                        <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre_generico}"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.hora}"/>
+                        <p:outputLabel value="#{medicacion.estado}"/>
+                        <p:inputTextarea value="#{medicacion.observaciones}"
+                                         readonly="true"
+                                         placeholder="Observaciones opcionales"/>
+                        <p:commandLink value="Actualizar"
+                                       actionListener="#{agregarAdministracionMedicacionManagedBean.update(medicacion)}"/>
+                    </p:panelGrid>
+                    
+
+                </p:repeat>
+            </h:panelGroup>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>
+

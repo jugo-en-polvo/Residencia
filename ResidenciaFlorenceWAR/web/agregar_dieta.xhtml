@@ -17,13 +17,11 @@
 
                 <p:outputLabel value="Residente"/>
                 <p:selectOneMenu value="#{agregarDietaManagedBean.rutResidente}" 
-                                 required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
                                  autoWidth="false"
                                  style="width: 100%">  
                     
-                    <p:ajax listener="#{agregarDietaManagedBean.showOrHide}" update=":formulario"/>
-                    <p:ajax listener="#{agregarDietaManagedBean.manejarFiltroDieta}" update="mensaje"/>
+
+                    <p:ajax listener="#{agregarDietaManagedBean.manejarFiltroDieta}" update="mensaje :formulario"/>
                     
                     <f:selectItem itemLabel="Selecciona" itemValue="true" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
@@ -37,7 +35,7 @@
                     <p:outputLabel value="Fecha:"
                                    styleClass="texto-negrita"/>
                     <h:outputText value="#{agregarDietaManagedBean.laDieta.fecha_dieta.time}">
-                        <f:convertDateTime type="both"  dateStyle="long"/>
+                        <f:convertDateTime type="date"  dateStyle="long"/>
                     </h:outputText>
 
                     <p:outputLabel value="Tipo Dieta:"/>

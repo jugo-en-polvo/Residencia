@@ -26,7 +26,7 @@ import javax.persistence.Table;
 @Table(name = "tratamientos")
 @NamedQueries({
     @NamedQuery(name = "Tratamiento.findAll", query = "SELECT t FROM Tratamiento t"),
-    @NamedQuery(name = "Tratamiento.findByRut", query = "SELECT t FROM Tratamiento t WHERE t.residente.rut_residente = :rut")
+    @NamedQuery(name = "Tratamiento.findByRut", query = "SELECT t FROM Tratamiento t WHERE t.residente.rut_residente = :rut ORDER BY t.hora ASC")
 })
 public class Tratamiento implements Serializable{
     

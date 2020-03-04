@@ -27,7 +27,7 @@ public class AgregarApoderadoManagedBean implements Serializable{
     private ApoderadoDAOLocal apoderadosDAO;
     private String rutApoderado;
     private String nombreApoderado;
-    private String fonoApoderado;
+    private int fonoApoderado;
     private String direccionApoderado;
     private String emailApoderado;
 
@@ -47,11 +47,11 @@ public class AgregarApoderadoManagedBean implements Serializable{
         this.nombreApoderado = nombreApoderado;
     }
 
-    public String getFonoApoderado() {
+    public int getFonoApoderado() {
         return fonoApoderado;
     }
 
-    public void setFonoApoderado(String fonoApoderado) {
+    public void setFonoApoderado(int fonoApoderado) {
         this.fonoApoderado = fonoApoderado;
     }
 
@@ -79,7 +79,7 @@ public class AgregarApoderadoManagedBean implements Serializable{
         Apoderado a = new Apoderado();
         a.setRut_apoderado(rutApoderado);
         a.setNombre_apoderado(nombreApoderado);
-        a.setFono_apoderado(fonoApoderado);
+        a.setFono_apoderado(Integer.toString(fonoApoderado));
         a.setDireccion_apoderado(direccionApoderado);
         a.setEmail_apoderado(emailApoderado);
         

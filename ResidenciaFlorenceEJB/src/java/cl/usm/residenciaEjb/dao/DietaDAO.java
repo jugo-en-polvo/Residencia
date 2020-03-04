@@ -120,20 +120,4 @@ public class DietaDAO implements DietaDAOLocal {
         
     }
 
-    @Override
-    public void updateCena(Calendar fecha, String rut, boolean cena) {
-    
-        EntityManager em = emf.createEntityManager();
-        try {
-            em.createNamedQuery("Dieta.updateCena", Dieta.class)
-                    .setParameter("cena", cena)
-                    .setParameter("rut", rut)
-                    .setParameter("fecha", fecha);
-        } catch (Exception e) {
-            System.out.println(e);
-        }finally{
-            em.close();
-        }
-    }
-
 }

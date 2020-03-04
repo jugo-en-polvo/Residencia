@@ -32,8 +32,8 @@
                              requiredMessage="Debe ingresar un Rut de Apoderado"
                              mask="99.999.999-*"/>
 
-                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
-                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
+                <p:separator rendered="#{residentesManagedBean.hidden}"/>
+                <p:separator rendered="#{residentesManagedBean.hidden}"/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Rut Apoderado"/>
@@ -48,26 +48,33 @@
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.nombreApoderado}"
                              required="true"
+                             maxlength="60"
                              requiredMessage="Debe ingresar el Nombre del Apoderado"/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Telefono"/>
-                <p:inputMask rendered="#{residentesManagedBean.hidden}"
+                <p:inputText id="txt" 
+                             rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.fonoApoderado}"
-                             mask="99999999999"
                              required="true"
-                             requiredMessage="Debe ingresar un Telefono de contacto"/>
+                             maxlength="10"
+                             requiredMessage="Debe ingresar un Fono de contacto"
+                             >
+                     <p:keyFilter regEx="/[\d\.]/"/> 
+                </p:inputText>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Direccion"/>
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
+                             maxlength="45"
                              requiredMessage="Debe ingresar una Direccion"/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Email"/>
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
+                             maxlength="30"
                              value="#{agregarApoderadoManagedBean.emailApoderado}"/>
 
                 <p:separator/><p:separator/>
@@ -81,6 +88,7 @@
                 <p:outputLabel value="Nombre completo"/>
                 <p:inputText value="#{residentesManagedBean.nombre}"
                              required="true"
+                             maxlength="60"
                              requiredMessage="Debe ingresar el Nombre del Residente"/>
 
                 <p:outputLabel value="Fecha de Naciemiento"/>
@@ -101,8 +109,8 @@
 
                 <p:outputLabel value="Regimen Alimentario"/>
                 <p:selectOneMenu value="#{residentesManagedBean.regimenAlimentario}">
-                    <f:selectItem itemLabel="Dieta Normal" itemValue="normal"/>
-                    <f:selectItem itemLabel="Dieta Diabetica" itemValue="diabetica"/>
+                    <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
+                    <f:selectItem itemLabel="Dieta Diabetica" itemValue="Diabetica"/>
                 </p:selectOneMenu> 
 
                 <p:outputLabel value="Prevision"/>
@@ -112,18 +120,20 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Alergias"/>
-                <p:inputTextarea value="#{residentesManagedBean.alergias}"/>                
+                <p:inputTextarea value="#{residentesManagedBean.alergias}"
+                                 maxlength="150"/>                
 
                 <p:outputLabel value="Observaciones"/>
-                <p:inputTextarea value="#{residentesManagedBean.observaciones}"/>
+                <p:inputTextarea value="#{residentesManagedBean.observaciones}"
+                                 maxlength="150"/>
             </p:panelGrid>
-            
+
             <p:commandButton rendered="#{!residentesManagedBean.hidden}"
                              value="Registrar Residente" 
                              actionListener="#{residentesManagedBean.agregarResidente}"
                              update="mensaje"
                              style="margin-top: 1rem"/>
-            
+
             <p:commandButton rendered="#{residentesManagedBean.hidden}"
                              value="Registrar Residente y Apoderado"
                              update="mensaje"

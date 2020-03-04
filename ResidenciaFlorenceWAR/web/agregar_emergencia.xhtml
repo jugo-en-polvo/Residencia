@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Registrar Emergencia" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Residente"/>
+                <p:selectOneMenu value="#{agregarEmergenciaManagedBean.rut_residente}" 
+                                 required="true"
+                                 requiredMessage="Debe seleccionar un Residente"
+                                 autoWidth="false"
+                                 style="width: 100%">                    
+                    <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Fecha de emergencia"/>
+                <p:calendar value="#{agregarEmergenciaManagedBean.fecha_emergencia}"
+                            required="true"
+                            pattern="dd.MM.yyyy HH:mm"
+                            requiredMessage="Debe ingresar una Fecha"/>
+
+                <p:outputLabel value="Lugar"/>
+                <p:selectOneMenu value="#{agregarEmergenciaManagedBean.id_lugar}" 
+                                 required="true"
+                                 requiredMessage="Debe seleccionar un Lugar"
+                                 autoWidth="false"
+                                 style="width: 100%">                    
+                    <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{listarLugaresManagedBean.comboLugares}"/>                              
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Observaciones"/>
+                <p:inputTextarea value="#{agregarEmergenciaManagedBean.observaciones}"/>
+
+            </p:panelGrid>
+            <p:commandButton value="Registrar" 
+                             actionListener="#{agregarEmergenciaManagedBean.add}" 
+                             update="mensaje"
+                             style="margin-top: 1rem"/>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

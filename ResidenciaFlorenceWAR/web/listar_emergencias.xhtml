@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="index.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="contenido">
+
+        <h:panelGroup layout="block" class="ui-g">
+            <ui:repeat value="#{listarEmergenciasManagedBean.emergencias}" var="emergencia">
+                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+
+                    <p:panel header="#{emergencia.residente.nombre_residente}">
+                        
+                        <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+                            
+                            <p:outputLabel value="Fecha de Emergencia"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{emergencia.fecha_emergencia.time}">
+                                <f:convertDateTime type="both"  dateStyle="long"/>
+                            </h:outputText>                           
+                            
+                            <p:outputLabel value="Lugar de Atencion"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{emergencia.lugar.nombre_lugar}"/>
+                            
+                            <p:outputLabel value="Observaciones"
+                                           styleClass="texto-negrita"/>
+                            <h:outputText value="#{emergencia.observaciones}"/>
+                            
+                        </p:panelGrid>
+                        
+                    </p:panel>
+
+                </h:panelGroup>
+            </ui:repeat>
+        </h:panelGroup>
+
+    </ui:define>
+
+</ui:composition>

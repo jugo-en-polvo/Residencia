@@ -49,7 +49,7 @@ public class AgregarResidenteApoderadoManagedBean implements Serializable{
         //Apoderado
         a.setRut_apoderado(apoderadoBean.getRutApoderado());
         a.setNombre_apoderado(apoderadoBean.getNombreApoderado());
-        a.setFono_apoderado(apoderadoBean.getFonoApoderado());
+        a.setFono_apoderado(Integer.toString(apoderadoBean.getFonoApoderado()));
         a.setDireccion_apoderado(apoderadoBean.getDireccionApoderado());
         a.setEmail_apoderado(apoderadoBean.getEmailApoderado());
         

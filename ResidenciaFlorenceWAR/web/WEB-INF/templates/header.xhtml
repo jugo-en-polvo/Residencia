@@ -3,7 +3,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
     <header>
 
         <p:menubar autoDisplay="false" styleClass="navbar-normal">
@@ -27,9 +28,17 @@
                     <p:menuitem value="Agregar Tratamiento" url="agregar_tratamiento.xhtml"/>
                     <p:menuitem value="Ver Tratamientos" url="ver_tratamientos.xhtml"/>
                 </p:submenu>
+                <p:submenu label="Diagnosticos">
+                    <p:menuitem value="Agregar Diagnostico" url="agregar_diagnostico.xhtml"/>
+                    <p:menuitem value="Ver Diagnosticos" url="listar_diagnosticos.xhtml"/>
+                </p:submenu>
                 <p:submenu label="Controles Medicos">
                     <p:menuitem value="Agregar Control Medico" url="agregar_control_medico.xhtml"/>
                     <p:menuitem value="Ver Controles Medicos" url="#"/>
+                </p:submenu>
+                <p:submenu label="Emergencias">
+                    <p:menuitem value="Agregar Emergencia" url="agregar_emergencia.xhtml"/>
+                    <p:menuitem value="Ver Emergencias" url="listar_emergencias.xhtml"/>
                 </p:submenu>
                 <p:submenu label="Medicamentos">
                     <p:menuitem value="Agregar Medicamento" url="agregar_medicamento.xhtml"/>
@@ -49,8 +58,14 @@
                 <p:submenu label="Dietas">
                     <p:menuitem value="Administrar comidas" url="agregar_dieta.xhtml"/>
                 </p:submenu>
+                <p:submenu label="Medicacion">
+                    <p:menuitem value="Administrar Medicamentos" url="agregar_administracion_medicamento.xhtml"/>
+                </p:submenu>
+                <p:submenu label="Control Diario">
+                    <p:menuitem value="Realizar Nuevo Control" url="agregar_control.xhtml"/>
+                </p:submenu>
             </p:submenu>
-
+            
         </p:menubar>
 
     </header>

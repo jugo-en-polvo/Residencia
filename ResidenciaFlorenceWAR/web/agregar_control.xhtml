@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Registrar Control" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Residente"/>
+                <p:selectOneMenu value="#{agregarControlManagedBean.rutResidente}" 
+                                 required="true"
+                                 requiredMessage="Debe seleccionar un Residente"
+                                 autoWidth="false"
+                                 style="width: 100%">                    
+                    <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Fecha:"/>
+                <p:outputLabel value="Fecha de hoy"/>
+
+
+                <p:outputLabel value="Presion Arterial:"/>
+                <p:inputText value="#{agregarControlManagedBean.presionArterial}"
+                             maxlength="10"/>
+
+                <p:outputLabel value="Pulso:"/>
+                <p:inputText value="#{agregarControlManagedBean.pulso}"
+                             maxlength="5"/>
+
+                <p:outputLabel value="Saturacion:"/>
+                <p:inputText value="#{agregarControlManagedBean.saturacion}"
+                             maxlength="4"/>
+
+                <p:outputLabel value="HGT:"/>
+                <p:inputText value="#{agregarControlManagedBean.hgt}"
+                             maxlength="10"/>
+
+                <p:outputLabel value="Cambio de posicion:"/>
+                <p:inputText value="#{agregarControlManagedBean.cambioPosicion}"
+                             maxlength="40"/>
+
+                <p:outputLabel value="Solucion Parenteral:"/>
+                <p:inputText value="#{agregarControlManagedBean.solucionParenteral}"
+                             maxlength="20"/>
+
+                <p:outputLabel value="Suero:"/>
+                <p:inputText value="#{agregarControlManagedBean.suero}"
+                             maxlength="20"/>
+
+                <p:outputLabel value="Observaciones:"/>
+                <p:inputTextarea value="#{agregarControlManagedBean.presionArterial}"
+                                 maxlength="100"/>
+
+            </p:panelGrid>
+            <p:commandButton value="Registrar" 
+                             actionListener="#{agregarControlManagedBean.add}" 
+                             update="mensaje"
+                             style="margin-top: 1rem"/>
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

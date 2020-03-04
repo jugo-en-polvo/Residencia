@@ -24,6 +24,5 @@ public interface DietaDAOLocal {
     List<Dieta> findByRut(String rut);
     Dieta findByFecha(Date fecha);
     Dieta findByCompositeKey(Calendar fecha, String rut);
-    void updateCena(Calendar fecha, String rut, boolean cena);
     
 }

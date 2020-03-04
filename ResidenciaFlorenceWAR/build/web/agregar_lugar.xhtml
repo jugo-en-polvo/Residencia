@@ -21,9 +21,14 @@
                              requiredMessage="Debe llenar el Nombre del Lugar"/>
                 
                 <p:outputLabel value="Fono:"/>
-                <p:inputText value="${agregarLugarManagedBean.fonoLugar}"
+                <p:inputText id="txt" 
+                             value="#{agregarLugarManagedBean.fonoLugar}"
                              required="true"
-                             requiredMessage="Debe llenar el Fono del Lugar"/>
+                             maxlength="10"
+                             requiredMessage="Debe ingresar un Fono de contacto"
+                             >
+                     <p:keyFilter regEx="/[\d\.]/"/> 
+                </p:inputText>
                 
                 <p:outputLabel value="Direccion:"/>
                 <p:inputText value="${agregarLugarManagedBean.direccionLugar}"

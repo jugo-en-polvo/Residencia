@@ -16,9 +16,12 @@
         </p:growl>
         
         <p:panel header="Registrar Usuario" class="panel-registro">
-            <h:panelGrid columns="2" styleClass="ui-noborder">
+            <p:panelGrid columns="2" layout="grid"  styleClass="ui-noborder">
                 <p:outputLabel value="Rut"/>
-                <p:inputText value="#{agregarUsuarioManagedBean.rut}" required="true" requiredMessage="Debe ingresar el rut del usuario" style="width: 100%"/>
+                <p:inputMask value="#{agregarUsuarioManagedBean.rut}"
+                             mask="99.999.999-*"
+                             required="true"
+                             requiredMessage="Debe ingresar el Rut Apoderado"/>
                 <p:outputLabel value="Nombre"/>
                 <p:inputText value="#{agregarUsuarioManagedBean.nombre}" required="true" requiredMessage="Debe ingresar el nombre del usuario"/>
                 <p:outputLabel value="Tipo de Cuenta" />
@@ -47,7 +50,7 @@
                             id="pass2" 
                             required="true" 
                             requiredMessage="Debe ingresar confirmación de contraseña"/>
-            </h:panelGrid>
+            </p:panelGrid>
             <p:commandButton value="Registrar" 
                                  actionListener="#{agregarUsuarioManagedBean.registrar}"
                                  update="mensaje"

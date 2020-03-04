@@ -32,8 +32,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "Dieta.findAll", query = "SELECT d FROM Dieta d"),
     @NamedQuery(name = "Dieta.findByRut", query = "SELECT d FROM Dieta d WHERE d.residente.rut_residente = :rut_residente"),
-    @NamedQuery(name = "Dieta.findByFecha", query = "SELECT d FROM Dieta d WHERE d.fecha_dieta = :fecha"),
-    @NamedQuery(name = "Dieta.updateCena", query = "UPDATE Dieta AS d SET d.cena = :cena WHERE d.residente.rut_residente = :rut AND d.fecha_dieta = :fecha")
+    @NamedQuery(name = "Dieta.findByFecha", query = "SELECT d FROM Dieta d WHERE d.fecha_dieta = :fecha")
 })
 public class Dieta implements Serializable{
     

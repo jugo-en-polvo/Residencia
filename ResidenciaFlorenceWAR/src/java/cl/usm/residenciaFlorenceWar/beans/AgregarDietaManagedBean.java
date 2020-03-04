@@ -14,7 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -137,15 +136,14 @@ public class AgregarDietaManagedBean implements Serializable {
 
     public void manejarFiltroDieta() throws Exception {
 
+        Date today = Calendar.getInstance().getTime();
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaString = formato.format(new Date());
+        String fechaString = formato.format(today);
         Date fechaBuscar = new SimpleDateFormat("yyyy-MM-dd").parse(fechaString);
-        
         Calendar fechaBuscarConvertida = Calendar.getInstance();
         fechaBuscarConvertida.setTime(fechaBuscar);
-                
 
-        if (rutResidente != null && !rutResidente.equals("")) {
+        if (!rutResidente.equals("true")) {
             if (dietaDAO.findByCompositeKey(fechaBuscarConvertida, rutResidente) == null) {
                 Dieta d = new Dieta();
                 d.setResidente(residenteDAO.find(rutResidente));
@@ -157,8 +155,11 @@ public class AgregarDietaManagedBean implements Serializable {
                 d.setOnce(false);
                 d.setCena(false);
                 dietaDAO.add(d);
-                mensaje("Nuevo Registro creado");
+                crearVista(d);
+                mensaje("Registro para hoy creado");
             } else {
+                crearVista(dietaDAO.findByCompositeKey(fechaBuscarConvertida, rutResidente));
+                /*
                 laDieta = dietaDAO.findByCompositeKey(fechaBuscarConvertida, rutResidente);
                 desayuno = laDieta.isDesayuno();
                 colacion_1 = laDieta.isColacion_1();
@@ -167,83 +168,85 @@ public class AgregarDietaManagedBean implements Serializable {
                 once = laDieta.isOnce();
                 cena = laDieta.isCena();
                 observaciones = laDieta.getObservaciones();
-
+*/
+                mensaje("Obteniendo datos de hoy");
             }
 
         }
+        showOrHide();
     }
 
-     public boolean mensajesDesayuno() {
+    public boolean mensajesDesayuno() {
         if (desayuno == false) {
-            mensaje("Desayuno No Consumida" + desayuno);
+            mensaje("Desayuno No Consumida");
             update();
         } else {
             update();
-            mensaje("Desayuno Consumida" + desayuno);
+            mensaje("Desayuno Consumida");
         }
         return true;
     }
-        
-     public boolean mensajesColacion1() {
+
+    public boolean mensajesColacion1() {
         if (colacion_1 == false) {
-            mensaje("Primera Colacion No Consumida" + colacion_1);
+            mensaje("Primera Colacion No Consumida");
             update();
         } else {
             update();
-            mensaje("PrimeraColacion Consumida" + colacion_1);
+            mensaje("PrimeraColacion Consumida");
         }
         return true;
     }
-    
-     public boolean mensajesAlmuerzo() {
+
+    public boolean mensajesAlmuerzo() {
         if (almuerzo == false) {
-            mensaje("Almuerzo No Consumida" + almuerzo);
+            mensaje("Almuerzo No Consumida");
             update();
         } else {
             update();
-            mensaje("Almuerzo Consumida" + almuerzo);
+            mensaje("Almuerzo Consumida");
         }
         return true;
     }
-    
-     public boolean mensajesColacion2() {
+
+    public boolean mensajesColacion2() {
         if (colacion_2 == false) {
-            mensaje("Segunda Colacion No Consumida " + colacion_2);
+            mensaje("Segunda Colacion No Consumida");
             update();
         } else {
             update();
-            mensaje("Segunda Colacion Consumida" + colacion_2);
+            mensaje("Segunda Colacion Consumida");
         }
         return true;
     }
-    
-     public boolean mensajesOnce() {
+
+    public boolean mensajesOnce() {
         if (once == false) {
-            mensaje("Once No Consumida " + once);
+            mensaje("Once No Consumida");
             update();
         } else {
             update();
-            mensaje("Once Consumida " + once);
+            mensaje("Once Consumida");
         }
         return true;
     }
-    
+
     public boolean mensajesCena() {
         if (cena == false) {
-            mensaje("Cena No Consumida " + cena);
+            mensaje("Cena No Consumida");
             update();
         } else {
             update();
-            mensaje("Cena Consumida " + cena);
+            mensaje("Cena Consumida");
         }
         return true;
     }
-    
-    public void agregarObservacion(){
+
+    public void agregarObservacion() {
         update();
     }
-    
-    public void update(){
+
+    public void update() {
         Dieta d = new Dieta();
         d.setResidente(laDieta.getResidente());
         d.setFecha_dieta(laDieta.getFecha_dieta());
@@ -260,6 +263,17 @@ public class AgregarDietaManagedBean implements Serializable {
 
     public void mensaje(String msg) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(msg));
+    }
+
+    public void crearVista(Dieta d) {
+        laDieta = d;
+        desayuno = laDieta.isDesayuno();
+        colacion_1 = laDieta.isColacion_1();
+        almuerzo = laDieta.isAlmuerzo();
+        colacion_2 = laDieta.isColacion_2();
+        once = laDieta.isOnce();
+        cena = laDieta.isCena();
+        observaciones = laDieta.getObservaciones();
     }
 
 }

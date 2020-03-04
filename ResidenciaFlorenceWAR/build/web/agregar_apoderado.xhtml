@@ -27,10 +27,15 @@
                              requiredMessage="Debe ingresar el Nombre de Apoderado"/>
 
                 <p:outputLabel value="Telefono"/>
-                <p:inputMask value="#{agregarApoderadoManagedBean.fonoApoderado}"
-                             mask="99999999999"
+                <p:inputText id="txt" 
+                             rendered="#{residentesManagedBean.hidden}"
+                             value="#{agregarApoderadoManagedBean.fonoApoderado}"
                              required="true"
-                             requiredMessage="Debe ingresar un fono de contacto"/>
+                             maxlength="10"
+                             requiredMessage="Debe ingresar un Fono de contacto"
+                             >
+                     <p:keyFilter regEx="/[\d\.]/"/> 
+                </p:inputText>
 
                 <p:outputLabel value="Direccion"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
