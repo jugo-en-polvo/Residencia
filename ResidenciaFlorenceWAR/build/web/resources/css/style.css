@@ -2,10 +2,23 @@ body{
     background: #e9e9f1;
     margin: 0;
     padding: 0;
+    line-height: 32px;
+    word-wrap: break-word !important;
+}
+
+.logo{
+    font-weight: bold;
+    color: whitesmoke;
 }
 
 .panel-registro{
     width: 90%;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.panel-login{
+    width: 95%;
     margin: 0 auto;
     margin-top: 2rem;
 }
@@ -19,9 +32,9 @@ body{
     .panel-registro{
         width: 95%;
     }
-    
-    .navbar-normal{
-        display: none !important;
+
+    .panel-login{
+        width: 95%;
     }
 }
 
@@ -29,15 +42,19 @@ body{
     .panel-registro{
         width: 70%;
     }
-    
-    .navbar-pequeño{
-        display: none !important;
+
+    .panel-login{
+        width: 50%;
     }
 }
 
 @media (min-width: 1025px){
     .panel-registro{
         width: 55%;
+    }
+
+    .panel-login{
+        width: 35%;
     }
 }
 

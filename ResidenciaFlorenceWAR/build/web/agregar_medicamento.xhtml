@@ -15,15 +15,15 @@
         <p:panel header="Registrar Medicamento" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre Generico"/>
+                <p:outputLabel value="Nombre Genérico"/>
                 <p:inputText value="#{agregarMedicamentoManagedBean.nombreGenerico}"
                              required="true"
-                             requiredMessage="Ingrese un Nombre Generico"/>
+                             requiredMessage="Ingrese un Nombre Genérico"/>
                 
-                <p:outputLabel value="Nombre Fantasia"/>
+                <p:outputLabel value="Nombre Fantasía"/>
                 <p:inputText value="#{agregarMedicamentoManagedBean.nombreFantasia}"
                              required="true"
-                             requiredMessage="Ingrese un Nombre de Fantasia"/>
+                             requiredMessage="Ingrese un Nombre de Fantasía"/>
                 
                 <p:outputLabel value="Tipo"/>
                 <p:inputText value="#{agregarMedicamentoManagedBean.tipo}"
@@ -37,12 +37,12 @@
                                required="true"
                                requiredMessage="Debe ingresar un Stock"/>
                 
-                <p:outputLabel value="Stock Critico"/>
+                <p:outputLabel value="Stock Crítico"/>
                 <p:inputNumber value="#{agregarMedicamentoManagedBean.stockCritico}"
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
-                               requiredMessage="Debe ingresar un Stock Critico"/>
+                               requiredMessage="Debe ingresar un Stock Crítico"/>
                 
                 <p:outputLabel value="Detalle"/>
                 <p:inputTextarea value="#{agregarMedicamentoManagedBean.detalle}"/>

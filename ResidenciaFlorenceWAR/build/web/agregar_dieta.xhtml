@@ -46,7 +46,7 @@
                         <p:ajax listener="#{agregarDietaManagedBean.mensajesDesayuno}" update="mensaje"/>
                     </p:selectBooleanButton>
 
-                    <p:outputLabel value="Primera Colacion:"/>
+                    <p:outputLabel value="Primera Colación:"/>
                     <p:selectBooleanButton value="#{agregarDietaManagedBean.colacion_1}" onLabel="Si" offLabel="No" style="width:100%" >
                         <p:ajax listener="#{agregarDietaManagedBean.mensajesColacion1}" update="mensaje"/>
                     </p:selectBooleanButton>
@@ -56,7 +56,7 @@
                         <p:ajax listener="#{agregarDietaManagedBean.mensajesAlmuerzo}" update="mensaje"/>
                     </p:selectBooleanButton>
 
-                    <p:outputLabel value="Segunda Colacion:"/>
+                    <p:outputLabel value="Segunda Colación:"/>
                     <p:selectBooleanButton value="#{agregarDietaManagedBean.colacion_2}" onLabel="Si" offLabel="No" style="width:100%" >
                         <p:ajax listener="#{agregarDietaManagedBean.mensajesColacion2}" update="mensaje"/>
                     </p:selectBooleanButton>
@@ -75,7 +75,7 @@
                     <p:inputTextarea value="#{agregarDietaManagedBean.observaciones}"/>
                 </p:panelGrid>
             </h:panelGroup>
-            <p:commandButton value="Agregar Observacion"
+            <p:commandButton value="Añadir Observacion"
                              actionListener="#{agregarDietaManagedBean.agregarObservacion}"
                              update="mensaje"
                              style="margin-top: 2rem"/>    

@@ -11,18 +11,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="resources/img/rose.png"/>
         <h:outputStylesheet library="css" name="style.css"/>
-        <h:outputStylesheet library="css" name="menubar.css"/>
         <h:outputStylesheet library="css" name="panel.css"/>
+        <h:outputStylesheet library="css" name="navbar.css"/>
     </h:head>
     
     <h:body style="background-image: url(resources/img/fondo.jpg)">
         <h:panelGroup layout="block" class="ui-fluid">
             <h:form id="formulario">
                 <ui:include src="WEB-INF/templates/header.xhtml" />
-                <ui:include src="WEB-INF/templates/mini-header.xhtml"/>
                 <main>
                     <ui:insert name="contenido">
                         <h1 style="text-align: center">Bienvenido a la Residencia #{loginManagedBean.usuarioLogueado.nombre_usuario}</h1>
+                        <h:panelGroup layout="block" class="ui-fluid" styleClass="panel-registro" style="width: 121px; margin: 0 auto">
+                            <p:commandLink value="Cerrar Sesión" actionListener="#{loginManagedBean.cerrarSesion}" style="text-decoration: none"/>
+                        </h:panelGroup>
                     </ui:insert>
                 </main>
             </h:form>

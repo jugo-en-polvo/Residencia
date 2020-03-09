@@ -12,28 +12,28 @@
 
         <p:growl id="mensaje"/>
 
-        <p:panel header="Registrar Lugar de Control" class="panel-registro">
+        <p:panel header="Registrar Establecimientos de Control" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
                 
                 <p:outputLabel value="Nombre:"/>
                 <p:inputText value="${agregarLugarManagedBean.nombreLugar}"
                              required="true"
-                             requiredMessage="Debe llenar el Nombre del Lugar"/>
+                             requiredMessage="Debe llenar el Nombre del Establecimiento"/>
                 
-                <p:outputLabel value="Fono:"/>
+                <p:outputLabel value="Teléfono:"/>
                 <p:inputText id="txt" 
                              value="#{agregarLugarManagedBean.fonoLugar}"
                              required="true"
                              maxlength="10"
-                             requiredMessage="Debe ingresar un Fono de contacto"
+                             requiredMessage="Debe ingresar un Fono de Contacto"
                              >
                      <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>
                 
-                <p:outputLabel value="Direccion:"/>
+                <p:outputLabel value="Dirección:"/>
                 <p:inputText value="${agregarLugarManagedBean.direccionLugar}"
                              required="true"
-                             requiredMessage="Debe llenar el Nombre del Lugar"/>
+                             requiredMessage="Debe indicar la Dirección del Establecimiento"/>
                 
             </p:panelGrid>
             <p:commandButton value="Registrar" 
