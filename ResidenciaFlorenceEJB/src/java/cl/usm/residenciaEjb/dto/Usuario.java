@@ -18,7 +18,6 @@ import javax.persistence.Table;
         {
             @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
             @NamedQuery(name = "Usuario.findByRutYClave", query = "SELECT u FROM Usuario u WHERE u.rut_usuario=:rut AND u.clave=:clave")
-        
         }
 )
 public class Usuario implements Serializable {

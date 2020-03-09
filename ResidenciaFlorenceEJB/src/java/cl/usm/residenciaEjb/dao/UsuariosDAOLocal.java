@@ -14,4 +14,5 @@ public interface UsuariosDAOLocal {
     List<Usuario> findAll();
     Usuario findByRutYClave(String rut, String clave);
     Usuario find(String rut);
+
 }

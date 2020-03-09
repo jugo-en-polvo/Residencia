@@ -11,9 +11,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="resources/img/rose.png"/>
         <h:outputStylesheet library="css" name="style.css"/>
+<<<<<<< HEAD
         <h:outputStylesheet library="css" name="panel.css"/>
     </h:head>
 
+=======
+        <h:outputStylesheet library="css" name="menubar.css"/>
+        <h:outputStylesheet library="css" name="panel.css"/>
+    </h:head>
+    
+>>>>>>> 3ccf7f4a7823d5eb5897adb0967c62ba8f746f49
     <h:body style="background-image: url(resources/img/fondo.jpg)">
         <h:panelGroup layout="block" class="ui-fluid">
             <h:form id="formulario">
@@ -21,6 +28,7 @@
                          showDetail="true"
                          showSummary="true"
                          sticky="true"/>
+<<<<<<< HEAD
                 <p:panel styleClass="panel-login" header="Bienvenido">
                     <p:panelGrid columns="2" layout="grid">
                         <p:outputLabel value="Rut Usuario"/>
@@ -35,6 +43,18 @@
                                      update="mensajeGrowl"
                                      actionListener="#{loginManagedBean.iniciarSesion}"
                                      style="margin-top: 1.5rem"/>
+=======
+                <p:panel styleClass="cont-login" header="Bienvenido">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Rut Usuario" />
+                        <p:inputText value="#{loginManagedBean.rut}" placeholder="Ingrese Rut Usuario"/>
+                        <p:outputLabel value="Contraseña" />
+                        <p:password value="#{loginManagedBean.clave}" placeholder="Ingrese Contraseña"/>
+                        <p:commandButton value="Iniciar Sesión"
+                                         update="mensajeGrowl"
+                                         actionListener="#{loginManagedBean.iniciarSesion}"/>
+                    </h:panelGrid>
+>>>>>>> 3ccf7f4a7823d5eb5897adb0967c62ba8f746f49
                 </p:panel>
             </h:form>
         </h:panelGroup>

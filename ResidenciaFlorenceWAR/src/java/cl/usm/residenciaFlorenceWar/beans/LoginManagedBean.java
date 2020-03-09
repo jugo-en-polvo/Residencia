@@ -78,6 +78,7 @@ public class LoginManagedBean implements Serializable {
         this.usuarioLogueado = null;
         FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
     }
+
     /**
      * Creates a new instance of LoginManagedBean
      */

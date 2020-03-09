@@ -41,8 +41,7 @@ public class UsuariosDAO implements UsuariosDAOLocal {
             em.close();
         }
     }
-    
-    @Override
+
     public Usuario findByRutYClave(String rut, String clave) {
         EntityManager em = this.emf.createEntityManager();
         try{
