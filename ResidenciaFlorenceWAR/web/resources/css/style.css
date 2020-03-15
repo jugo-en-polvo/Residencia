@@ -6,11 +6,6 @@ body{
     word-wrap: break-word !important;
 }
 
-.logo{
-    font-weight: bold;
-    color: whitesmoke;
-}
-
 .panel-registro{
     width: 90%;
     margin: 0 auto;
@@ -56,10 +51,4 @@ body{
     .panel-login{
         width: 35%;
     }
-}
-
-.cont-login{
-    width: 40%;
-    margin: 0 auto;
-    margin-top: 10%;
 }

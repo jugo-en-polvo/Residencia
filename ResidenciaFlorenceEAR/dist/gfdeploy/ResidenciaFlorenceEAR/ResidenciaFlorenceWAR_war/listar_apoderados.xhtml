@@ -9,36 +9,41 @@
 
     <ui:define name="contenido">
 
-        <h:panelGroup layout="block" class="ui-g">
-            <ui:repeat value="#{listarApoderadosManagedBean.apoderados}" var="apoderado">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
 
-                    <p:panel header="#{apoderado.nombre_apoderado}">
-                        <p:panelGrid columns="2" layout="grid">
 
-                            <p:outputLabel value="Rut:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{apoderado.rut_apoderado}"/>
-
-                            <p:outputLabel value="Telefono:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{apoderado.fono_apoderado}"/>
-
-                            <p:outputLabel value="Direccion:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{apoderado.direccion_apoderado}"/>
-                            
-                            <p:outputLabel value="Email:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{apoderado.email_apoderado}"/>
-                            
-                        </p:panelGrid>
-                    </p:panel>
-                    
-                </h:panelGroup>
-            </ui:repeat>
+        <h:panelGroup style="width: 100%">
+            <h1 style="text-align: center">Aprete el nombre de un apoderado para ver sus detalles</h1>
         </h:panelGroup>
 
-    </ui:define>
+        <p:dataGrid id="vista"
+                    var="apoderado"
+                    value="${listarApoderadosManagedBean.apoderados}"
+                    paginator="true"
+                    columns="1" rows="4" 
+                    styleClass="contenedor-resumen-residente">
+            <f:facet name="header">
+                <h2>Apoderados</h2>
+            </f:facet>
+            <p:panelGrid columns="3" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
+                <p:commandLink value="#{apoderado.nombre_apoderado}" 
+                               style="text-decoration: none; color: blue"
+                               actionListener="#{listarApoderadosManagedBean.verDetalle(apoderado)}"/>
+
+                <h:panelGroup>
+                    <p:outputLabel value="Rut: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{apoderado.rut_apoderado}"/> 
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <p:outputLabel value="Ingreso: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{residente.fecha_ingreso.time}">
+                        <f:convertDateTime dateStyle="medium" type="date"/>
+                    </p:outputLabel>
+                </h:panelGroup>
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+    </ui:define>    
 </ui:composition>

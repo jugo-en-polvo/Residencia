@@ -5,7 +5,6 @@
  */
 package cl.usm.residenciaFlorenceWar.beans;
 
-import cl.usm.residenciaEjb.dao.LugarDAO;
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dto.Lugar;
 import java.io.Serializable;

@@ -18,6 +18,8 @@ public interface ResidenteDAOLocal {
     
     public void add(Residente r);
     public List<Residente> findAll();
+    public List<Residente> findAllActuales();
+    public List<Residente> findAllEgresados();
     Residente find(String rut);
     void update(Residente r);
     

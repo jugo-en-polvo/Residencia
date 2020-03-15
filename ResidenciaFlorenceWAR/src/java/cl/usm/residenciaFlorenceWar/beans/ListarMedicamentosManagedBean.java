@@ -27,7 +27,7 @@ public class ListarMedicamentosManagedBean implements Serializable{
     @Inject
     private MedicamentoDAOLocal medicamentosDAO;
     private List<Medicamento> medicamentos;
-    private Map<String, String> medicamentosCombo = new HashMap<String, String>();
+    private Map<String, String> medicamentosCombo = new HashMap<>();
 
     public List<Medicamento> getMedicamentos() {
         return medicamentos;
@@ -48,9 +48,9 @@ public class ListarMedicamentosManagedBean implements Serializable{
     @PostConstruct
     public void init(){
         this.medicamentos = this.medicamentosDAO.findAll();
-        for(Medicamento me: medicamentos){
+        medicamentos.forEach((me) -> {
             medicamentosCombo.put(me.getNombre_generico(), String.valueOf(me.getId_medicamento()));
-        }
+        });
     }
     
     public ListarMedicamentosManagedBean() {

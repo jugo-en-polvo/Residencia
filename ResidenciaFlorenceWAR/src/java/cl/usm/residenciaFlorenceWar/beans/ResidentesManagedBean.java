@@ -39,7 +39,7 @@ public class ResidentesManagedBean implements Serializable {
     @Inject
     private ApoderadoDAOLocal apoderadoDAO;
     @Inject
-    private ActualizarResidenteManagedBean actualizarResidenteBean;
+    private VerResidenteManagedBean verResidenteBEAN;
 
     private List<Residente> residentes;
     private Map<String, String> residentesCombo = new HashMap<String, String>();
@@ -56,6 +56,15 @@ public class ResidentesManagedBean implements Serializable {
     //claves foraneas de residentes
     private long idPrevision;
     private String rutApoderado;
+    private String valorFintro;
+
+    public String getValorFintro() {
+        return valorFintro;
+    }
+
+    public void setValorFintro(String valorFintro) {
+        this.valorFintro = valorFintro;
+    }
 
     private boolean hidden = true;
 
@@ -173,23 +182,25 @@ public class ResidentesManagedBean implements Serializable {
         this.rutApoderado = rutApoderado;
     }
 
-    @PostConstruct
-    public void init() {
-        this.residentes = this.residenteDAO.findAll();
-        for (Residente re : residentes) {
-            residentesCombo.put(re.getNombre_residente(), re.getRut_residente());
-        }
-    }
-
-    public ResidentesManagedBean() {
-    }
-
     public List<Residente> getResidentes() {
         return residentes;
     }
 
     public void setResidentes(List<Residente> residentes) {
         this.residentes = residentes;
+    }
+    
+    //Cosntructores/init/destroy
+    
+    public ResidentesManagedBean() {
+    }
+    
+    @PostConstruct
+    public void init() {
+        this.residentes = this.residenteDAO.findAllActuales();
+        for (Residente re : residentes) {
+            residentesCombo.put(re.getNombre_residente(), re.getRut_residente());
+        }
     }
 
     public void agregarResidente(ActionEvent e) {
@@ -215,18 +226,61 @@ public class ResidentesManagedBean implements Serializable {
         r.setPrevision(this.previsionDAO.find(idPrevision));
 
         if (rutApoderado.length() == 11) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut muy Corto"));    
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut muy Corto"));
         } else {
             this.residenteDAO.add(r);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
         }
     }
+
+    //Metodo para ir al detalle
+    public void verDetalle(Residente r) throws IOException {
+
+        this.verResidenteBEAN.setResidenteDetalle(r);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ver_residente_detalle.xhtml");
+
+    }
     
-    public void actualizar(Residente r) throws IOException{
+    //Metodos para mostrar la lista
+    public void manejarFiltroNuevo(){
         
-        this.actualizarResidenteBean.setResidenteActualizado(r);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_residente.xhtml");
+        switch (valorFintro) {
+            case "actuales":
+                this.residentes = this.residenteDAO.findAllActuales();
+                break;
+            case "egresados":
+                this.residentes = this.residenteDAO.findAllEgresados();
+                break;
+            default:
+                this.residentes = this.residenteDAO.findAll();
+                break;
+        }
         
+    }
+    
+    public String determinaSexo(String s) {
+        if (s.equals("M")) {
+            return "Masculino";
+        } else if (s.equals("F")) {
+            return "Femenino";
+        }
+        return "";
+    }
+
+    public String determinaAlergia(String a) {
+        if (a.equals("")) {
+            return "Sin Registros";
+        } else {
+            return a;
+        }
+    }
+
+    public String determinaObservacion(String o) {
+        if (o.equals("")) {
+            return "Sin Registros";
+        } else {
+            return o;
+        }
     }
 
 }

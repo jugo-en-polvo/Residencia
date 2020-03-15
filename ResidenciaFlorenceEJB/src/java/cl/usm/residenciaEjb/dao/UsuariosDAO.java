@@ -42,6 +42,7 @@ public class UsuariosDAO implements UsuariosDAOLocal {
         }
     }
 
+    @Override
     public Usuario findByRutYClave(String rut, String clave) {
         EntityManager em = this.emf.createEntityManager();
         try{
@@ -68,5 +69,32 @@ public class UsuariosDAO implements UsuariosDAOLocal {
             em.close();
         }
         
+    }
+
+    @Override
+    public List<Usuario> findAllByEstado(int estado) {
+        EntityManager em = this.emf.createEntityManager();
+        try{
+            return em.createNamedQuery("Usuario.findAllByEstado", Usuario.class)
+                    .setParameter("estado", estado)
+                    .getResultList();
+        }catch(Exception ex){
+            return null;
+        }finally{
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Usuario> findAllByNivelAcceso() {
+        EntityManager em = this.emf.createEntityManager();
+        try{
+            return em.createNamedQuery("Usuario.findAll", Usuario.class)
+                    .getResultList();
+        }catch(Exception ex){
+            return null;
+        }finally{
+            em.close();
+        }
     }
 }

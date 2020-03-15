@@ -17,6 +17,8 @@ import javax.persistence.Table;
 @NamedQueries(
         {
             @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
+            @NamedQuery(name = "Usuario.findAllByEstado", query = "SELECT u FROM Usuario u WHERE u.estado = :estado"),
+            @NamedQuery(name = "Usuario.findAllByNiveldeAcceso", query = "SELECT u FROM Usuario u WHERE u.nivel_acceso = :acceso"),
             @NamedQuery(name = "Usuario.findByRutYClave", query = "SELECT u FROM Usuario u WHERE u.rut_usuario=:rut AND u.clave=:clave")
         }
 )

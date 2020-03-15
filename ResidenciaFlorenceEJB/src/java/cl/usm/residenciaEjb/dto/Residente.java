@@ -28,7 +28,9 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "residente")
 @NamedQueries({
-    @NamedQuery(name = "Residente.findAll", query = "SELECT r FROM Residente r")
+    @NamedQuery(name = "Residente.findAll", query = "SELECT r FROM Residente r ORDER BY r.nombre_residente"),
+    @NamedQuery(name = "Residente.findAllActuales", query = "SELECT r FROM Residente r WHERE r.fecha_egreso IS NULL ORDER BY r.nombre_residente"),
+    @NamedQuery(name = "Residente.findAllEgresados", query = "SELECT r FROM Residente r WHERE r.fecha_egreso IS NOT NULL ORDER BY r.nombre_residente"),
 })
 public class Residente implements Serializable{
 

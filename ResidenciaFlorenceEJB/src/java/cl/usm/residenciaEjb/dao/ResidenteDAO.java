@@ -81,4 +81,34 @@ public class ResidenteDAO implements ResidenteDAOLocal {
         
     }
 
+    @Override
+    public List<Residente> findAllActuales() {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Residente.findAllActuales", Residente.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }finally{
+            em.close();
+        }
+        
+    }
+
+    @Override
+    public List<Residente> findAllEgresados() {
+    
+         EntityManager em = emf.createEntityManager();
+        try {
+            return em.createNamedQuery("Residente.findAllEgresados", Residente.class).getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }finally{
+            em.close();
+        }
+    
+    }
+
 }

@@ -9,38 +9,43 @@
 
     <ui:define name="contenido">
 
-        <h:panelGroup layout="block" class="ui-g">
-            <ui:repeat value="#{listarMedicamentosManagedBean.medicamentos}" var="medicamento">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
-
-                    <p:panel header="#{medicamento.nombre_generico}">
-                        
-                        <p:panelGrid columns="2" layout="grid">
-                            
-                            <p:outputLabel value="Tipo:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{medicamento.tipo}"/>                           
-                            
-                            <p:outputLabel value="Stock:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{medicamento.stock}"/>
-                            
-                            <p:outputLabel value="Stock Critico:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{medicamento.stock_critico}"/>
-                            
-                            <p:outputLabel value="Detalle:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{medicamento.detalle}"/>
-                            
-                        </p:panelGrid>
-                        
-                    </p:panel>
-
-                </h:panelGroup>
-            </ui:repeat>
+        <h:panelGroup style="width: 100%">
+            <h1 style="text-align: center">Aprete el nombre de un medicamento para administrarlo</h1>
         </h:panelGroup>
 
+        <p:dataGrid id="vista"
+                    var="medicamento"
+                    value="${listarMedicamentosManagedBean.medicamentos}"
+                    paginator="true"
+                    columns="1" rows="4" 
+                    styleClass="contenedor-resumen-residente">
+            <f:facet name="header">
+                <h2>Medicamentos</h2>
+            </f:facet>
+            <p:panelGrid columns="4" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
+
+                <p:commandLink value="#{medicamento.nombre_generico}" 
+                               style="text-decoration: none; color: blue"/>
+
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Stock: " styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{medicamento.stock}"/>
+                </h:panelGroup>
+                
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Tipo: " styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{medicamento.tipo}"/>
+                </h:panelGroup>
+                
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Detalle: " styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{medicamento.detalle}"/>
+                </h:panelGroup>
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+        
     </ui:define>
 
 </ui:composition>

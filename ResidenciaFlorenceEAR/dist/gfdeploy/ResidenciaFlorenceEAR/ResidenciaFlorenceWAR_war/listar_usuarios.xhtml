@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="index.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="contenido">
+
+        <h:panelGroup layout="block" styleClass="contenedor-lista">
+            <p:selectOneMenu value="#{listarUsuariosManagedBean.valorFiltro}">
+                <p:ajax listener="#{listarUsuariosManagedBean.manejarFiltro}"
+                        update=":formulario:vista"/>
+                <f:selectItem itemLabel="-Habilitados-" itemValue="habilitados" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-No Habilitados-" itemValue="nohabilitados" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Todos-" itemValue="todos" noSelectionOption="true"/>
+            </p:selectOneMenu>
+        </h:panelGroup>
+
+        <h:panelGroup style="width: 100%">
+            <h1 style="text-align: center">Aprete el nombre de un usuario para administrarlo</h1>
+        </h:panelGroup>
+
+        <p:dataGrid id="vista"
+                    var="usuario"
+                    value="${listarUsuariosManagedBean.usuarios}"
+                    paginator="true"
+                    columns="1" rows="4" 
+                    styleClass="contenedor-resumen-residente">
+            <f:facet name="header">
+                <h2>Usuarios</h2>
+            </f:facet>
+            <p:panelGrid columns="4" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
+
+                <p:commandLink value="#{usuario.nombre_usuario}" 
+                               style="text-decoration: none; color: blue"/>
+
+                <h:panelGroup>
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel value="Rut: " style="font-weight: bold"/>
+                        <p:outputLabel value="#{usuario.rut_usuario}"/> 
+                    </p:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel value="Nivel de Acceso: " style="font-weight: bold"/>
+                        <p:outputLabel value="#{listarUsuariosManagedBean.determinarNivelAcceso(usuario.nivel_acceso)}"/> 
+                    </p:panelGrid>
+                </h:panelGroup>
+
+                <h:panelGroup>
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel value="Estado: " style="font-weight: bold"/>
+                        <p:outputLabel value="#{listarUsuariosManagedBean.determinarEstado(usuario.estado)}"/> 
+                    </p:panelGrid>
+                </h:panelGroup>
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+
+    </ui:define>
+
+</ui:composition>
