@@ -59,6 +59,7 @@ public class AgregarLugarManagedBean implements Serializable{
         l.setNombre_lugar(nombreLugar);
         l.setFono_lugar(fonoLugar);
         l.setDireccion_lugar(direccionLugar);
+        l.setEstado(true);
         
         lugarDAO.add(l);
         

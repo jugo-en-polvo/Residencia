@@ -6,7 +6,7 @@
 package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
-import cl.usm.residenciaEjb.dao.PrevisionDAOLocal;
+import cl.usm.residenciaEjb.dao.PrevisionNombreTipoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Residente;
 import java.io.IOException;
@@ -35,14 +35,16 @@ public class ResidentesManagedBean implements Serializable {
     @Inject
     private ResidenteDAOLocal residenteDAO;
     @Inject
-    private PrevisionDAOLocal previsionDAO;
+    private PrevisionNombreTipoDAOLocal previsionNombreTipoDAO;
+    @Inject
+    private ListarPrevisionesNombreTipoManagedBean previsionesNombreTipoBEAN; 
     @Inject
     private ApoderadoDAOLocal apoderadoDAO;
     @Inject
     private VerResidenteManagedBean verResidenteBEAN;
 
     private List<Residente> residentes;
-    private Map<String, String> residentesCombo = new HashMap<String, String>();
+    private Map<String, String> residentesCombo = new HashMap<>();
     //atributos de residentes a agregar
     private String rutResidente;
     private String Nombre;
@@ -198,9 +200,11 @@ public class ResidentesManagedBean implements Serializable {
     @PostConstruct
     public void init() {
         this.residentes = this.residenteDAO.findAllActuales();
-        for (Residente re : residentes) {
+        residentes.forEach((re) -> {
             residentesCombo.put(re.getNombre_residente(), re.getRut_residente());
-        }
+        });
+        this.previsionesNombreTipoBEAN.setFiltro("1");
+        this.previsionesNombreTipoBEAN.manejarCombo();
     }
 
     public void agregarResidente(ActionEvent e) {
@@ -223,7 +227,8 @@ public class ResidentesManagedBean implements Serializable {
         r.setObservaciones(observaciones);
         r.setRegimen_alimentario(regimenAlimentario);
         r.setApoderado(this.apoderadoDAO.find(rutApoderado));
-        r.setPrevision(this.previsionDAO.find(idPrevision));
+        //r.setPrevision(this.previsionDAO.find(idPrevision));
+        r.setPrevisionNombreTipo(this.previsionNombreTipoDAO.find(idPrevision));
 
         if (rutApoderado.length() == 11) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut muy Corto"));

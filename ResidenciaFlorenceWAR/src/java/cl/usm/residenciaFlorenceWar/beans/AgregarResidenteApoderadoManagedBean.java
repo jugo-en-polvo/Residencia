@@ -6,7 +6,7 @@
 package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
-import cl.usm.residenciaEjb.dao.PrevisionDAOLocal;
+import cl.usm.residenciaEjb.dao.PrevisionNombreTipoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Apoderado;
 import cl.usm.residenciaEjb.dto.Residente;
@@ -32,11 +32,13 @@ public class AgregarResidenteApoderadoManagedBean implements Serializable{
     @Inject
     private AgregarApoderadoManagedBean apoderadoBean;
     @Inject
+    private ListarPrevisionesNombreTipoManagedBean previsionNombreTipoBEAN;
+    @Inject
     private ResidenteDAOLocal residenteDAO;
     @Inject
     private ApoderadoDAOLocal apoderadosDAO;
     @Inject
-    private PrevisionDAOLocal previsionDAO;
+    private PrevisionNombreTipoDAOLocal previsionNombreTipoDAO;
     
     public AgregarResidenteApoderadoManagedBean() {
     }
@@ -73,7 +75,8 @@ public class AgregarResidenteApoderadoManagedBean implements Serializable{
         r.setAlergias(residenteBean.getAlergias());
         r.setObservaciones(residenteBean.getObservaciones());
         r.setApoderado(apoderadosDAO.find(apoderadoBean.getRutApoderado()));
-        r.setPrevision(this.previsionDAO.find(residenteBean.getIdPrevision()));
+        //r.setPrevision(this.previsionDAO.find(residenteBean.getIdPrevision()));
+        r.setPrevisionNombreTipo(previsionNombreTipoDAO.find(residenteBean.getIdPrevision()));
         this.residenteDAO.add(r);
                 
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente y Apoderado ingresados"));

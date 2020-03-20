@@ -52,12 +52,6 @@ public class VerTratamientosManagedBean implements Serializable{
         this.tratamientos = tratamientos;
     }
     
-    @PostConstruct
-    public void init(){
-        this.tratamientos = this.tratamientosDAO.findAll();
-        this.tratamientoFiltro = tratamientos;
-    }
-    
     public VerTratamientosManagedBean() {
     }
     
@@ -65,8 +59,8 @@ public class VerTratamientosManagedBean implements Serializable{
         
         if(rutResidente != null && !rutResidente.equals("")){
             this.tratamientoFiltro = tratamientosDAO.findByRut(rutResidente);           
-        }else{
-            this.tratamientoFiltro = tratamientosDAO.findAll();
+        }else if(rutResidente.equals("falso")){
+            this.tratamientoFiltro.clear();
         }
         
     }

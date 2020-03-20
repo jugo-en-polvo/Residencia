@@ -22,18 +22,22 @@
                              mask="99.999.999-*"
                              required="true"
                              requiredMessage="Debe ingresar el Rut Apoderado"/>
+                
                 <p:outputLabel value="Nombre"/>
                 <p:inputText value="#{agregarUsuarioManagedBean.nombre}" required="true" requiredMessage="Debe ingresar el nombre del usuario"/>
+                
                 <p:outputLabel value="Tipo de Cuenta" />
                 <p:selectOneMenu required="true" id="selector-acceso" value="#{agregarUsuarioManagedBean.nivel_acceso}">
                     <f:selectItem itemLabel="Usuario Regular" itemValue="0"/>
                     <f:selectItem itemLabel="Administrador" itemValue="1"/>
                 </p:selectOneMenu>
+                
                 <p:outputLabel value="Estado"/>
                 <p:selectOneMenu required="true" id="selector-estado" value="#{agregarUsuarioManagedBean.estado}">
                     <f:selectItem itemLabel="Habilitado" itemValue="0"/>
                     <f:selectItem itemLabel="Deshabilitado" itemValue="1"/>
                 </p:selectOneMenu>
+                
                 <p:outputLabel value="Contraseña"/>
                 <p:password id="pass1"
                             value="#{agregarUsuarioManagedBean.clave}"
@@ -51,6 +55,7 @@
                             required="true" 
                             requiredMessage="Debe ingresar confirmación de contraseña"/>
             </p:panelGrid>
+            
             <p:commandButton value="Registrar" 
                                  actionListener="#{agregarUsuarioManagedBean.registrar}"
                                  update="mensaje"

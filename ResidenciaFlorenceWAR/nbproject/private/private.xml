@@ -3,8 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Senpai/Documents/NetBeansProjects/TT/Residencia/ResidenciaFlorenceWAR/src/java/cl/usm/residenciaFlorenceWar/beans/ResidentesManagedBean.java</file>
-            <file>file:/C:/Users/Senpai/Documents/NetBeansProjects/TT/Residencia/ResidenciaFlorenceWAR/web/lista_residentes.xhtml</file>
+            <file>file:/C:/Users/Senpai/Documents/NetBeansProjects/TT/Residencia/ResidenciaFlorenceWAR/web/ver_medicamento_detalle.xhtml</file>
+            <file>file:/C:/Users/Senpai/Documents/NetBeansProjects/TT/Residencia/ResidenciaFlorenceWAR/src/java/cl/usm/residenciaFlorenceWar/beans/ActualizarNombreTipoPrevisionManagedBean.java</file>
+            <file>file:/C:/Users/Senpai/Documents/NetBeansProjects/TT/Residencia/ResidenciaFlorenceWAR/web/actualizar_nombre_tipo_prevision.xhtml</file>
         </group>
     </open-files>
 </project-private>

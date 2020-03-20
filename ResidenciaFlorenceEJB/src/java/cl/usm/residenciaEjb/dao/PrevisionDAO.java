@@ -52,6 +52,21 @@ public class PrevisionDAO implements PrevisionDAOLocal {
     }
 
     @Override
+    public void update(Prevision p) {
+    
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            em.merge(p);
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+        
+    }
+
+    @Override
     public void add(Prevision p) {
     
         EntityManager em = emf.createEntityManager();
@@ -59,12 +74,11 @@ public class PrevisionDAO implements PrevisionDAOLocal {
         try {
             em.persist(p);
         } catch (Exception e) {
-            
+            System.out.println(e);
         }finally{
             em.close();
         }
-        
+    
     }
-
    
 }

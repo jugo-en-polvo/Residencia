@@ -16,9 +16,12 @@
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
                 
                 <p:outputLabel value="Nombre"/>
-                <p:inputText value="${agregarPrevisionManagedBean.nombrePrevision}"
+                <p:inputText value="#{agregarPrevisionManagedBean.nombrePrevision}"
                              required="true"
                              requiredMessage="Debe llenar el campo"/>
+                
+                <p:outputLabel value="Descripción"/>
+                <p:inputTextarea value="#{agregarPrevisionManagedBean.descripcion}"/>
                 
             </p:panelGrid>
             <p:commandButton value="Registrar" 

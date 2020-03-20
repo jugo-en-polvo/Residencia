@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel class="panel-registro" header="Registro Nombre/Tipo Previsión">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Tipo Previsión"/>
+                <p:selectOneMenu value="#{agregarPrevisionNombreTipoManagedBean.idPrevision}">
+                   <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Nombre/Categotría previsión"/>
+                <p:inputText value="#{agregarPrevisionNombreTipoManagedBean.nombreTipoPrevision}"
+                             required="true"
+                             requiredMessage="Debe ingresar un nombre para la previsión"/>
+                
+                <p:outputLabel value="Descripción"/>
+                <p:inputTextarea value="#{agregarPrevisionNombreTipoManagedBean.descripcion}"/>
+
+            </p:panelGrid>
+
+            <p:commandButton value="Registrar"
+                             update="mensaje"
+                             actionListener="#{agregarPrevisionNombreTipoManagedBean.add}"
+                             style="margin-top: 1rem"/>
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

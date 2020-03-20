@@ -22,7 +22,7 @@
                     <f:selectItem itemLabel="Nuevo Apoderado" itemValue="true" noSelectionOption="true"/>
                     <f:selectItems value="#{listarApoderadosManagedBean.apoderadosCombo}"/>
                 </p:selectOneMenu>
-
+                
                 <p:outputLabel value="Rut Apoderado"
                                rendered="#{!residentesManagedBean.hidden}"/>
                 <p:inputMask value="#{residentesManagedBean.rutApoderado}" 
@@ -60,7 +60,7 @@
                              maxlength="10"
                              requiredMessage="Debe ingresar un Fono de contacto"
                              >
-                     <p:keyFilter regEx="/[\d\.]/"/> 
+                    <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
@@ -78,7 +78,7 @@
                              value="#{agregarApoderadoManagedBean.emailApoderado}"/>
 
                 <p:separator/><p:separator/>
-
+                
                 <p:outputLabel value="Rut Residente"/>
                 <p:inputMask value="#{residentesManagedBean.rutResidente}" 
                              required="true"
@@ -94,12 +94,14 @@
                 <p:outputLabel value="Fecha de Naciemiento"/>
                 <p:calendar value="#{residentesManagedBean.fechaNacimieto}" placeholder="Presione"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"/>
+                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
                 <p:outputLabel value="Fecha de ingreso"/>
                 <p:calendar value="#{residentesManagedBean.fechaIngreso}" placeholder="Presione"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de ingreso del Residente"/>
+                            requiredMessage="Debe ingresar fecha de ingreso del Residente"
+                            locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
                 <p:outputLabel value="Sexo"/>
                 <p:selectOneMenu value="#{residentesManagedBean.sexo}">
@@ -111,12 +113,17 @@
                 <p:selectOneMenu value="#{residentesManagedBean.regimenAlimentario}">
                     <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
                     <f:selectItem itemLabel="Dieta Diabética" itemValue="Diabetica"/>
-                </p:selectOneMenu> 
+                </p:selectOneMenu>
+                
+                <p:outputLabel value="Tipo Previsión"/>
+                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
+                    <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
+                    <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
+                </p:selectOneMenu>
 
-                <p:outputLabel value="Previsión"/>
-                <p:selectOneMenu value="#{residentesManagedBean.idPrevision}">
-                    <f:selectItem itemLabel="FONASA" itemValue="1"/>
-                    <f:selectItem itemLabel="ISAPRE" itemValue="2"/>
+                <p:outputLabel value="Categoría/Nombre Previsión"/>
+                <p:selectOneMenu id="Items-Prevision" value="#{residentesManagedBean.idPrevision}">
+                    <f:selectItems value="#{listarPrevisionesNombreTipoManagedBean.previsionesNombreTipoCombo}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Alergias"/>

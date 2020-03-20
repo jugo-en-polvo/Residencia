@@ -34,7 +34,6 @@
                             required="true"
                             requiredMessage="Debe ingresar fecha de ingreso del residente"/>
                 
-                
                 <p:outputLabel value="Sexo"/>
                 <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="M"/>
@@ -47,10 +46,15 @@
                     <f:selectItem itemLabel="Dieta Diabetica" itemValue="Diabetica"/>
                 </p:selectOneMenu> 
 
-                <p:outputLabel value="Prevision"/>
-                <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.prevision.id_prevision}">
-                    <f:selectItem itemLabel="FONASA" itemValue="1"/>
-                    <f:selectItem itemLabel="ISAPRE" itemValue="2"/>
+                <p:outputLabel value="Tipo Previsión"/>
+                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
+                    <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
+                    <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Categoría/Nombre Previsión"/>
+                <p:selectOneMenu id="Items-Prevision" value="#{actualizarResidenteManagedBean.idNombrePrevision}">
+                    <f:selectItems value="#{listarPrevisionesNombreTipoManagedBean.previsionesNombreTipoCombo}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Alergias"/>

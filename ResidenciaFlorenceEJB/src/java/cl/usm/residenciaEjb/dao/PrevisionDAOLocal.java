@@ -12,8 +12,9 @@ import javax.ejb.Local;
 @Local
 public interface PrevisionDAOLocal {
     
-    Prevision find(long id);
-    List<Prevision> findAll();
     void add(Prevision p);
+    Prevision find(long id);
+    void update(Prevision p);
+    List<Prevision> findAll();
     
 }

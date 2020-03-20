@@ -7,11 +7,13 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.MedicamentoDAOLocal;
 import cl.usm.residenciaEjb.dto.Medicamento;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -26,6 +28,9 @@ public class ListarMedicamentosManagedBean implements Serializable{
 
     @Inject
     private MedicamentoDAOLocal medicamentosDAO;
+    @Inject
+    private VerMedicamentoManagedBean verMedicamentoBEAN;
+    
     private List<Medicamento> medicamentos;
     private Map<String, String> medicamentosCombo = new HashMap<>();
 
@@ -49,11 +54,18 @@ public class ListarMedicamentosManagedBean implements Serializable{
     public void init(){
         this.medicamentos = this.medicamentosDAO.findAll();
         medicamentos.forEach((me) -> {
-            medicamentosCombo.put(me.getNombre_generico(), String.valueOf(me.getId_medicamento()));
+            medicamentosCombo.put(me.getNombre(), String.valueOf(me.getId_medicamento()));
         });
     }
     
     public ListarMedicamentosManagedBean() {
+    }
+    
+    public void detalle(Medicamento m) throws IOException{
+        
+        this.verMedicamentoBEAN.setMedicamentoDetalle(m);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ver_medicamento_detalle.xhtml");
+        
     }
     
 }

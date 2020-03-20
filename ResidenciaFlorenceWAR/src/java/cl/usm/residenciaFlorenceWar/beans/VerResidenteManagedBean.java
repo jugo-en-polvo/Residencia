@@ -9,8 +9,6 @@ import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Residente;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -26,6 +24,10 @@ public class VerResidenteManagedBean implements Serializable{
 
     @Inject
     private ResidenteDAOLocal residenteDAO;
+    @Inject
+    private ActualizarResidenteManagedBean actualizarResidenteBEAN;
+    @Inject
+    private ListarPrevisionesNombreTipoManagedBean listarPrevisionesNombreTipoBEAN;
     
     private Residente residenteDetalle;
 
@@ -42,6 +44,14 @@ public class VerResidenteManagedBean implements Serializable{
     
     public void atras() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("lista_residentes.xhtml");
+    }
+    
+    public void editar() throws IOException{
+        this.listarPrevisionesNombreTipoBEAN.setFiltro(Long.toString(residenteDetalle.getPrevisionNombreTipo().getPrevision().getId_prevision()));
+        this.actualizarResidenteBEAN.setIdNombrePrevision(residenteDetalle.getPrevisionNombreTipo().getId_prevision_nombre_tipo());
+        this.listarPrevisionesNombreTipoBEAN.manejarCombo();
+        this.actualizarResidenteBEAN.setResidenteActualizado(residenteDetalle);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_residente.xhtml");
     }
     
      public String determinaSexo(String s) {

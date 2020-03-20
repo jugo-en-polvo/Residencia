@@ -19,5 +19,6 @@ public interface LugarDAOLocal {
     List<Lugar> findAll();
     Lugar find(long id);
     void add(Lugar l);
+    void update(Lugar l);
     
 }

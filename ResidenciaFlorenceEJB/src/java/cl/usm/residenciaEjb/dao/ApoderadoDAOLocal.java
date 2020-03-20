@@ -19,5 +19,6 @@ public interface ApoderadoDAOLocal {
     Apoderado find(String rut);
     List<Apoderado> findAll();
     void add(Apoderado a);
+    void update(Apoderado a);
     
 }

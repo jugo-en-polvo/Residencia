@@ -35,6 +35,7 @@
             <p:panelGrid columns="4" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
                 <p:commandLink value="#{usuario.nombre_usuario}" 
+                               actionListener="#{listarUsuariosManagedBean.editar(usuario)}"
                                style="text-decoration: none; color: blue"/>
 
                 <h:panelGroup>

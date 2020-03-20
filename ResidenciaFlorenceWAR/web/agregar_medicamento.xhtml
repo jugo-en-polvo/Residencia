@@ -15,35 +15,38 @@
         <p:panel header="Registrar Medicamento" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre Genérico"/>
-                <p:inputText value="#{agregarMedicamentoManagedBean.nombreGenerico}"
+                <p:outputLabel value="Nombre"/>
+                <p:inputText value="#{agregarMedicamentoManagedBean.nombre}"
+                             placeholder="Ejemplo: Paracetamol"
                              required="true"
-                             requiredMessage="Ingrese un Nombre Genérico"/>
-                
-                <p:outputLabel value="Nombre Fantasía"/>
-                <p:inputText value="#{agregarMedicamentoManagedBean.nombreFantasia}"
-                             required="true"
-                             requiredMessage="Ingrese un Nombre de Fantasía"/>
-                
+                             requiredMessage="Ingrese un Nombre"/>
+
+                <p:outputLabel value="Concentración"/>
+                <p:inputText value="#{agregarMedicamentoManagedBean.concentracion}"
+                             placeholder="Ejemlplo: 400mg"/>
+
+                <p:outputLabel value="Presentación"/>
+                <p:inputText value="#{agregarMedicamentoManagedBean.presentacion}"
+                             placeholder="Ejemlplo: 20"/>
+
                 <p:outputLabel value="Tipo"/>
                 <p:inputText value="#{agregarMedicamentoManagedBean.tipo}"
-                             required="true"
-                             requiredMessage="Debe Seleccionar un Tipo"/>
-                
+                             placeholder="Ejemplo: Comprimidos"/>
+
                 <p:outputLabel value="Stock"/>
                 <p:inputNumber value="#{agregarMedicamentoManagedBean.stock}"
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
                                requiredMessage="Debe ingresar un Stock"/>
-                
+
                 <p:outputLabel value="Stock Crítico"/>
                 <p:inputNumber value="#{agregarMedicamentoManagedBean.stockCritico}"
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
                                requiredMessage="Debe ingresar un Stock Crítico"/>
-                
+
                 <p:outputLabel value="Detalle"/>
                 <p:inputTextarea value="#{agregarMedicamentoManagedBean.detalle}"/>
 

@@ -18,149 +18,150 @@
                 <li><a href="index.xhtml">Inicio</a></li>
 
                 <h:panelGroup layout="block" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
-                <!-- Item del Navbar -Administración- -->
-                <li>
-                    <label for="drop-100" class="toggle">Administración »</label>
-                    <a href="#">Administración</a>
-                    <input type="checkbox" id="drop-100" />
-                    <ul>
-                        <!-- Item de Administración -Residente- -->
-                        <li>
-                            <label for="drop-101" class="toggle">Residente »</label>
-                            <a href="#">Residente</a>
-                            <input type="checkbox" id="drop-101" />
-                            <!-- Items de Residente-->
-                            <ul>
-                                <li><a href="agregar_residente.xhtml">Agregar Residente</a></li>
-                                <li><a href="lista_residentes.xhtml">Ver Residentes</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Administración -Apoderado- -->
-                        <li>
-                            <label for="drop-102" class="toggle">Apodereado »</label>
-                            <a href="#">Apoderado</a>
-                            <input type="checkbox" id="drop-102" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_apoderado.xhtml">Agregar Apoderado</a></li>
-                                <li><a href="listar_apoderados.xhtml">Ver Apoderados</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Administración -Usuarios- -->
-                        <li>
-                            <label for="drop-103" class="toggle">Usuario »</label>
-                            <a href="#">Usuario</a>
-                            <input type="checkbox" id="drop-103" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_usuario.xhtml">Agregar Usuario</a></li>
-                                <li><a href="listar_usuarios.xhtml">Ver Usuarios</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Administración -Previsiones- -->
-                        <li>
-                            <label for="drop-104" class="toggle">Previsiones »</label>
-                            <a href="#">Previsiones</a>
-                            <input type="checkbox" id="drop-104" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_prevision.xhtml">Agregar Previsión</a></li>
-                                <li><a href="listar_previsiones.xhtml">Ver Previsiones</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Administración -Medicamentos- -->
-                        <li>
-                            <label for="drop-105" class="toggle">Medicamentos »</label>
-                            <a href="#">Medicamentos</a>
-                            <input type="checkbox" id="drop-105" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_medicamento.xhtml">Agregar Medicamento</a></li>
-                                <li><a href="listar_medicamento.xhtml">Ver Medicamentos</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Administración -Establecimientos- -->
-                        <li>
-                            <label for="drop-106" class="toggle">Establecimientos »</label>
-                            <a href="#">Establecimientos</a>
-                            <input type="checkbox" id="drop-106" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_lugar.xhtml">Agregar Establecimiento</a></li>
-                                <li><a href="listar_lugares.xhtml">Ver Establecimientos</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                    </ul>
-                </li>
-                <!---->
+                    <!-- Item del Navbar -Administración- -->
+                    <li>
+                        <label for="drop-100" class="toggle">Administración »</label>
+                        <a href="#">Administración</a>
+                        <input type="checkbox" id="drop-100" />
+                        <ul>
+                            <!-- Item de Administración -Residente- -->
+                            <li>
+                                <label for="drop-101" class="toggle">Residente »</label>
+                                <a href="#">Residente</a>
+                                <input type="checkbox" id="drop-101" />
+                                <!-- Items de Residente-->
+                                <ul>
+                                    <li><a href="agregar_residente.xhtml">Agregar Residente</a></li>
+                                    <li><a href="lista_residentes.xhtml">Ver Residentes</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Administración -Apoderado- -->
+                            <li>
+                                <label for="drop-102" class="toggle">Apodereado »</label>
+                                <a href="#">Apoderado</a>
+                                <input type="checkbox" id="drop-102" />
+                                <!-- Items de Apoderado-->
+                                <ul>
+                                    <li><a href="agregar_apoderado.xhtml">Agregar Apoderado</a></li>
+                                    <li><a href="listar_apoderados.xhtml">Ver Apoderados</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Administración -Usuarios- -->
+                            <li>
+                                <label for="drop-103" class="toggle">Usuario »</label>
+                                <a href="#">Usuario</a>
+                                <input type="checkbox" id="drop-103" />
+                                <!-- Items de Apoderado-->
+                                <ul>
+                                    <li><a href="agregar_usuario.xhtml">Agregar Usuario</a></li>
+                                    <li><a href="listar_usuarios.xhtml">Ver Usuarios</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Administración -Previsiones- -->
+                            <li>
+                                <label for="drop-104" class="toggle">Previsiones »</label>
+                                <a href="#">Previsiones</a>
+                                <input type="checkbox" id="drop-104" />
+                                <!-- Items de Previsiones-->
+                                <ul>
+                                    <li><a href="agregar_prevision.xhtml">Agregar Previsión</a></li>
+                                    <li><a href="agregar_tipo_prevision.xhtml">Agregar Tipo Previsión</a></li>
+                                    <li><a href="listar_previsiones.xhtml">Ver Previsiones</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Administración -Medicamentos- -->
+                            <li>
+                                <label for="drop-105" class="toggle">Medicamentos »</label>
+                                <a href="#">Medicamentos</a>
+                                <input type="checkbox" id="drop-105" />
+                                <!-- Items de Medicamentos-->
+                                <ul>
+                                    <li><a href="agregar_medicamento.xhtml">Agregar Medicamento</a></li>
+                                    <li><a href="listar_medicamento.xhtml">Ver Medicamentos</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Administración -Establecimientos- -->
+                            <li>
+                                <label for="drop-106" class="toggle">Establecimientos »</label>
+                                <a href="#">Establecimientos</a>
+                                <input type="checkbox" id="drop-106" />
+                                <!-- Items de Establecimientos-->
+                                <ul>
+                                    <li><a href="agregar_lugar.xhtml">Agregar Establecimiento</a></li>
+                                    <li><a href="listar_lugares.xhtml">Ver Establecimientos</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                        </ul>
+                    </li>
+                    <!---->
                 </h:panelGroup>
-                
+
                 <h:panelGroup layout="block" rendered="#{loginManagedBean.usuarioLogueado.nivel_acceso eq 1}">
-                <!-- Item del Navbar -Cuidados- -->
-                <li>
-                    <label for="drop-200" class="toggle">Cuidados »</label>
-                    <a href="#">Cuidados</a>
-                    <input type="checkbox" id="drop-200" />
-                    <ul>
-                        <!-- Item de Controles -Tratamiento- -->
-                        <li>
-                            <label for="drop-201" class="toggle">Tratamiento »</label>
-                            <a href="#">Tratamiento</a>
-                            <input type="checkbox" id="drop-201" />
-                            <!-- Items de Tratamiento-->
-                            <ul>
-                                <li><a href="agregar_tratamiento.xhtml">Administrar Tratamientos</a></li>
-                                <li><a href="ver_tratamientos.xhtml">Registro Tratamientos</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Controles -Diagnóstico- -->
-                        <li>
-                            <label for="drop-202" class="toggle">Diagnóstico »</label>
-                            <a href="#">Diagnóstico</a>
-                            <input type="checkbox" id="drop-202" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_diagnostico.xhtml">Administrar Diagnósticos</a></li>
-                                <li><a href="listar_diagnosticos.xhtml">Lista Diagnósticos</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Controles -Controles Externos- -->
-                        <li>
-                            <label for="drop-203" class="toggle">Controles Externos »</label>
-                            <a href="#">Controles Externos</a>
-                            <input type="checkbox" id="drop-203" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_control_medico.xhtml">Administrar Controles</a></li>
-                                <li><a href="ver_controles_medicos.xhtml">Lista Controles</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                        <!-- Item de Controles -Emergencias- -->
-                        <li>
-                            <label for="drop-204" class="toggle">Emergencias »</label>
-                            <a href="#">Emergencias</a>
-                            <input type="checkbox" id="drop-204" />
-                            <!-- Items de Apoderado-->
-                            <ul>
-                                <li><a href="agregar_emergencia.xhtml">Administrar Emergencia</a></li>
-                                <li><a href="listar_emergencias.xhtml">Lista Emergencias</a></li>
-                            </ul>
-                        </li>
-                        <!---->
-                    </ul>
-                </li>
-                <!---->
+                    <!-- Item del Navbar -Cuidados- -->
+                    <li>
+                        <label for="drop-200" class="toggle">Cuidados »</label>
+                        <a href="#">Cuidados</a>
+                        <input type="checkbox" id="drop-200" />
+                        <ul>
+                            <!-- Item de Controles -Tratamiento- -->
+                            <li>
+                                <label for="drop-201" class="toggle">Tratamiento »</label>
+                                <a href="#">Tratamiento</a>
+                                <input type="checkbox" id="drop-201" />
+                                <!-- Items de Tratamiento-->
+                                <ul>
+                                    <li><a href="agregar_tratamiento.xhtml">Administrar Tratamientos</a></li>
+                                    <li><a href="ver_tratamientos.xhtml">Registro Tratamientos</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Controles -Diagnóstico- -->
+                            <li>
+                                <label for="drop-202" class="toggle">Diagnóstico »</label>
+                                <a href="#">Diagnóstico</a>
+                                <input type="checkbox" id="drop-202" />
+                                <!-- Items de Apoderado-->
+                                <ul>
+                                    <li><a href="agregar_diagnostico.xhtml">Administrar Diagnósticos</a></li>
+                                    <li><a href="listar_diagnosticos.xhtml">Lista Diagnósticos</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Controles -Controles Externos- -->
+                            <li>
+                                <label for="drop-203" class="toggle">Controles Externos »</label>
+                                <a href="#">Controles Externos</a>
+                                <input type="checkbox" id="drop-203" />
+                                <!-- Items de Apoderado-->
+                                <ul>
+                                    <li><a href="agregar_control_medico.xhtml">Administrar Controles</a></li>
+                                    <li><a href="ver_controles_medicos.xhtml">Lista Controles</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                            <!-- Item de Controles -Emergencias- -->
+                            <li>
+                                <label for="drop-204" class="toggle">Emergencias »</label>
+                                <a href="#">Emergencias</a>
+                                <input type="checkbox" id="drop-204" />
+                                <!-- Items de Apoderado-->
+                                <ul>
+                                    <li><a href="agregar_emergencia.xhtml">Administrar Emergencia</a></li>
+                                    <li><a href="listar_emergencias.xhtml">Lista Emergencias</a></li>
+                                </ul>
+                            </li>
+                            <!---->
+                        </ul>
+                    </li>
+                    <!---->
                 </h:panelGroup>
-                
+
                 <!-- Item del Navbar -Controles- -->
                 <li>
                     <label for="drop-300" class="toggle">Controles »</label>
@@ -204,7 +205,7 @@
                     </ul>
                 </li>
                 <!---->
-                
+
                 <!-- Item del Navbar -Informes- -->
                 <li>
                     <label for="drop-400" class="toggle">Informes »</label>

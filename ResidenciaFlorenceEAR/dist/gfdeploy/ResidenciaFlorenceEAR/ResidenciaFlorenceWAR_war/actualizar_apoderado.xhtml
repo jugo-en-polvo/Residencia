@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="index.xhtml">
+
+
+    <ui:define name="contenido">
+
+        <p:growl id="mensaje"/>
+
+        <p:panel header="Actualizar Apoderado" class="panel-registro">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Rut: "/>
+                <p:outputLabel value="#{actualizarApoderadoManagedBean.apoderadoActualizado.rut_apoderado}"/>
+
+                <p:outputLabel value="Nombre: "/>
+                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.nombre_apoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar un nombre para el Apoderado"/>
+
+                <p:outputLabel value="Dirección: "/>
+                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.direccion_apoderado}"
+                             required="true"
+                             requiredMessage="Debe ingresar una dirección para el Apoderado"/>
+
+                <p:outputLabel value="Teléfono"/>
+                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.fono_apoderado}"
+                             required="true"
+                             maxlength="10"
+                             requiredMessage="Debe ingresar un Fono de Contacto"
+                             >
+                    <p:keyFilter regEx="/[\d\.]/"/> 
+                </p:inputText>
+                
+                <p:outputLabel value="Email: "/>
+                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.email_apoderado}"/>
+
+            </p:panelGrid>
+
+            <p:commandButton 
+                value="Actualizar Apoderado" 
+                actionListener="#{actualizarApoderadoManagedBean.actualizar}"
+                update="mensaje"
+                style="margin-top: 1rem"/>
+
+        </p:panel>
+
+    </ui:define>
+</ui:composition>

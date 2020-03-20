@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="index.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="contenido">
+
+        <h:panelGroup layout="block" styleClass="contenedor-resumen-residente">
+
+            <h1>Detalle y Administracion del medicamento</h1>
+
+            <p:panelGrid columns="2" layout="grid" styleClass="grid">
+                <p:outputLabel value="Nombre: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.nombre}"/>
+
+                <p:outputLabel value="Concentración: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.concentracion}"/>
+
+                <p:outputLabel value="Presentación: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.presentacion}"/>
+
+                <p:outputLabel value="Tipo: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.tipo}"/>
+
+                <p:outputLabel value="Stock Actual: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.stock}"/>
+
+                <p:outputLabel value="Stock crítico: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.stock_critico}"/>
+
+                <p:outputLabel value="Detalles: "/>
+                <p:outputLabel value="#{verMedicamentoManagedBean.medicamentoDetalle.detalle}"/>
+
+            </p:panelGrid>
+
+            <p:panelGrid columns="3" layout="grid" styleClass="grid">
+                <p:commandLink value="«Atrás" styleClass="botones" actionListener="#{verMedicamentoManagedBean.atrar()}"/>
+                <p:commandLink value="Eliminar«X»" styleClass="botones" />
+                <p:commandLink value="Editar»" styleClass="botones" actionListener="#{verMedicamentoManagedBean.editar()}"/>
+            </p:panelGrid>
+
+        </h:panelGroup>
+
+    </ui:define>
+
+</ui:composition>

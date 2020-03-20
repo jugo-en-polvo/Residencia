@@ -15,36 +15,36 @@
             <p:selectOneMenu value="#{verTratamientosManagedBean.rutResidente}">
                 <p:ajax listener="#{verTratamientosManagedBean.manejarFiltro}"
                         update="mensaje :formulario:vista-tratamientos"/>
-                <f:selectItem itemLabel="-Todos-" itemValue="" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Seleccione-" itemValue="falso" noSelectionOption="true"/>
                 <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>
             </p:selectOneMenu>
         </h:panelGroup>
 
         <h:panelGroup id="vista-tratamientos" layout="block" class="ui-g" style="margin-top: 1rem">
             <p:repeat value="#{verTratamientosManagedBean.tratamientoFiltro}" var="tratamiento">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+                <h:panelGroup layout="block" styleClass="panel-registro">
 
-                    <p:panel header="#{tratamiento.residente.nombre_residente}">
+
                     <p:panelGrid columns="2" layout="grid">
-                        
-                        <p:outputLabel value="Medicamento:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.medicamento.nombre_generico}"/>
-                       
-                         <p:outputLabel value="Medicamento:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{tratamiento.medicamento.nombre_fantasia}"/>
-                        
-                        <p:outputLabel value="Dosis:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.dosis}"/>
-                        
+               
                         <p:outputLabel value="Hora:"
                                        styleClass="texto-negrita"/>
                         <h:outputText value="#{tratamiento.hora}"/>
                         
+                        <p:outputLabel value="Medicamento:"
+                                       styleClass="texto-negrita"/>
+                        <h:outputText value="#{tratamiento.medicamento.nombre_generico}"/>
+
+                        <p:outputLabel value="Medicamento:"
+                                       styleClass="texto-negrita"/>
+                        <h:outputText value="#{tratamiento.medicamento.nombre_fantasia}"/>
+
+                        <p:outputLabel value="Dosis:"
+                                       styleClass="texto-negrita"/>
+                        <h:outputText value="#{tratamiento.dosis}"/>
+
                     </p:panelGrid>
-                    </p:panel>
+
                 </h:panelGroup>
             </p:repeat>
         </h:panelGroup> 

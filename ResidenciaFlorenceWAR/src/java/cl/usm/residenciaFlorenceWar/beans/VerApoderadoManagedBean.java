@@ -12,6 +12,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -21,6 +22,8 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class VerApoderadoManagedBean implements Serializable {
 
+    @Inject
+    private ActualizarApoderadoManagedBean actualizarApoderadoBEAN;
     private Apoderado apoderadoDetalle;
 
     public Apoderado getApoderadoDetalle() {
@@ -36,6 +39,11 @@ public class VerApoderadoManagedBean implements Serializable {
     
     public void atras() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("listar_apoderados.xhtml");
+    }
+    
+    public void editar() throws IOException{
+        this.actualizarApoderadoBEAN.setApoderadoActualizado(apoderadoDetalle);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_apoderado.xhtml");
     }
     
 }

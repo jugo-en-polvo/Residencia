@@ -54,7 +54,7 @@ public class Residente implements Serializable{
     
     @JoinColumn(name = "id_prevision", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Prevision prevision;
+    private PrevisionNombreTipo previsionNombreTipo;
    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
     private List<Tratamiento> tratamientos;
@@ -110,12 +110,12 @@ public class Residente implements Serializable{
         this.apoderado = apoderado;
     }
 
-    public Prevision getPrevision() {
-        return prevision;
+    public PrevisionNombreTipo getPrevisionNombreTipo() {
+        return previsionNombreTipo;
     }
 
-    public void setPrevision(Prevision prevision) {
-        this.prevision = prevision;
+    public void setPrevisionNombreTipo(PrevisionNombreTipo previsionNombreTipo) {
+        this.previsionNombreTipo = previsionNombreTipo;
     }
 
     public List<Tratamiento> getTratamientos() {

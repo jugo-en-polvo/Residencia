@@ -64,5 +64,19 @@ public class LugarDAO implements LugarDAOLocal {
         
     }
 
+    @Override
+    public void update(Lugar l) {
+        
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.merge(l);
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+        
+    }
+
     
 }

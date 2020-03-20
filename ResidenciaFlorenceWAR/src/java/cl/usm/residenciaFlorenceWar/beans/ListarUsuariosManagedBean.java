@@ -7,9 +7,11 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Usuario;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -24,6 +26,16 @@ public class ListarUsuariosManagedBean implements Serializable{
 
     @Inject
     private UsuariosDAOLocal usuarioDAO;
+    @Inject
+    private VerUsuarioManagedBean verUsuarioBEAN;
+
+    public VerUsuarioManagedBean getVerUsuarioBEAN() {
+        return verUsuarioBEAN;
+    }
+
+    public void setVerUsuarioBEAN(VerUsuarioManagedBean verUsuarioBEAN) {
+        this.verUsuarioBEAN = verUsuarioBEAN;
+    }
     
     private List<Usuario> usuarios;
     private String valorFiltro;
@@ -85,5 +97,12 @@ public class ListarUsuariosManagedBean implements Serializable{
             return "Cuidador";
         }
         return null;
+    }
+    
+    public void editar(Usuario u) throws IOException{
+        
+        this.verUsuarioBEAN.setUsuarioDetalle(u);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ver_usuario_detalle.xhtml");
+        
     }
 }

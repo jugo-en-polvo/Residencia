@@ -26,6 +26,15 @@ public class AgregarPrevisionManagedBean implements Serializable{
     @Inject
     private PrevisionDAOLocal previsionDAO;
     private String nombrePrevision;
+    private String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
     public String getNombrePrevision() {
         return nombrePrevision;
@@ -41,9 +50,10 @@ public class AgregarPrevisionManagedBean implements Serializable{
     public void agregar(ActionEvent e){
         
         Prevision p = new Prevision();
-        p.setNombre_prevision(nombrePrevision);
+        p.setTipo_prevision(nombrePrevision);
+        p.setDescripcion(descripcion);
         this.previsionDAO.add(p);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Prevision Agregarda"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Prevision agregarda"));
         
     }
 }

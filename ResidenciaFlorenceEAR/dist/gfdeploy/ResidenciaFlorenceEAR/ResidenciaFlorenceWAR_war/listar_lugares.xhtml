@@ -25,6 +25,7 @@
             <p:panelGrid columns="3" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
                 <p:commandLink value="#{lugar.nombre_lugar}" 
+                               actionListener="#{listarLugaresManagedBean.actualizar(lugar)}"
                                style="text-decoration: none; color: blue"/>
 
                 <h:panelGroup layout="block">

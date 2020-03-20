@@ -7,7 +7,6 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dto.Apoderado;
-import cl.usm.residenciaEjb.dto.Residente;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;

@@ -11,18 +11,27 @@
 
         <h:panelGroup layout="block" class="ui-g">
             <ui:repeat value="#{listarPrevisionesManagedBean.previsiones}" var="prevision">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-6">
 
-                    <p:panel header="#{prevision.nombre_prevision}" style="text-align: center">
-                        <p:panelGrid columns="2" layout="grid">
-                            <p:commandLink value="Modificar" 
-                                           style="text-decoration: none; padding: .5rem;"/>
-                            <p:commandLink value="Eliminar" 
-                                           style="text-decoration: none; padding: .5rem"/>                        
+                    <h:panelGroup layout="block" styleClass="contenedor-resumen-residente" style="width: 95%; text-align: center">
+
+                        <h1>#{prevision.tipo_prevision}</h1>
+                        <p:panelGrid columns="1" layout="grid" styleClass="grid grilla-previsiones" >
+                            <p:outputLabel value="#{prevision.descripcion}"/>
                         </p:panelGrid>
-                    </p:panel>
+                        
+                        <p:panelGrid columns="2" layout="grid" >
+                        <p:commandLink value="Ir a detalles"
+                                       actionListener="#{listarPrevisionesManagedBean.detalles(prevision)}"
+                                       style="text-decoration: none"/>
+                        <p:commandLink value="Editar»"
+                                       actionListener="#{listarPrevisionesManagedBean.editar(prevision)}"
+                                       style="text-decoration: none"/>
+                        </p:panelGrid>
+                    </h:panelGroup>
 
                 </h:panelGroup>
+
             </ui:repeat>
         </h:panelGroup>
 

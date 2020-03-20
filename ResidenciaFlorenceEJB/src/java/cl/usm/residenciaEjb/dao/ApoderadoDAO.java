@@ -69,4 +69,20 @@ public class ApoderadoDAO implements ApoderadoDAOLocal {
         
     }
 
+    @Override
+    public void update(Apoderado a) {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            
+            em.merge(a);
+                    
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+    
+    }
+
 }

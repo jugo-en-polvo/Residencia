@@ -97,4 +97,18 @@ public class UsuariosDAO implements UsuariosDAOLocal {
             em.close();
         }
     }
+
+    @Override
+    public void update(Usuario usuario) {
+    
+        EntityManager em = this.emf.createEntityManager();
+        try{
+            em.merge(usuario);
+        }catch(Exception ex){
+            
+        }finally{
+            em.close();
+        }
+        
+    }
 }

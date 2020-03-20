@@ -25,36 +25,45 @@ public class AgregarMedicamentoManagedBean implements Serializable{
 
     @Inject
     private MedicamentoDAOLocal medicamentosDAO;
-    private String nombreGenerico;
-    private String nombreFantasia;
+    private String nombre;
+    private String concentracion;
+    private String presentacion;
     private String tipo;
     private String detalle;
     private int stock;
     private int stockCritico;
 
-    public String getNombreGenerico() {
-        return nombreGenerico;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreGenerico(String nombreGenerico) {
-        this.nombreGenerico = nombreGenerico;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-
-    public String getNombreFantasia() {
-        return nombreFantasia;
-    }
-
-    public void setNombreFantasia(String nombreFantasia) {
-        this.nombreFantasia = nombreFantasia;
-    }
-
+    
     public int getStockCritico() {
         return stockCritico;
     }
 
     public void setStockCritico(int stockCritico) {
         this.stockCritico = stockCritico;
-    } 
+    }
+
+    public String getConcentracion() {
+        return concentracion;
+    }
+
+    public void setConcentracion(String concentracion) {
+        this.concentracion = concentracion;
+    }
+
+    public String getPresentacion() {
+        return presentacion;
+    }
+
+    public void setPresentacion(String presentacion) {
+        this.presentacion = presentacion;
+    }
 
     public String getTipo() {
         return tipo;
@@ -86,8 +95,9 @@ public class AgregarMedicamentoManagedBean implements Serializable{
     public void agregar(ActionEvent e){
         
         Medicamento m = new Medicamento();
-        m.setNombre_generico(nombreGenerico);
-        m.setNombre_fantasia(nombreFantasia);
+        m.setNombre(nombre);
+        m.setConcentracion(concentracion);
+        m.setPresentacion(presentacion);
         m.setTipo(tipo);
         m.setDetalle(detalle);
         m.setStock(stock);

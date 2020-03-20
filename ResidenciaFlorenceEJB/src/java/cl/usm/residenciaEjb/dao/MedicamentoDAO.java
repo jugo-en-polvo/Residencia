@@ -64,6 +64,20 @@ public class MedicamentoDAO implements MedicamentoDAOLocal {
         
     }
 
+    @Override
+    public void update(Medicamento m) {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.merge(m);
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+    
+    }
+
     
     
 }

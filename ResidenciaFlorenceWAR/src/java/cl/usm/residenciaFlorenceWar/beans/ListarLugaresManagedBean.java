@@ -7,11 +7,13 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dto.Lugar;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -26,9 +28,11 @@ public class ListarLugaresManagedBean implements Serializable{
 
     @Inject
     private LugarDAOLocal lugarDao;
+    @Inject
+    private VerLugarManagedBean verLugarBEAN;
     
     private List<Lugar> lugares;
-    private Map<String, String> comboLugares = new HashMap<String, String>();
+    private Map<String, String> comboLugares = new HashMap<>();
 
     public Map<String, String> getComboLugares() {
         return comboLugares;
@@ -55,6 +59,13 @@ public class ListarLugaresManagedBean implements Serializable{
     }
     
     public ListarLugaresManagedBean() {
+    }
+    
+    public void actualizar(Lugar l) throws IOException{
+        
+        this.verLugarBEAN.setLugarDetalle(l);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ver_lugar_detalle.xhtml");
+        
     }
     
 }

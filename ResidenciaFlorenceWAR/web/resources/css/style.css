@@ -11,6 +11,10 @@ body{
     margin: 0 auto;
     margin-top: 2rem;
 }
+.grilla-previsiones{
+    text-align: center;
+    height: 400px;  
+}
 
 .panel-login{
     width: 95%;
@@ -31,6 +35,10 @@ body{
     .panel-login{
         width: 95%;
     }
+    
+    .grilla-previsiones{
+        height: auto;
+    }
 }
 
 @media (min-width: 641px){
@@ -42,6 +50,7 @@ body{
         width: 50%;
     }
 }
+
 
 @media (min-width: 1025px){
     .panel-registro{
