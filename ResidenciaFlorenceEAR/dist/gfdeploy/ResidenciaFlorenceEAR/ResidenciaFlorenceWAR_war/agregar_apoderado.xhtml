@@ -10,14 +10,17 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje"/>
+        <p:growl id="mensaje" 
+                 showDetail="true"
+                 showSummary="true"
+                 sticky="true"/>
 
         <p:panel class="panel-registro" header="Registro Apoderado">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
                 <p:outputLabel value="Rut Apoderado"/>
-                <p:inputMask value="#{agregarApoderadoManagedBean.rutApoderado}"
-                             mask="99.999.999-*"
+                <p:inputText value="#{agregarApoderadoManagedBean.rutApoderado}"
+                             maxlength="12"
                              required="true"
                              requiredMessage="Debe ingresar el Rut del Apoderado"/>
 
@@ -34,14 +37,14 @@
                              maxlength="10"
                              requiredMessage="Debe ingresar un Fono de Contacto"
                              >
-                     <p:keyFilter regEx="/[\d\.]/"/> 
+                    <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>
 
                 <p:outputLabel value="Dirección"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
                              requiredMessage="Debe ingresar una Dirección"/>
-                
+
                 <p:outputLabel value="Email"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.emailApoderado}"/>
 

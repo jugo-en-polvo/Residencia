@@ -27,9 +27,9 @@ DROP TABLE IF EXISTS `administrar_medicamento`;
 CREATE TABLE `administrar_medicamento` (
   `id_tratamiento` int unsigned NOT NULL,
   `fecha_administracion` datetime NOT NULL,
-  `rut_usuario` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `rut_usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `estado` tinyint NOT NULL,
-  `observaciones` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `observaciones` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_tratamiento`,`fecha_administracion`),
   KEY `administrar_medicamento_ibfk_2` (`rut_usuario`),
   CONSTRAINT `administrar_medicamento_ibfk_1` FOREIGN KEY (`id_tratamiento`) REFERENCES `tratamientos` (`id_tratamiento`),
@@ -69,7 +69,7 @@ CREATE TABLE `apoderado` (
 
 LOCK TABLES `apoderado` WRITE;
 /*!40000 ALTER TABLE `apoderado` DISABLE KEYS */;
-INSERT INTO `apoderado` VALUES ('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com'),('20.000.000-0','Mama','11111111111','Su Casa','mama@gmail.com'),('22.000.000-0','Marianella González','12345','Avenida Rodelillo 3900','');
+INSERT INTO `apoderado` VALUES ('19.014.691-k','13dsad','231','dasdsa',''),('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com'),('19.179.208-4','dsa','3213','dadsa','dsa'),('20.000.000-0','Mama','11111111111','Su Casa','mama@gmail.com'),('22.000.000-0','Marianella González','12345','Avenida Rodelillo 3900','');
 /*!40000 ALTER TABLE `apoderado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,16 +82,16 @@ DROP TABLE IF EXISTS `control`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `control` (
   `fecha_hora_control` datetime NOT NULL,
-  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `rut_usuario` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `presion_arterial` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `pulso` varchar(5) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `saturacion` varchar(4) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `hgt` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `cambio_posicion` varchar(40) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `solucion_parenteral` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `suero` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `observaciones` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `rut_residente` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `rut_usuario` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `presion_arterial` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pulso` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `saturacion` varchar(4) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `hgt` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `cambio_posicion` varchar(40) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `solucion_parenteral` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `suero` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `observaciones` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`fecha_hora_control`,`rut_residente`),
   KEY `rut_residente` (`rut_residente`),
   KEY `rut_usuario` (`rut_usuario`),
@@ -117,11 +117,11 @@ DROP TABLE IF EXISTS `controles_medicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `controles_medicos` (
-  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `rut_residente` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_hora_control` datetime NOT NULL,
   `id_lugar` int unsigned NOT NULL,
-  `estado_control` varchar(1) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'N',
-  `observaciones` varchar(150) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `estado_control` varchar(1) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL DEFAULT 'N',
+  `observaciones` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`rut_residente`,`fecha_hora_control`),
   KEY `id_lugar` (`id_lugar`),
   CONSTRAINT `controles_medicos_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
@@ -147,9 +147,9 @@ DROP TABLE IF EXISTS `diagnostico`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `diagnostico` (
   `id_diagnostico` int unsigned NOT NULL AUTO_INCREMENT,
-  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `enfermedad` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `rut_residente` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `enfermedad` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_diagnostico`),
   KEY `rut_residente` (`rut_residente`),
   CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
@@ -174,14 +174,14 @@ DROP TABLE IF EXISTS `dieta`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dieta` (
   `fecha_dieta` datetime NOT NULL,
-  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `rut_residente` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `desayuno` tinyint DEFAULT NULL,
   `colacion_1` tinyint DEFAULT NULL,
   `almuerzo` tinyint DEFAULT NULL,
   `colacion_2` tinyint DEFAULT NULL,
   `once` tinyint DEFAULT NULL,
   `cena` tinyint DEFAULT NULL,
-  `observaciones` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `observaciones` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`fecha_dieta`,`rut_residente`),
   KEY `rut_residente` (`rut_residente`),
   CONSTRAINT `dieta_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
@@ -205,10 +205,10 @@ DROP TABLE IF EXISTS `emergencia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `emergencia` (
-  `rut_residente` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `rut_residente` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `fecha_emergencia` datetime NOT NULL,
   `id_lugar` int unsigned NOT NULL,
-  `observaciones` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `observaciones` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`rut_residente`,`fecha_emergencia`),
   KEY `id_lugar` (`id_lugar`),
   CONSTRAINT `emergencia_ibfk_1` FOREIGN KEY (`id_lugar`) REFERENCES `lugar` (`id_lugar`),
@@ -234,9 +234,9 @@ DROP TABLE IF EXISTS `lugar`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lugar` (
   `id_lugar` int unsigned NOT NULL AUTO_INCREMENT,
-  `nombre_lugar` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `fono_lugar` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `direccion_lugar` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_lugar` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `fono_lugar` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion_lugar` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `estado` tinyint NOT NULL,
   PRIMARY KEY (`id_lugar`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -265,7 +265,7 @@ CREATE TABLE `medicamento` (
   `concentracion` varchar(40) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `presentacion` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `tipo` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `detalle` varchar(60) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `detalle` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `stock` int NOT NULL,
   `stock_critico` int NOT NULL,
   PRIMARY KEY (`id_medicamento`)
@@ -291,8 +291,8 @@ DROP TABLE IF EXISTS `prevision`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `prevision` (
   `id_prevision` int unsigned NOT NULL AUTO_INCREMENT,
-  `tipo_prevision` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(310) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `tipo_prevision` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(310) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_prevision`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -318,7 +318,7 @@ CREATE TABLE `previsionnombretipo` (
   `id_prevision_nombre_tipo` int unsigned NOT NULL AUTO_INCREMENT,
   `id_prevision` int unsigned NOT NULL,
   `nombre_prevision` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` varchar(300) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `descripcion` varchar(300) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_prevision_nombre_tipo`),
   KEY `id_prevision` (`id_prevision`),
   CONSTRAINT `previsionnombretipo_ibfk_1` FOREIGN KEY (`id_prevision`) REFERENCES `prevision` (`id_prevision`)
@@ -368,7 +368,7 @@ CREATE TABLE `residente` (
 
 LOCK TABLES `residente` WRITE;
 /*!40000 ALTER TABLE `residente` DISABLE KEYS */;
-INSERT INTO `residente` VALUES ('11.111.111-1','20.000.000-0',11,'11111111111','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','11','Normal','11'),('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos.'),('22.222.222-2','19.176.758-6',10,'22222222222','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','22','Normal','22'),('33.333.333-3','22.000.000-0',6,'33','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','33','Normal','33');
+INSERT INTO `residente` VALUES ('11.111.111-1','20.000.000-0',11,'11111111111','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','11','Normal','11'),('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('19.179.208-4','19.179.208-4',6,'das','2020-03-10 00:00:00','2020-03-03 00:00:00',NULL,'M','','Normal',''),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos.'),('22.222.222-2','19.176.758-6',10,'22222222222','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','22','Normal','22'),('33.333.333-3','22.000.000-0',6,'33','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','33','Normal','33');
 /*!40000 ALTER TABLE `residente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,7 +425,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('19.014.691-k','Andreas Manriquez','0iROh+5CiCSpAi1HtA1AMSBi/CNHIvgOD49IMFfUhS8=',1,1),('20.000.000-0','Andreas','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0),('21116123k','Estobon','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',0,0),('30.000.000-0','Esteban','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',0,0),('40.000.000-0','Pepe','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0),('90.000.000-0','Felipe','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0),('998887776','asd','Cwkulzzp9y0sqeMqw3hiu22ivv2R/ePV/rdRperWyoU=',1,1);
+INSERT INTO `usuarios` VALUES ('19.014.691-k','Andreas Manríquez','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0),('21.116.123-k','Esteban Lagos','n95vB6n2qOiMmbWg1GreiwrIZKT+XKQ2oc07+7DAPF0=',1,0);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -438,4 +438,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-20 12:08:51
+-- Dump completed on 2020-03-21 21:37:05

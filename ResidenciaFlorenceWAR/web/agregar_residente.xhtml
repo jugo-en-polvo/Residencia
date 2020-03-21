@@ -10,7 +10,10 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje"/>
+        <p:growl id="mensaje" 
+                 showDetail="true"
+                 showSummary="true"
+                 sticky="true"/>
 
         <p:panel header="Registrar Residente" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
@@ -22,7 +25,7 @@
                     <f:selectItem itemLabel="Nuevo Apoderado" itemValue="true" noSelectionOption="true"/>
                     <f:selectItems value="#{listarApoderadosManagedBean.apoderadosCombo}"/>
                 </p:selectOneMenu>
-                
+
                 <p:outputLabel value="Rut Apoderado"
                                rendered="#{!residentesManagedBean.hidden}"/>
                 <p:inputMask value="#{residentesManagedBean.rutApoderado}" 
@@ -37,9 +40,9 @@
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Rut Apoderado"/>
-                <p:inputMask rendered="#{residentesManagedBean.hidden}"
+                <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.rutApoderado}"
-                             mask="99.999.999-*"
+                             maxlength="12"
                              required="true"
                              requiredMessage="Debe ingresar el Rut del Apoderado"/>
 
@@ -78,12 +81,12 @@
                              value="#{agregarApoderadoManagedBean.emailApoderado}"/>
 
                 <p:separator/><p:separator/>
-                
+
                 <p:outputLabel value="Rut Residente"/>
-                <p:inputMask value="#{residentesManagedBean.rutResidente}" 
+                <p:inputText value="#{residentesManagedBean.rutResidente}" 
+                             maxlength="12"
                              required="true"
-                             requiredMessage="Debe ingresar el Rut del Residente"
-                             mask="99.999.999-*"/>
+                             requiredMessage="Debe ingresar el Rut del Residente"/>
 
                 <p:outputLabel value="Nombre completo"/>
                 <p:inputText value="#{residentesManagedBean.nombre}"
@@ -92,13 +95,13 @@
                              requiredMessage="Debe ingresar el Nombre del Residente"/>
 
                 <p:outputLabel value="Fecha de Naciemiento"/>
-                <p:calendar value="#{residentesManagedBean.fechaNacimieto}" placeholder="Presione"
+                <p:calendar value="#{residentesManagedBean.fechaNacimieto}"
                             required="true"
                             requiredMessage="Debe ingresar fecha de nacimiento de Residente"
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
                 <p:outputLabel value="Fecha de ingreso"/>
-                <p:calendar value="#{residentesManagedBean.fechaIngreso}" placeholder="Presione"
+                <p:calendar value="#{residentesManagedBean.fechaIngreso}"
                             required="true"
                             requiredMessage="Debe ingresar fecha de ingreso del Residente"
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
@@ -114,7 +117,7 @@
                     <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
                     <f:selectItem itemLabel="Dieta Diabética" itemValue="Diabetica"/>
                 </p:selectOneMenu>
-                
+
                 <p:outputLabel value="Tipo Previsión"/>
                 <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
                     <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>

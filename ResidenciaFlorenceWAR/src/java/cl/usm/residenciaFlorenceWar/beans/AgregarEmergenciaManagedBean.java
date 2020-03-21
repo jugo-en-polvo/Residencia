@@ -6,12 +6,10 @@
 package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.EmergenciaDAOLocal;
-import cl.usm.residenciaEjb.dao.LugarDAO;
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Emergencia;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 import javax.faces.application.FacesMessage;

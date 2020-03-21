@@ -85,4 +85,22 @@ public class ApoderadoDAO implements ApoderadoDAOLocal {
     
     }
 
+    @Override
+    public boolean compruebaExistencia(String rut) {
+    
+        EntityManager em = emf.createEntityManager();
+        try {
+            
+            em.createNamedQuery("Apoderado.CompruebaExistencia", Apoderado.class).setParameter("rut", rut).getSingleResult();
+            return true;
+            
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }finally{
+            em.close();
+        }
+        
+    }
+
 }

@@ -10,8 +10,10 @@ import javax.ejb.Local;
  */
 @Local
 public interface UsuariosDAOLocal {
+    
     void add(Usuario usuario);
     void update(Usuario usuario);
+    boolean compruebaExistencia(String rut);
     List<Usuario> findAll();
     List<Usuario> findAllByEstado(int estado);
     List<Usuario> findAllByNivelAcceso();

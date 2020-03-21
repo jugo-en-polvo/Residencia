@@ -17,6 +17,7 @@ import javax.ejb.Local;
 public interface ApoderadoDAOLocal {
     
     Apoderado find(String rut);
+    boolean compruebaExistencia(String rut);
     List<Apoderado> findAll();
     void add(Apoderado a);
     void update(Apoderado a);

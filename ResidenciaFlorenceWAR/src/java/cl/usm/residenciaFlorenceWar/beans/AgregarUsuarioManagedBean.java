@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Usuario;
 import cl.usm.residenciaFlorenceWar.utils.PasswordUtils;
 import cl.usm.residenciaFlorenceWar.utils.UtilsConstants;
+import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -24,28 +25,37 @@ import javax.inject.Inject;
 @Named(value = "agregarUsuarioManagedBean")
 @ViewScoped
 public class AgregarUsuarioManagedBean implements Serializable {
-    
+
     @Inject
     private UsuariosDAOLocal usuariosDAO;
-    
+
     private String rut;
     private String nombre;
     private String clave;
     private int nivel_acceso;
     private int estado;
-    
-    public void registrar(ActionEvent e){
-        String hash = PasswordUtils.generateSecurePassword(clave, UtilsConstants.SALT);
-        Usuario usuario = new Usuario();
-        usuario.setRut_usuario(rut);
-        usuario.setNombre_usuario(nombre);
-        usuario.setNivel_acceso(nivel_acceso);
-        usuario.setEstado(estado);
-        usuario.setClave(hash);
-        usuariosDAO.add(usuario);
-        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Usuario Ingresado") );
+
+    public void registrar(ActionEvent e) {
+        if (usuariosDAO.compruebaExistencia(rut)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario ya existe en el sistema."));
+        } else {
+            if (ValidadorRut.validarRut(rut)) {
+                String hash = PasswordUtils.generateSecurePassword(clave, UtilsConstants.SALT);
+                Usuario usuario = new Usuario();
+                usuario.setRut_usuario(rut);
+                usuario.setNombre_usuario(nombre);
+                usuario.setNivel_acceso(nivel_acceso);
+                usuario.setEstado(estado);
+                usuario.setClave(hash);
+                usuariosDAO.add(usuario);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario Ingresado."));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de usuario inválido, reingrese."));
+            }
+
+        }
     }
-    
+
     public int getNivel_acceso() {
         return nivel_acceso;
     }
@@ -85,13 +95,11 @@ public class AgregarUsuarioManagedBean implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    
-    
+
     /**
      * Creates a new instance of AgregarUsuarioManagedBean
      */
     public AgregarUsuarioManagedBean() {
     }
-    
+
 }

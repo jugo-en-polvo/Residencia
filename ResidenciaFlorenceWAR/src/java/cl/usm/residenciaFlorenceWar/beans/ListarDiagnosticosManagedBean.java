@@ -7,9 +7,10 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.DiagnosticoDAOLocal;
 import cl.usm.residenciaEjb.dto.Diagnostico;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -24,6 +25,9 @@ public class ListarDiagnosticosManagedBean implements Serializable {
 
     @Inject
     private DiagnosticoDAOLocal diagnosticoDAO;
+    @Inject
+    private ActualizarDiagnosticoManagedBean actualizarDiagnosticoBEAN;
+    
     private List<Diagnostico> diagnosticosFiltro;
     private String rutResidente;
 
@@ -51,9 +55,17 @@ public class ListarDiagnosticosManagedBean implements Serializable {
         if (rutResidente != null && !rutResidente.equals("")) {
             this.diagnosticosFiltro = diagnosticoDAO.findByRut(rutResidente);
         } else {
-            //this.diagnosticosFiltro = diagnosticosFiltro.findAll();
+            this.diagnosticosFiltro.clear();
         }
 
+    }
+    
+    public void editar(Diagnostico d) throws IOException{
+        
+        this.actualizarDiagnosticoBEAN.setRutResidente(d.getResidente().getRut_residente());
+        this.actualizarDiagnosticoBEAN.setDiagnosticoActualizado(d);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_diagnostico.xhtml");
+        
     }
 
 }

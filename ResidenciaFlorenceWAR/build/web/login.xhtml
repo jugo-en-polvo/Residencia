@@ -24,8 +24,8 @@
                 <p:panel styleClass="panel-login" header="Bienvenido">
                     <p:panelGrid columns="2" layout="grid">
                         <p:outputLabel value="Rut Usuario"/>
-                        <p:inputMask value="#{loginManagedBean.rut}" 
-                                     mask="99.999.999-*"/>
+                        <p:inputText value="#{loginManagedBean.rut}"
+                                     maxlength="12"/>
                         <p:outputLabel value="Contraseña" />
                         <p:password value="#{loginManagedBean.clave}" 
                                     placeholder="Ingrese Contraseña"/>

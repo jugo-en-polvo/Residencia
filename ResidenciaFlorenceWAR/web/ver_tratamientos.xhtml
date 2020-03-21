@@ -11,7 +11,7 @@
 
         <p:growl id="mensaje"/>
 
-        <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem">
+        <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem; margin-bottom: 1rem">
             <p:selectOneMenu value="#{verTratamientosManagedBean.rutResidente}">
                 <p:ajax listener="#{verTratamientosManagedBean.manejarFiltro}"
                         update="mensaje :formulario:vista-tratamientos"/>
@@ -20,33 +20,50 @@
             </p:selectOneMenu>
         </h:panelGroup>
 
-        <h:panelGroup id="vista-tratamientos" layout="block" class="ui-g" style="margin-top: 1rem">
-            <p:repeat value="#{verTratamientosManagedBean.tratamientoFiltro}" var="tratamiento">
-                <h:panelGroup layout="block" styleClass="panel-registro">
+        <h:panelGroup style="width: 100%">
+            <h1 style="text-align: center">Lista de Tratamientos para un residente</h1>
+        </h:panelGroup>
+
+        <p:dataGrid id="vista-tratamientos"
+                    var="tratamientos"
+                    value="${verTratamientosManagedBean.tratamientos}"
+                    paginator="true"
+                    columns="1" rows="10" 
+                    styleClass="contenedor-resumen-residente">
+            <f:facet name="header">
+                <h2>Tratamientos</h2>
+            </f:facet>
+            <p:panelGrid columns="3" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
 
-                    <p:panelGrid columns="2" layout="grid">
-               
-                        <p:outputLabel value="Hora:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.hora}"/>
-                        
-                        <p:outputLabel value="Medicamento:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.medicamento.nombre_generico}"/>
-
-                        <p:outputLabel value="Medicamento:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.medicamento.nombre_fantasia}"/>
-
-                        <p:outputLabel value="Dosis:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{tratamiento.dosis}"/>
-
-                    </p:panelGrid>
-
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Hora: "
+                                   styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{tratamientos.hora} hrs"/>
                 </h:panelGroup>
-            </p:repeat>
-        </h:panelGroup> 
+
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Medicamento: "
+                                   styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{tratamientos.medicamento.nombre} 
+                                   #{tratamientos.medicamento.concentracion}
+                                   x#{tratamientos.medicamento.presentacion}
+                                   #{tratamientos.medicamento.tipo}"/>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Dosis: "
+                                   styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{tratamientos.dosis}">
+                        <f:convertNumber integerOnly="true"/>
+                    </p:outputLabel>
+                </h:panelGroup>
+
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+
     </ui:define>
+
 </ui:composition>

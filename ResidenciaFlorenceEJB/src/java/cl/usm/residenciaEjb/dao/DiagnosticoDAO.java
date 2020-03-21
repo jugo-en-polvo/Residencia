@@ -20,10 +20,10 @@ import javax.persistence.Persistence;
 public class DiagnosticoDAO implements DiagnosticoDAOLocal {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ResidenciaFlorenceEJBPU");
-    
+
     @Override
     public List<Diagnostico> findByRut(String rut) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Diagnostico.findByRut", Diagnostico.class)
@@ -32,24 +32,39 @@ public class DiagnosticoDAO implements DiagnosticoDAOLocal {
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public void add(Diagnostico d) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
+            d.setResidente(em.merge(d.getResidente()));
             em.persist(d);
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
-    
+
+    @Override
+    public void update(Diagnostico d) {
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.merge(d);
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+
+    }
+
 }

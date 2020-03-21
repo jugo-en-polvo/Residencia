@@ -17,6 +17,7 @@ import javax.ejb.Local;
 public interface ResidenteDAOLocal {
     
     public void add(Residente r);
+    boolean compruebaExistencia(String rut);
     public List<Residente> findAll();
     public List<Residente> findAllActuales();
     public List<Residente> findAllEgresados();

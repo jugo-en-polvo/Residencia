@@ -37,9 +37,10 @@
 
                 <p:outputLabel value="Fecha Control"/>
                 <p:calendar value="#{agregarControlMedicoManagedBean.fecha_hora_contro}"
-                            placeholder="Presione"
                             required="true"
-                            requiredMessage="Debe Agregar la Fecha del Control"/>
+                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            locale="es" pattern="dd/MM/yyyy HH:mm" mask="99/99/9999 99:99"
+                            validatorMessage="Ingrese una Fecha válida"/>
 
                 <p:outputLabel value="Observaciones"/>
                 <p:inputTextarea value="#{agregarControlMedicoManagedBean.observaciones}"/>

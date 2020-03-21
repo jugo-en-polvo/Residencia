@@ -22,7 +22,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "apoderado")
 @NamedQueries({
-    @NamedQuery(name = "Apoderado.findAll", query = "SELECT a FROM Apoderado a")
+    @NamedQuery(name = "Apoderado.findAll", query = "SELECT a FROM Apoderado a"),
+    @NamedQuery(name = "Apoderado.CompruebaExistencia", query = "SELECT a FROM Apoderado a WHERE a.rut_apoderado = :rut")
 })
 public class Apoderado implements Serializable{
     

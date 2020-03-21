@@ -9,7 +9,6 @@ import cl.usm.residenciaEjb.dao.TratamientosDAOLocal;
 import cl.usm.residenciaEjb.dto.Tratamiento;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -20,7 +19,7 @@ import javax.inject.Inject;
  */
 @Named(value = "verTratamientosManagedBean")
 @ViewScoped
-public class VerTratamientosManagedBean implements Serializable{
+public class VerTratamientosManagedBean implements Serializable {
 
     @Inject
     private TratamientosDAOLocal tratamientosDAO;
@@ -51,17 +50,17 @@ public class VerTratamientosManagedBean implements Serializable{
     public void setTratamientos(List<Tratamiento> tratamientos) {
         this.tratamientos = tratamientos;
     }
-    
+
     public VerTratamientosManagedBean() {
     }
-    
-    public void manejarFiltro(){
-        
-        if(rutResidente != null && !rutResidente.equals("")){
-            this.tratamientoFiltro = tratamientosDAO.findByRut(rutResidente);           
-        }else if(rutResidente.equals("falso")){
-            this.tratamientoFiltro.clear();
+
+    public void manejarFiltro() {
+
+        if (!rutResidente.equals("falso")) {
+            this.tratamientos = tratamientosDAO.findByRut(rutResidente);
+        } else {
+            this.tratamientos.clear();
         }
-        
+
     }
 }

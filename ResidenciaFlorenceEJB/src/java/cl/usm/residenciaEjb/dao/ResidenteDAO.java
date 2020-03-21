@@ -20,95 +20,110 @@ import javax.persistence.Persistence;
 public class ResidenteDAO implements ResidenteDAOLocal {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ResidenciaFlorenceEJBPU");
-    
+
     @Override
     public void add(Residente r) {
-        
+
         EntityManager em = emf.createEntityManager();
-        try{
+        try {
             r.setPrevisionNombreTipo(em.merge(r.getPrevisionNombreTipo()));
             r.setApoderado(em.merge(r.getApoderado()));
             em.persist(r);
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public List<Residente> findAll() {
-        
+
         EntityManager em = emf.createEntityManager();
-        try{
+        try {
             return em.createNamedQuery("Residente.findAll", Residente.class).getResultList();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public Residente find(String rut) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Residente.class, rut);
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public void update(Residente r) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             em.merge(r);
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public List<Residente> findAllActuales() {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Residente.findAllActuales", Residente.class).getResultList();
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public List<Residente> findAllEgresados() {
-    
-         EntityManager em = emf.createEntityManager();
+
+        EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Residente.findAllEgresados", Residente.class).getResultList();
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-    
+
+    }
+
+    @Override
+    public boolean compruebaExistencia(String rut) {
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.createNamedQuery("Residente.CompruebaExistencia", Residente.class).setParameter("rut", rut).getSingleResult();
+            return true;
+        } catch (Exception e) {
+            return false;
+        } finally {
+            em.close();
+        }
+
     }
 
 }

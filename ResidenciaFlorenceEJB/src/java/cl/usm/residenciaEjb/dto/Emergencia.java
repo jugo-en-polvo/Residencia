@@ -28,7 +28,9 @@ import javax.persistence.TemporalType;
 @IdClass(EmergenciaID.class)
 @Table(name = "emergencia")
 @NamedQueries({
-    @NamedQuery(name = "Emergencia.findAll", query = "SELECT e FROM Emergencia e")
+    @NamedQuery(name = "Emergencia.findAll", query = "SELECT e FROM Emergencia e"),
+    @NamedQuery(name = "Emergencia.findAllByRut", query = "SELECT e FROM Emergencia e WHERE e.residente.rut_residente = :rut"),
+    @NamedQuery(name = "Emergencia.findThisWeek", query = "SELECT e FROM Emergencia e Where e.fecha_emergencia >= :fecha")
 })
 public class Emergencia implements Serializable{
     

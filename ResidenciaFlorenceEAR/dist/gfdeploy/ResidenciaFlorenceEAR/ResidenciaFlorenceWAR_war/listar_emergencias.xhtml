@@ -9,36 +9,58 @@
 
     <ui:define name="contenido">
 
-        <h:panelGroup layout="block" class="ui-g">
-            <ui:repeat value="#{listarEmergenciasManagedBean.emergencias}" var="emergencia">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+        <p:growl id="mensaje"/>
 
-                    <p:panel header="#{emergencia.residente.nombre_residente}">
-                        
-                        <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
-                            
-                            <p:outputLabel value="Fecha de Emergencia"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.fecha_emergencia.time}">
-                                <f:convertDateTime type="both"  dateStyle="long"/>
-                            </h:outputText>                           
-                            
-                            <p:outputLabel value="Lugar de Atencion"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.lugar.nombre_lugar}"/>
-                            
-                            <p:outputLabel value="Observaciones"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.observaciones}"/>
-                            
-                        </p:panelGrid>
-                        
-                    </p:panel>
-
-                </h:panelGroup>
-            </ui:repeat>
+        <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem; margin-bottom: 1rem">
+            <p:selectOneMenu value="#{listarEmergenciasManagedBean.rutResidente}" style="width: 100%">
+                <p:ajax listener="#{listarEmergenciasManagedBean.filtroEmergencia}"
+                        update="mensaje :formulario:vista-tratamientos"/>
+                <f:selectItem itemLabel="-Seleccione-" itemValue="" noSelectionOption="true"/>
+                <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>
+            </p:selectOneMenu>
         </h:panelGroup>
 
-    </ui:define>
+        <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem; margin-bottom: 1rem">
+            <p:selectOneMenu style="width: 100%" value="#{listarEmergenciasManagedBean.periodo}">
+                <p:ajax listener="#{listarEmergenciasManagedBean.filtroEmergenciaPeriodo}"
+                        update="mensaje :formulario:vista-tratamientos"/>
+                <f:selectItem itemLabel="-Todas-" itemValue="todos" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Esta Semana-" itemValue="semana" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Este Mes-" itemValue="mes" noSelectionOption="true"/>
+            </p:selectOneMenu>
+        </h:panelGroup>
 
+        <p:dataGrid  id="vista-tratamientos"
+                     var="emergencia"
+                     value="#{listarEmergenciasManagedBean.emergencias}"
+                     paginator="true"
+                     columns="1" rows="10" 
+                     styleClass="contenedor-resumen-residente"
+                     emptyMessage="Seleccione un Residente">
+            <f:facet name="header">
+                <h2>Emergencias de un Residente</h2>
+            </f:facet>
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+
+                <p:outputLabel value="Lugar:"
+                               styleClass="texto-negrita"/>
+                <h:outputText value="#{emergencia.lugar.nombre_lugar}"/>
+
+                <p:outputLabel value="Fecha"
+                               styleClass="texto-negrita"/>
+                <h:outputText value="#{emergencia.fecha_emergencia.time}">
+                    <f:convertDateTime dateStyle="medium" type="both"/>
+                </h:outputText>
+
+                <p:outputLabel value="Obervaciones:"
+                               styleClass="texto-negrita"/>
+                <h:outputText value="#{emergencia.observaciones}"/>
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+
+
+
+    </ui:define>
 </ui:composition>

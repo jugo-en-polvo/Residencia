@@ -28,8 +28,9 @@
                 <p:outputLabel value="Fecha de emergencia"/>
                 <p:calendar value="#{agregarEmergenciaManagedBean.fecha_emergencia}"
                             required="true"
-                            pattern="dd.MM.yyyy HH:mm"
-                            requiredMessage="Debe ingresar una Fecha"/>
+                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            locale="es" pattern="dd/MM/yyyy HH:mm" mask="99/99/9999 99:99" 
+                            validatorMessage="Ingrese una Fecha válida"/>
 
                 <p:outputLabel value="Lugar"/>
                 <p:selectOneMenu value="#{agregarEmergenciaManagedBean.id_lugar}" 

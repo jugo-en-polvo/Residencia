@@ -11,15 +11,16 @@
     
     <ui:define name="contenido">
         
-        <p:growl id="mensaje">
-            <p:autoUpdate/>
-        </p:growl>
+        <p:growl id="mensaje" 
+                         showDetail="true"
+                         showSummary="true"
+                         sticky="true"/>
         
         <p:panel header="Registrar Usuario" class="panel-registro">
             <p:panelGrid columns="2" layout="grid"  styleClass="ui-noborder">
                 <p:outputLabel value="Rut"/>
-                <p:inputMask value="#{agregarUsuarioManagedBean.rut}"
-                             mask="99.999.999-*"
+                <p:inputText value="#{agregarUsuarioManagedBean.rut}"
+                             maxlength="12"
                              required="true"
                              requiredMessage="Debe ingresar el Rut Apoderado"/>
                 

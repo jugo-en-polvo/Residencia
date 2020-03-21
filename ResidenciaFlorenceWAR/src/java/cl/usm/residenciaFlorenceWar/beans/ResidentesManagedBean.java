@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dao.PrevisionNombreTipoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Residente;
+import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
@@ -37,7 +38,7 @@ public class ResidentesManagedBean implements Serializable {
     @Inject
     private PrevisionNombreTipoDAOLocal previsionNombreTipoDAO;
     @Inject
-    private ListarPrevisionesNombreTipoManagedBean previsionesNombreTipoBEAN; 
+    private ListarPrevisionesNombreTipoManagedBean previsionesNombreTipoBEAN;
     @Inject
     private ApoderadoDAOLocal apoderadoDAO;
     @Inject
@@ -191,12 +192,11 @@ public class ResidentesManagedBean implements Serializable {
     public void setResidentes(List<Residente> residentes) {
         this.residentes = residentes;
     }
-    
+
     //Cosntructores/init/destroy
-    
     public ResidentesManagedBean() {
     }
-    
+
     @PostConstruct
     public void init() {
         this.residentes = this.residenteDAO.findAllActuales();
@@ -209,33 +209,39 @@ public class ResidentesManagedBean implements Serializable {
 
     public void agregarResidente(ActionEvent e) {
 
-        Residente r = new Residente();
-        r.setRut_residente(rutResidente);
-        r.setNombre_residente(Nombre);
-
-        Calendar fechaNacimientoConvertida = Calendar.getInstance();
-        fechaNacimientoConvertida.setTime(fechaNacimieto);
-        r.setFecha_nacimiento(fechaNacimientoConvertida);
-
-        Calendar fechaIngresoConvertida = Calendar.getInstance();
-        fechaIngresoConvertida.setTime(fechaIngreso);
-        r.setFecha_ingreso(fechaIngresoConvertida);
-        r.setFecha_egreso(null);
-
-        r.setSexo(sexo);
-        r.setAlergias(alergias);
-        r.setObservaciones(observaciones);
-        r.setRegimen_alimentario(regimenAlimentario);
-        r.setApoderado(this.apoderadoDAO.find(rutApoderado));
-        //r.setPrevision(this.previsionDAO.find(idPrevision));
-        r.setPrevisionNombreTipo(this.previsionNombreTipoDAO.find(idPrevision));
-
-        if (rutApoderado.length() == 11) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut muy Corto"));
+        if (residenteDAO.compruebaExistencia(rutResidente)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Residente ya existe en el sistema."));
         } else {
-            this.residenteDAO.add(r);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
+            if (!ValidadorRut.validarRut(rutResidente)) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de residente inválido, reingrese."));
+            } else {
+
+                Residente r = new Residente();
+                r.setRut_residente(rutResidente);
+                r.setNombre_residente(Nombre);
+
+                Calendar fechaNacimientoConvertida = Calendar.getInstance();
+                fechaNacimientoConvertida.setTime(fechaNacimieto);
+                r.setFecha_nacimiento(fechaNacimientoConvertida);
+
+                Calendar fechaIngresoConvertida = Calendar.getInstance();
+                fechaIngresoConvertida.setTime(fechaIngreso);
+                r.setFecha_ingreso(fechaIngresoConvertida);
+                r.setFecha_egreso(null);
+
+                r.setSexo(sexo);
+                r.setAlergias(alergias);
+                r.setObservaciones(observaciones);
+                r.setRegimen_alimentario(regimenAlimentario);
+                r.setApoderado(this.apoderadoDAO.find(rutApoderado));
+                //r.setPrevision(this.previsionDAO.find(idPrevision));
+                r.setPrevisionNombreTipo(this.previsionNombreTipoDAO.find(idPrevision));
+
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
+
+            }
         }
+
     }
 
     //Metodo para ir al detalle
@@ -245,10 +251,10 @@ public class ResidentesManagedBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().redirect("ver_residente_detalle.xhtml");
 
     }
-    
+
     //Metodos para mostrar la lista
-    public void manejarFiltroNuevo(){
-        
+    public void manejarFiltroNuevo() {
+
         switch (valorFintro) {
             case "actuales":
                 this.residentes = this.residenteDAO.findAllActuales();
@@ -260,9 +266,9 @@ public class ResidentesManagedBean implements Serializable {
                 this.residentes = this.residenteDAO.findAll();
                 break;
         }
-        
+
     }
-    
+
     public String determinaSexo(String s) {
         if (s.equals("M")) {
             return "Masculino";

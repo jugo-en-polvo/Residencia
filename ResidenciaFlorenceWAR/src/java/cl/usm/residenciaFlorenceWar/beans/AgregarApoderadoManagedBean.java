@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dto.Apoderado;
+import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
  */
 @Named(value = "agregarApoderadoManagedBean")
 @ViewScoped
-public class AgregarApoderadoManagedBean implements Serializable{
+public class AgregarApoderadoManagedBean implements Serializable {
 
     @Inject
     private ApoderadoDAOLocal apoderadosDAO;
@@ -62,7 +63,7 @@ public class AgregarApoderadoManagedBean implements Serializable{
     public void setDireccionApoderado(String direccionApoderado) {
         this.direccionApoderado = direccionApoderado;
     }
-    
+
     public AgregarApoderadoManagedBean() {
     }
 
@@ -73,18 +74,27 @@ public class AgregarApoderadoManagedBean implements Serializable{
     public void setEmailApoderado(String emailApoderado) {
         this.emailApoderado = emailApoderado;
     }
-    
-    public void agregar(ActionEvent e){
-        
-        Apoderado a = new Apoderado();
-        a.setRut_apoderado(rutApoderado);
-        a.setNombre_apoderado(nombreApoderado);
-        a.setFono_apoderado(Integer.toString(fonoApoderado));
-        a.setDireccion_apoderado(direccionApoderado);
-        a.setEmail_apoderado(emailApoderado);
-        
-        this.apoderadosDAO.add(a);
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
+
+    public void agregar(ActionEvent e) {
+
+        if (apoderadosDAO.compruebaExistencia(rutApoderado)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Apoderado ya existe en el sistema."));
+        } else {
+            if (ValidadorRut.validarRut(rutApoderado)) {
+                Apoderado a = new Apoderado();
+                a.setRut_apoderado(rutApoderado);
+                a.setNombre_apoderado(nombreApoderado);
+                a.setFono_apoderado(Integer.toString(fonoApoderado));
+                a.setDireccion_apoderado(direccionApoderado);
+                a.setEmail_apoderado(emailApoderado);
+
+                this.apoderadosDAO.add(a);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de apoderado inválido, reingrese"));
+            }
+        }
+
     }
-    
+
 }
