@@ -65,6 +65,11 @@ public class ActualizarResidenteManagedBean implements Serializable {
 
     public void actualizarResidente(ActionEvent e) throws IOException {
         this.residenteActualizado.setPrevisionNombreTipo(previsionNombreTipoDAO.find(idNombrePrevision));
+
+        Calendar fechaEgresoConvertida = Calendar.getInstance();
+        fechaEgresoConvertida.setTime(fechaEgreso);
+        residenteActualizado.setFecha_egreso(fechaEgresoConvertida);
+
         this.residenteDAO.update(residenteActualizado);
         FacesContext.getCurrentInstance().getExternalContext().redirect("lista_residentes.xhtml");
 

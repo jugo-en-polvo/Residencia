@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.LockModeType;
 import javax.persistence.Persistence;
 
 /**
@@ -20,43 +21,43 @@ import javax.persistence.Persistence;
 public class TratamientosDAO implements TratamientosDAOLocal {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ResidenciaFlorenceEJBPU");
-    
+
     @Override
     public void add(Tratamiento t) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
-            
+
             t.setResidente(em.merge(t.getResidente()));
             t.setMedicamento(em.merge(t.getMedicamento()));
             em.persist(t);
-            
+
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public List<Tratamiento> findAll() {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Tratamiento.findAll", Tratamiento.class).getResultList();
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public List<Tratamiento> findByRut(String rut) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Tratamiento.findByRut", Tratamiento.class)
@@ -65,10 +66,30 @@ public class TratamientosDAO implements TratamientosDAOLocal {
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
+    }
+
+    @Override
+    public boolean verExistencia(String rut, Long id, String hora) {
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.createNamedQuery("Tratamiento.VerExiste", Tratamiento.class)
+                    .setParameter("rut", rut)
+                    .setParameter("id", id)
+                    .setParameter("hora", hora)
+                    .getSingleResult();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        } finally {
+            em.close();
+        }
+
     }
 
 }

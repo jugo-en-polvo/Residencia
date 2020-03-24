@@ -19,5 +19,6 @@ public interface TratamientosDAOLocal {
     void add(Tratamiento t);
     List<Tratamiento> findAll();
     List<Tratamiento> findByRut(String rut);
+    boolean verExistencia(String rut, Long id, String hora);
     
 }
