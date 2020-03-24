@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -42,7 +43,7 @@ public class ActualizarResidenteManagedBean implements Serializable {
     public void setIdNombrePrevision(long idNombrePrevision) {
         this.idNombrePrevision = idNombrePrevision;
     }
-    
+
     public Residente getResidenteActualizado() {
         return residenteActualizado;
     }
@@ -61,7 +62,7 @@ public class ActualizarResidenteManagedBean implements Serializable {
 
     public ActualizarResidenteManagedBean() {
     }
-    
+
     public void actualizarResidente(ActionEvent e) throws IOException {
         this.residenteActualizado.setPrevisionNombreTipo(previsionNombreTipoDAO.find(idNombrePrevision));
         this.residenteDAO.update(residenteActualizado);

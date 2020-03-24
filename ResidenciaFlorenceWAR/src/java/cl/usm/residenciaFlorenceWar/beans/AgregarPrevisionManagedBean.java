@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.PrevisionDAOLocal;
 import cl.usm.residenciaEjb.dto.Prevision;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -47,13 +48,14 @@ public class AgregarPrevisionManagedBean implements Serializable{
     public AgregarPrevisionManagedBean() {
     }
     
-    public void agregar(ActionEvent e){
+    public void agregar(ActionEvent e) throws IOException{
         
         Prevision p = new Prevision();
         p.setTipo_prevision(nombrePrevision);
         p.setDescripcion(descripcion);
         this.previsionDAO.add(p);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Prevision agregarda"));
+        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_previsiones.xhtml");
         
     }
 }

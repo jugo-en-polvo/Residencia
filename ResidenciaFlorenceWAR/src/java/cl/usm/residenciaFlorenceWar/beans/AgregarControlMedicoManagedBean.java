@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.ControlesMedicosDAOLocal;
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Control_Medico;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -83,7 +84,7 @@ public class AgregarControlMedicoManagedBean implements Serializable{
     public AgregarControlMedicoManagedBean() {
     }
     
-    public void agregar(ActionEvent e){
+    public void agregar(ActionEvent e) throws IOException{
         
         Control_Medico cm = new Control_Medico();
         cm.setResidente(residenteDAO.find(rut_residente));
@@ -99,6 +100,7 @@ public class AgregarControlMedicoManagedBean implements Serializable{
         controlesMedicosDAO.add(cm);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Control Agregardo"));
+
         
     }
     

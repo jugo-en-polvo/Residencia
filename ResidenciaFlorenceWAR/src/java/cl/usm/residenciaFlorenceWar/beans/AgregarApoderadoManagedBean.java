@@ -8,6 +8,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dto.Apoderado;
 import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -75,7 +76,7 @@ public class AgregarApoderadoManagedBean implements Serializable {
         this.emailApoderado = emailApoderado;
     }
 
-    public void agregar(ActionEvent e) {
+    public void agregar(ActionEvent e) throws IOException {
 
         if (apoderadosDAO.compruebaExistencia(rutApoderado)) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Apoderado ya existe en el sistema."));
@@ -90,6 +91,7 @@ public class AgregarApoderadoManagedBean implements Serializable {
 
                 this.apoderadosDAO.add(a);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
+                FacesContext.getCurrentInstance().getExternalContext().redirect("listar_apoderados.xhtml");
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de apoderado inválido, reingrese"));
             }

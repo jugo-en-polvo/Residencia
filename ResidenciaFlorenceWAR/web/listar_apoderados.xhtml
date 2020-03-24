@@ -24,7 +24,7 @@
             <f:facet name="header">
                 <h2>Apoderados</h2>
             </f:facet>
-            <p:panelGrid columns="3" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
                 <p:commandLink value="#{apoderado.nombre_apoderado}" 
                                style="text-decoration: none; color: blue"
@@ -33,13 +33,6 @@
                 <h:panelGroup>
                     <p:outputLabel value="Rut: " style="font-weight: bold"/>
                     <p:outputLabel value="#{apoderado.rut_apoderado}"/> 
-                </h:panelGroup>
-
-                <h:panelGroup>
-                    <p:outputLabel value="Ingreso: " style="font-weight: bold"/>
-                    <p:outputLabel value="#{residente.fecha_ingreso.time}">
-                        <f:convertDateTime dateStyle="medium" type="date"/>
-                    </p:outputLabel>
                 </h:panelGroup>
 
             </p:panelGrid>

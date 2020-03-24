@@ -10,6 +10,7 @@ import cl.usm.residenciaEjb.dto.Usuario;
 import cl.usm.residenciaFlorenceWar.utils.PasswordUtils;
 import cl.usm.residenciaFlorenceWar.utils.UtilsConstants;
 import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -35,7 +36,7 @@ public class AgregarUsuarioManagedBean implements Serializable {
     private int nivel_acceso;
     private int estado;
 
-    public void registrar(ActionEvent e) {
+    public void registrar(ActionEvent e) throws IOException {
         if (usuariosDAO.compruebaExistencia(rut)) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario ya existe en el sistema."));
         } else {
@@ -49,6 +50,7 @@ public class AgregarUsuarioManagedBean implements Serializable {
                 usuario.setClave(hash);
                 usuariosDAO.add(usuario);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario Ingresado."));
+                FacesContext.getCurrentInstance().getExternalContext().redirect("listar_usuarios.xhtml");
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de usuario inválido, reingrese."));
             }

@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.MedicamentoDAOLocal;
 import cl.usm.residenciaEjb.dto.Medicamento;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -92,7 +93,7 @@ public class AgregarMedicamentoManagedBean implements Serializable{
     public AgregarMedicamentoManagedBean() {
     }
     
-    public void agregar(ActionEvent e){
+    public void agregar(ActionEvent e) throws IOException{
         
         Medicamento m = new Medicamento();
         m.setNombre(nombre);
@@ -105,6 +106,7 @@ public class AgregarMedicamentoManagedBean implements Serializable{
         
         medicamentosDAO.add(m);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Medicamento Agregado"));
+        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_medicamento.xhtml");
         
     }
     

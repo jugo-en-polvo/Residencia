@@ -33,7 +33,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Residente.findAllEgresados", query = "SELECT r FROM Residente r WHERE r.fecha_egreso IS NOT NULL ORDER BY r.nombre_residente"),
     @NamedQuery(name = "Residente.CompruebaExistencia", query = "SELECT r FROM Residente r WHERE r.rut_residente = :rut")
 })
-public class Residente implements Serializable{
+public class Residente implements Serializable {
 
     @Id
     private String rut_residente;
@@ -48,23 +48,37 @@ public class Residente implements Serializable{
     private String alergias;
     private String observaciones;
     private String regimen_alimentario;
-    
+
     @JoinColumn(name = "rut_apoderado", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Apoderado apoderado;
-    
+
     @JoinColumn(name = "id_prevision", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private PrevisionNombreTipo previsionNombreTipo;
-   
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
     private List<Tratamiento> tratamientos;
-    
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
+    private List<Diagnostico> diagnosticos;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
+    private List<Emergencia> emergencias;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "residente")
     private List<Control_Medico> controlesMedicos;
 
     public String getRut_residente() {
         return rut_residente;
+    }
+
+    public List<Emergencia> getEmergencias() {
+        return emergencias;
+    }
+
+    public void setEmergencias(List<Emergencia> emergencias) {
+        this.emergencias = emergencias;
     }
 
     public void setRut_residente(String rut_residente) {
@@ -166,4 +180,13 @@ public class Residente implements Serializable{
     public void setControlesMedicos(List<Control_Medico> controlesMedicos) {
         this.controlesMedicos = controlesMedicos;
     }
+
+    public List<Diagnostico> getDiagnosticos() {
+        return diagnosticos;
+    }
+
+    public void setDiagnosticos(List<Diagnostico> diagnosticos) {
+        this.diagnosticos = diagnosticos;
+    }
+
 }

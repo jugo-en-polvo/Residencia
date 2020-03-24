@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="index.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="contenido">
+
+        <h:panelGroup layout="block" styleClass="contenedor-lista">
+            <p:selectOneMenu value="#{resumenResidenteManagedBean.rutResidente}">
+                <p:ajax listener="#{resumenResidenteManagedBean.manejarFiltroNuevo}"
+                        update=":formulario:vista"/>
+                <f:selectItem itemLabel="-Solo Actuales-" itemValue="actuales" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Solo Egresados-" itemValue="egresados" noSelectionOption="true"/>
+                <f:selectItem itemLabel="-Todos-" itemValue="todos" noSelectionOption="true"/>
+            </p:selectOneMenu>
+        </h:panelGroup>
+
+        <h:panelGroup style="width: 100%">
+            <h1 style="text-align: center">Aprete el nombre de un residente para ver sus detalles</h1>
+        </h:panelGroup>
+
+        <p:dataGrid id="vista"
+                    var="residente"
+                    value="${resumenResidenteManagedBean.residentes}"
+                    paginator="true"
+                    columns="1" rows="4" 
+                    styleClass="contenedor-resumen-residente">
+            <f:facet name="header">
+                <h2>Residentes</h2>
+            </f:facet>
+            <p:panelGrid columns="3" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
+
+                <p:commandLink value="#{residente.nombre_residente}" 
+                               style="text-decoration: none; color: blue"
+                               actionListener="#{resumenResidenteManagedBean.verResumenDetallado(residente)}"/>
+                
+                <h:panelGroup>
+                    <p:outputLabel value="Rut: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{residente.rut_residente}"/> 
+                </h:panelGroup>
+                
+                <h:panelGroup>
+                    <p:outputLabel value="Ingreso: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{residente.fecha_ingreso.time}">
+                        <f:convertDateTime dateStyle="medium" type="date"/>
+                    </p:outputLabel>
+                </h:panelGroup>
+
+            </p:panelGrid>
+            <p:separator/>
+        </p:dataGrid>
+
+    </ui:define>
+
+</ui:composition>

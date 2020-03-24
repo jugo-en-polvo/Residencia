@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.EmergenciaDAOLocal;
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Emergencia;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -33,6 +34,8 @@ public class AgregarEmergenciaManagedBean implements Serializable{
     private ResidenteDAOLocal residenteDAO;
     @Inject
     private LugarDAOLocal lugarDAO;
+    @Inject
+    private ListarEmergenciasManagedBean emergenciasBEAN;
     private String rut_residente;
     private Date fecha_emergencia;
     private long id_lugar;
@@ -73,7 +76,7 @@ public class AgregarEmergenciaManagedBean implements Serializable{
     public AgregarEmergenciaManagedBean() {
     }
     
-    public void add(ActionEvent e){
+    public void add(ActionEvent e) throws IOException{
         
         Emergencia emer = new Emergencia();
         

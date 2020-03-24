@@ -8,6 +8,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 import cl.usm.residenciaEjb.dao.DiagnosticoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Diagnostico;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -59,7 +60,7 @@ public class AgregarDiagnosticoManagedBean implements Serializable{
     public AgregarDiagnosticoManagedBean() {
     }
     
-    public void add(ActionEvent e){
+    public void add(ActionEvent e) throws IOException{
         
         Diagnostico d = new Diagnostico();
         d.setResidente(residenteDAO.find(rutResidente));
@@ -68,6 +69,7 @@ public class AgregarDiagnosticoManagedBean implements Serializable{
         diagnosticoDAO.add(d);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Diagnostico Agregado"));
+
         
     }
     

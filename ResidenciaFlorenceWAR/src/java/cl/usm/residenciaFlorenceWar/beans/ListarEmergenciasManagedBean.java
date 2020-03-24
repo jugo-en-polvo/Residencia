@@ -9,7 +9,6 @@ import cl.usm.residenciaEjb.dao.EmergenciaDAOLocal;
 import cl.usm.residenciaEjb.dto.Emergencia;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;

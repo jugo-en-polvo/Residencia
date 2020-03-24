@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.MedicamentoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dao.TratamientosDAOLocal;
 import cl.usm.residenciaEjb.dto.Tratamiento;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -71,7 +72,7 @@ public class AgregarTratamientoManagedBean implements Serializable{
     public AgregarTratamientoManagedBean() {
     }
     
-    public void agregar(ActionEvent e){
+    public void agregar(ActionEvent e) throws IOException{
      
         Tratamiento t = new Tratamiento();
         t.setResidente(residenteDAO.find(rutResidente));
@@ -81,5 +82,6 @@ public class AgregarTratamientoManagedBean implements Serializable{
         tratamientosDAO.add(t);
   
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Tratamiento Agregado"));
+
     }
 }

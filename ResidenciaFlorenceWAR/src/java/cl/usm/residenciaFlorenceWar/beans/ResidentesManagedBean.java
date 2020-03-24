@@ -207,7 +207,7 @@ public class ResidentesManagedBean implements Serializable {
         this.previsionesNombreTipoBEAN.manejarCombo();
     }
 
-    public void agregarResidente(ActionEvent e) {
+    public void agregarResidente(ActionEvent e) throws IOException {
 
         if (residenteDAO.compruebaExistencia(rutResidente)) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Residente ya existe en el sistema."));
@@ -237,7 +237,9 @@ public class ResidentesManagedBean implements Serializable {
                 //r.setPrevision(this.previsionDAO.find(idPrevision));
                 r.setPrevisionNombreTipo(this.previsionNombreTipoDAO.find(idPrevision));
 
+                this.residenteDAO.add(r);
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
+                FacesContext.getCurrentInstance().getExternalContext().redirect("lista_residentes.xhtml");
 
             }
         }

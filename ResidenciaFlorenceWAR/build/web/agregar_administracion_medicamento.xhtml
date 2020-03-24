@@ -33,17 +33,37 @@
                 <p:repeat value="#{agregarAdministracionMedicacionManagedBean.medicacionFiltro}" var="medicacion">
                     <p:panelGrid columns="4" layout="grid" style="padding-bottom: 1rem">
 
-                        <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre_generico}" style="text-align: center"/>
-                        <p:outputLabel value="#{medicacion.tratamiento.hora}"/>
-                        <p:outputLabel value="#{agregarAdministracionMedicacionManagedBean.verificarEstado(medicacion)}"/>
-                        <p:inputTextarea value="#{medicacion.observaciones}"
-                                         readonly="true"
-                                         placeholder="Observaciones opcionales"/>
+                        <h:panelGroup layout="block">
+                            <p:outputLabel value="Hora: "
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{medicacion.tratamiento.hora}hrs"/>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block">
+                            <p:outputLabel value="Medicamento: "
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre}" style="text-align: center"/>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block">
+                            <p:outputLabel value="Dosis: "
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{medicacion.tratamiento.dosis}">
+                                <f:convertNumber integerOnly="true"/>
+                            </p:outputLabel>
+                        </h:panelGroup>
+
+                        <h:panelGroup layout="block">
+                            <p:outputLabel value="Estado: "
+                                           styleClass="texto-negrita"/>
+                            <p:outputLabel value="#{agregarAdministracionMedicacionManagedBean.verificarEstado(medicacion)}"/>
+                        </h:panelGroup>
+
                         <p:commandLink value="Actualizar"
-                                       style="text-decoration: none; background: #8056f5; border-radius: 3px; color:white; border: 1px solid black;"
+                                       style="text-decoration: none; color: blue"
                                        actionListener="#{agregarAdministracionMedicacionManagedBean.update(medicacion)}"/>
                     </p:panelGrid>
-                    
+
 
                 </p:repeat>
             </h:panelGroup>

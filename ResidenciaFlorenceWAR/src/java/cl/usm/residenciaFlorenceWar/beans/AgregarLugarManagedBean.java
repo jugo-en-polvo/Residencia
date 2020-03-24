@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.LugarDAOLocal;
 import cl.usm.residenciaEjb.dto.Lugar;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -53,7 +54,7 @@ public class AgregarLugarManagedBean implements Serializable{
         this.fonoLugar = fonoLugar;
     }
     
-    public void agregar(ActionEvent e){
+    public void agregar(ActionEvent e) throws IOException{
         
         Lugar l = new Lugar();
         l.setNombre_lugar(nombreLugar);
@@ -64,6 +65,7 @@ public class AgregarLugarManagedBean implements Serializable{
         lugarDAO.add(l);
         
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Lugar Agregado"));
+        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_lugares.xhtml");
         
     }
     
