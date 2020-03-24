@@ -8,6 +8,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 import cl.usm.residenciaEjb.dao.MedicamentoDAOLocal;
 import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dao.TratamientosDAOLocal;
+import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Tratamiento;
 import java.io.IOException;
 import java.io.Serializable;
@@ -32,10 +33,23 @@ public class AgregarTratamientoManagedBean implements Serializable {
     private ResidenteDAOLocal residenteDAO;
     @Inject
     private MedicamentoDAOLocal medicamentosDAO;
+    @Inject
+    private UsuariosDAOLocal usuarioDAO;
+    @Inject
+    private LoginManagedBean UsuarioConectado;
     private String rutResidente;
     private String idMedicamento;
     private double dosis;
     private String hora;
+    private String Periodo;
+
+    public String getPeriodo() {
+        return Periodo;
+    }
+
+    public void setPeriodo(String Periodo) {
+        this.Periodo = Periodo;
+    }
 
     public String getRutResidente() {
         return rutResidente;
@@ -83,6 +97,8 @@ public class AgregarTratamientoManagedBean implements Serializable {
             t.setMedicamento(medicamentosDAO.find(Long.parseLong(idMedicamento)));
             t.setDosis(dosis);
             t.setHora(hora);
+            t.setUsuario(usuarioDAO.find(UsuarioConectado.getRut()));
+            t.setPeriodo(Periodo);
             tratamientosDAO.add(t);
 
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Tratamiento Agregado"));

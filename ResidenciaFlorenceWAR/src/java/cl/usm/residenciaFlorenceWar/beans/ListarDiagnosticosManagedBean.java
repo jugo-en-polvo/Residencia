@@ -67,5 +67,11 @@ public class ListarDiagnosticosManagedBean implements Serializable {
         FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_diagnostico.xhtml");
         
     }
+    
+    public void eliminar(Diagnostico d) throws IOException{
+        
+        this.diagnosticoDAO.delete(d.getId_diagnostico());
+        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_diagnosticos.xhtml");
+    }
 
 }

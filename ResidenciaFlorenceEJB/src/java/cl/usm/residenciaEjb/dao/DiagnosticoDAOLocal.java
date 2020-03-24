@@ -19,5 +19,5 @@ public interface DiagnosticoDAOLocal {
     List<Diagnostico> findByRut(String rut);
     void add(Diagnostico d);
     void update(Diagnostico d);
-    
+    void delete(Long id);
 }

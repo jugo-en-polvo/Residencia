@@ -30,6 +30,11 @@
             <f:facet name="header">
                 <h2>Resumen de Diagnósticos registrados</h2>
             </f:facet>
+            <p:sidebar widgetVar="sidebar2" position="left" baseZIndex="10000">
+                <h1 style="font-weight:normal">¿Seguro que desea eliminar?</h1>
+                <p:commandButton value="Cancelar" oncomplete="PF('sidebar2').hide()"/>
+                <p:commandButton style="margin-top: " value="Eliminar" actionListener="#{listarDiagnosticosManagedBean.eliminar(diagnostico)}" oncomplete="PF('sidebar2').hide()"/>
+            </p:sidebar>
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
                 <p:outputLabel value="Observación:"
@@ -46,6 +51,12 @@
                                actionListener="#{listarDiagnosticosManagedBean.editar(diagnostico)}"
                                style="text-decoration: none;
                                color: blue"/>
+                <p:outputLabel value=""/>
+                <p:commandLink value="Eliminar"
+                               oncomplete="PF('sidebar2').show()"
+                               style="text-decoration: none;
+                               color: blue">
+                </p:commandLink>
 
             </p:panelGrid>
             <p:separator/>

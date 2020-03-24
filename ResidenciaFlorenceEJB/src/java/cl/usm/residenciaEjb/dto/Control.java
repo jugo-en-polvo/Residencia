@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -29,6 +31,7 @@ import javax.persistence.Table;
 public class Control implements Serializable{
     
     @Id
+    @Temporal(TemporalType.TIMESTAMP)
     private Calendar fecha_hora_control;
     @JoinColumn(name = "rut_residente", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)

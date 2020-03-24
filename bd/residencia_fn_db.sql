@@ -69,7 +69,7 @@ CREATE TABLE `apoderado` (
 
 LOCK TABLES `apoderado` WRITE;
 /*!40000 ALTER TABLE `apoderado` DISABLE KEYS */;
-INSERT INTO `apoderado` VALUES ('19.014.691-k','13dsad','231','dasdsa',''),('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com'),('19.179.208-4','dsa','3213','dadsa','dsa'),('20.000.000-0','Mama','11111111111','Su Casa','mama@gmail.com'),('22.000.000-0','Marianella González','12345','Avenida Rodelillo 3900','');
+INSERT INTO `apoderado` VALUES ('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com');
 /*!40000 ALTER TABLE `apoderado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,6 +135,7 @@ CREATE TABLE `controles_medicos` (
 
 LOCK TABLES `controles_medicos` WRITE;
 /*!40000 ALTER TABLE `controles_medicos` DISABLE KEYS */;
+INSERT INTO `controles_medicos` VALUES ('19.014.691-k','2020-03-24 10:00:00',4,'N','1');
 /*!40000 ALTER TABLE `controles_medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +154,7 @@ CREATE TABLE `diagnostico` (
   PRIMARY KEY (`id_diagnostico`),
   KEY `rut_residente` (`rut_residente`),
   CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +240,7 @@ CREATE TABLE `lugar` (
   `direccion_lugar` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `estado` tinyint NOT NULL,
   PRIMARY KEY (`id_lugar`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -248,7 +249,7 @@ CREATE TABLE `lugar` (
 
 LOCK TABLES `lugar` WRITE;
 /*!40000 ALTER TABLE `lugar` DISABLE KEYS */;
-INSERT INTO `lugar` VALUES (1,'Hospital Naval','123456789','Avenida Freire',1),(2,'Hospital VanAlgo','123456789','Avenida CasaMucho 213',0),(3,'Residencia','2003000400','5 Norte, 5 Poniente',1);
+INSERT INTO `lugar` VALUES (1,'Hospital Naval','123456789','Avenida Freire',1),(2,'Hospital VanAlgo','123456789','Avenida CasaMucho 213',0),(3,'Residencia','2003000400','5 Norte, 5 Poniente',1),(4,'Hospital Van Buren','1234','1234',1);
 /*!40000 ALTER TABLE `lugar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +270,7 @@ CREATE TABLE `medicamento` (
   `stock` int NOT NULL,
   `stock_critico` int NOT NULL,
   PRIMARY KEY (`id_medicamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +279,7 @@ CREATE TABLE `medicamento` (
 
 LOCK TABLES `medicamento` WRITE;
 /*!40000 ALTER TABLE `medicamento` DISABLE KEYS */;
-INSERT INTO `medicamento` VALUES (7,'Paracetamol','600mg','20','Comprimidos','El de siempre. Muy Bueno.',20,10),(8,'Ibuprofeno','600mg','30','Píldoras','Para el dolor.',20,5);
+INSERT INTO `medicamento` VALUES (7,'Paracetamol','600mg','20','Comprimidos','El de siempre. Muy Bueno.',20,10),(8,'Ibuprofeno','600mg','30','Píldoras','Para el dolor.',20,5),(9,'Tapsin Noche','5gr','1','Sobre','Tapsin noche para noche',20,5);
 /*!40000 ALTER TABLE `medicamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +295,7 @@ CREATE TABLE `prevision` (
   `tipo_prevision` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(310) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_prevision`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,7 +304,7 @@ CREATE TABLE `prevision` (
 
 LOCK TABLES `prevision` WRITE;
 /*!40000 ALTER TABLE `prevision` DISABLE KEYS */;
-INSERT INTO `prevision` VALUES (1,'FONASA','El Fondo Nacional de Salud (Fonasa) es el organismo público que administra los fondos estatales destinados a salud en Chile, para dar cobertura a sus beneficiarios y beneficiarias. Fonasa es la alternativa pública al sistema privado de salud, representado por las Instituciones de Salud Previsional (ISAPRES).'),(2,'ISAPRE','Las Instituciones de Salud Previsional (Isapres) son entidades privadas que funcionan en base a un esquema de seguros, las cuales están facultados para administrar la cotización obligatoria de salud de los personas que libre e individualmente optaron por ellas en lugar del sistema de salud estatal (FONASA).'),(3,'Fuerzas Armandas','Previsión dada las fuerzas de orden público.');
+INSERT INTO `prevision` VALUES (1,'FONASA','El Fondo Nacional de Salud (Fonasa) es el organismo público que administra los fondos estatales destinados a salud en Chile, para dar cobertura a sus beneficiarios y beneficiarias. Fonasa es la alternativa pública al sistema privado de salud, representado por las Instituciones de Salud Previsional (ISAPRES).'),(2,'ISAPRE','Las Instituciones de Salud Previsional (Isapres) son entidades privadas que funcionan en base a un esquema de seguros, las cuales están facultados para administrar la cotización obligatoria de salud de los personas que libre e individualmente optaron por ellas en lugar del sistema de salud estatal (FONASA).'),(3,'Fuerzas Armandas','Previsión dada las fuerzas de orden público.'),(4,'Mauricio','dsa');
 /*!40000 ALTER TABLE `prevision` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -368,7 +369,7 @@ CREATE TABLE `residente` (
 
 LOCK TABLES `residente` WRITE;
 /*!40000 ALTER TABLE `residente` DISABLE KEYS */;
-INSERT INTO `residente` VALUES ('11.111.111-1','20.000.000-0',11,'11111111111','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','11','Normal','11'),('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('19.179.208-4','19.179.208-4',6,'das','2020-03-10 00:00:00','2020-03-03 00:00:00',NULL,'M','','Normal',''),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos.'),('22.222.222-2','19.176.758-6',10,'22222222222','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','22','Normal','22'),('33.333.333-3','22.000.000-0',6,'33','2020-03-16 00:00:00','2020-03-16 00:00:00',NULL,'M','33','Normal','33');
+INSERT INTO `residente` VALUES ('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos.');
 /*!40000 ALTER TABLE `residente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -385,12 +386,16 @@ CREATE TABLE `tratamientos` (
   `id_medicamento` int unsigned DEFAULT NULL,
   `dosis` decimal(10,0) DEFAULT NULL,
   `hora` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `rut_usuario` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `periodo` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id_tratamiento`),
   KEY `rut_residente` (`rut_residente`),
   KEY `id_medicamento` (`id_medicamento`),
+  KEY `rut_usuario` (`rut_usuario`),
   CONSTRAINT `tratamientos_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
-  CONSTRAINT `tratamientos_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamento` (`id_medicamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  CONSTRAINT `tratamientos_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamento` (`id_medicamento`),
+  CONSTRAINT `tratamientos_ibfk_3` FOREIGN KEY (`rut_usuario`) REFERENCES `usuarios` (`rut_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,6 +404,7 @@ CREATE TABLE `tratamientos` (
 
 LOCK TABLES `tratamientos` WRITE;
 /*!40000 ALTER TABLE `tratamientos` DISABLE KEYS */;
+INSERT INTO `tratamientos` VALUES (27,'19.014.691-k',9,1,'22:00','19.014.691-k','Todos los días.'),(28,'19.014.691-k',9,1,'22:00','19.014.691-k','Todos los días.');
 /*!40000 ALTER TABLE `tratamientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,4 +444,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-21 21:37:05
+-- Dump completed on 2020-03-24  8:35:42

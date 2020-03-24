@@ -46,6 +46,11 @@
                              requiredMessage="Debe ingrear una hora">
                 </p:inputMask>
                 
+                <p:outputLabel value="Periocidad"/>
+                <p:inputTextarea value="#{agregarTratamientoManagedBean.periodo}"
+                                 placeholder="Ejemplo: Todos los días."
+                                 maxlength="100"/>
+                
             </p:panelGrid>
             <p:commandButton value="Registrar" 
                              actionListener="#{agregarTratamientoManagedBean.agregar}" 

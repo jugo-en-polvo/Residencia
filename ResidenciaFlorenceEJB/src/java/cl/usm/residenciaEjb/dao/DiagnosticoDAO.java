@@ -67,4 +67,15 @@ public class DiagnosticoDAO implements DiagnosticoDAOLocal {
 
     }
 
+    @Override
+    public void delete(Long id) {
+    EntityManager em = emf.createEntityManager();
+        try {
+            em.remove(em.find(Diagnostico.class, id));
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }}
+
 }

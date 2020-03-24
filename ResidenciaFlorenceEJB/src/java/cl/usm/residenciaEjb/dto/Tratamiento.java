@@ -35,6 +35,7 @@ public class Tratamiento implements Serializable{
     private long id_tratamiento;
     private double dosis;
     private String hora;
+    private String periodo;
     
     @JoinColumn(name = "rut_residente", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
@@ -43,6 +44,10 @@ public class Tratamiento implements Serializable{
     @JoinColumn(name = "id_medicamento", nullable = false)
     @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Medicamento medicamento;
+    
+    @JoinColumn(name = "rut_usuario", nullable = false)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    private Usuario usuario;
 
     public long getId_tratamiento() {
         return id_tratamiento;
@@ -83,6 +88,20 @@ public class Tratamiento implements Serializable{
     public void setMedicamento(Medicamento medicamento) {
         this.medicamento = medicamento;
     }
-    
-    
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(String periodo) {
+        this.periodo = periodo;
+    }
 }
