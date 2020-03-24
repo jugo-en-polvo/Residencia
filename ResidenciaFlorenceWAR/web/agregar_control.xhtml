@@ -10,7 +10,9 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje"/>
+        <p:growl id="mensaje"
+                 showDetail="true"
+                 showSummary="true"/>
 
         <p:panel header="Registrar Control" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
@@ -29,17 +31,20 @@
                 <p:outputLabel value="Fecha de hoy"/>
 
 
-                <p:outputLabel value="Presion Arterial:"/>
+                <p:outputLabel value="Presion Arterial(sistóloca/diastólica):"/>
                 <p:inputText value="#{agregarControlManagedBean.presionArterial}"
-                             maxlength="10"/>
+                             placeholder="Ejemplo: 120/80"
+                             maxlength="7"/>
 
-                <p:outputLabel value="Pulso:"/>
+                <p:outputLabel value="Pulso(Latidos por minuto):"/>
                 <p:inputText value="#{agregarControlManagedBean.pulso}"
-                             maxlength="5"/>
+                             placeholder="Ejemplo: 90"
+                             maxlength="3"/>
 
-                <p:outputLabel value="Saturacion:"/>
+                <p:outputLabel value="Saturación de Oxígeno(0-100%):"/>
                 <p:inputText value="#{agregarControlManagedBean.saturacion}"
-                             maxlength="4"/>
+                             placeholder="Ejemplo: 80"
+                             maxlength="3"/>
 
                 <p:outputLabel value="HGT:"/>
                 <p:inputText value="#{agregarControlManagedBean.hgt}"

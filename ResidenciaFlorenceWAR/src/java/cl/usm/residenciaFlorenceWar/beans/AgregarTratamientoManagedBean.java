@@ -24,7 +24,7 @@ import javax.inject.Inject;
  */
 @Named(value = "agregarTratamientoManagedBean")
 @ViewScoped
-public class AgregarTratamientoManagedBean implements Serializable{
+public class AgregarTratamientoManagedBean implements Serializable {
 
     @Inject
     private TratamientosDAOLocal tratamientosDAO;
@@ -68,20 +68,36 @@ public class AgregarTratamientoManagedBean implements Serializable{
     public void setHora(String hora) {
         this.hora = hora;
     }
-    
+
     public AgregarTratamientoManagedBean() {
     }
-    
-    public void agregar(ActionEvent e) throws IOException{
-     
-        Tratamiento t = new Tratamiento();
-        t.setResidente(residenteDAO.find(rutResidente));
-        t.setMedicamento(medicamentosDAO.find(Long.parseLong(idMedicamento)));
-        t.setDosis(dosis);
-        t.setHora(hora);
-        tratamientosDAO.add(t);
-  
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Tratamiento Agregado"));
 
+    public void agregar(ActionEvent e) throws IOException {
+
+        if (!validaHora(hora)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hora no válida"));
+        } else {
+
+            Tratamiento t = new Tratamiento();
+            t.setResidente(residenteDAO.find(rutResidente));
+            t.setMedicamento(medicamentosDAO.find(Long.parseLong(idMedicamento)));
+            t.setDosis(dosis);
+            t.setHora(hora);
+            tratamientosDAO.add(t);
+
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Tratamiento Agregado"));
+        }
+    }
+
+    private boolean validaHora(String hora) {
+
+        String horas = hora.substring(0, hora.indexOf(":"));
+        String minutos = hora.substring(hora.indexOf(":") + 1, hora.length());
+
+        if (Integer.parseInt(horas) > 23 || Integer.parseInt(minutos) > 59) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
