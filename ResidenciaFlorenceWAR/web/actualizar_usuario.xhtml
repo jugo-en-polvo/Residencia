@@ -15,16 +15,20 @@
         <p:panel header="Actualizar Usuario" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Rut: "/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Rut"/>
                 <p:outputLabel value="#{actualizarUsuarioManagedBean.usuarioActualizado.rut_usuario}"/>
                 
-                <p:outputLabel value="Tipo de Cuenta" />
+                <p:outputLabel value="Tipo de Cuenta(*)" />
                 <p:selectOneMenu required="true" id="selector-acceso" value="#{actualizarUsuarioManagedBean.usuarioActualizado.nivel_acceso}">
                     <f:selectItem itemLabel="Usuario Regular" itemValue="0"/>
                     <f:selectItem itemLabel="Administrador" itemValue="1"/>
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Estado"/>
+                <p:outputLabel value="Estado(*)"/>
                 <p:selectOneMenu required="true" id="selector-estado" value="#{actualizarUsuarioManagedBean.usuarioActualizado.estado}">
                     <f:selectItem itemLabel="Habilitado" itemValue="0"/>
                     <f:selectItem itemLabel="Deshabilitado" itemValue="1"/>

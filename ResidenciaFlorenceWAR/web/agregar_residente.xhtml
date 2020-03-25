@@ -10,15 +10,16 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje" 
-                 showDetail="true"
-                 showSummary="true"
-                 sticky="true"/>
+        <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Residente" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre Apoderado"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Nombre Apoderado(*)"/>
                 <p:selectOneMenu id="selector-apoderados" value="#{residentesManagedBean.rutApoderado}">
                     <p:ajax update=":formulario" listener="#{residentesManagedBean.showOrHide}"/>
 
@@ -26,53 +27,53 @@
                     <f:selectItems value="#{listarApoderadosManagedBean.apoderadosCombo}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Rut Apoderado"
+                <p:outputLabel value="Rut Apoderado(*)"
                                rendered="#{!residentesManagedBean.hidden}"/>
                 <p:inputMask value="#{residentesManagedBean.rutApoderado}" 
                              rendered="#{!residentesManagedBean.hidden}"
                              required="true"
                              readonly="true"
-                             requiredMessage="Debe ingresar un Rut de Apoderado"
+                             requiredMessage="Rut de Apoderado: Obligatorio."
                              mask="99.999.999-*"/>
 
                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
                 <p:separator rendered="#{residentesManagedBean.hidden}"/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
-                               value="Rut Apoderado"/>
+                               value="Rut Apoderado(*)"/>
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.rutApoderado}"
                              maxlength="12"
                              required="true"
-                             requiredMessage="Debe ingresar el Rut del Apoderado"/>
+                             requiredMessage="Rut de Apoderado: Obligatorio."/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
-                               value="Nombre"/>                
+                               value="Nombre Completo(*)"/>                
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.nombreApoderado}"
                              required="true"
                              maxlength="60"
-                             requiredMessage="Debe ingresar el Nombre del Apoderado"/>
+                             requiredMessage="Nombre de Apoderado: Obligatorio."/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
-                               value="Teléfono"/>
+                               value="Teléfono(*)"/>
                 <p:inputText id="txt" 
                              rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.fonoApoderado}"
                              required="true"
-                             maxlength="10"
-                             requiredMessage="Debe ingresar un Fono de contacto"
+                             maxlength="9"
+                             requiredMessage="Teléfono de Apoderado: Obligatorio."
                              >
                     <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
-                               value="Dirección"/>
+                               value="Dirección(*)"/>
                 <p:inputText rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
                              maxlength="45"
-                             requiredMessage="Debe ingresar una Dirección"/>
+                             requiredMessage="Dirección de Apoderado: Obligatorio."/>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Email"/>
@@ -82,49 +83,49 @@
 
                 <p:separator/><p:separator/>
 
-                <p:outputLabel value="Rut Residente"/>
+                <p:outputLabel value="Rut Residente(*)"/>
                 <p:inputText value="#{residentesManagedBean.rutResidente}" 
                              maxlength="12"
                              required="true"
-                             requiredMessage="Debe ingresar el Rut del Residente"/>
+                             requiredMessage="Rut de Residente: Obligatorio."/>
 
-                <p:outputLabel value="Nombre completo"/>
+                <p:outputLabel value="Nombre completo(*)"/>
                 <p:inputText value="#{residentesManagedBean.nombre}"
                              required="true"
                              maxlength="60"
-                             requiredMessage="Debe ingresar el Nombre del Residente"/>
+                             requiredMessage="Nombre de Residente: Obligatorio."/>
 
-                <p:outputLabel value="Fecha de Naciemiento"/>
+                <p:outputLabel value="Fecha de Naciemiento(*)"/>
                 <p:calendar value="#{residentesManagedBean.fechaNacimieto}"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            requiredMessage="Fecha de Nacimiento: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
-                <p:outputLabel value="Fecha de ingreso"/>
+                <p:outputLabel value="Fecha de Ingreso(*)"/>
                 <p:calendar value="#{residentesManagedBean.fechaIngreso}"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de ingreso del Residente"
+                            requiredMessage="Fecha de Ingreso: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
-                <p:outputLabel value="Sexo"/>
+                <p:outputLabel value="Sexo(*)"/>
                 <p:selectOneMenu value="#{residentesManagedBean.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="M"/>
                     <f:selectItem itemLabel="Femenino" itemValue="F"/>
                 </p:selectOneMenu>   
 
-                <p:outputLabel value="Régimen Alimentario"/>
+                <p:outputLabel value="Régimen Alimentario(*)"/>
                 <p:selectOneMenu value="#{residentesManagedBean.regimenAlimentario}">
                     <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
                     <f:selectItem itemLabel="Dieta Diabética" itemValue="Diabetica"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Tipo Previsión"/>
+                <p:outputLabel value="Tipo Previsión(*)"/>
                 <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
                     <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
                     <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Categoría/Nombre Previsión"/>
+                <p:outputLabel value="Categoría/Nombre Previsión(*)"/>
                 <p:selectOneMenu id="Items-Prevision" value="#{residentesManagedBean.idPrevision}">
                     <f:selectItems value="#{listarPrevisionesNombreTipoManagedBean.previsionesNombreTipoCombo}"/>
                 </p:selectOneMenu>

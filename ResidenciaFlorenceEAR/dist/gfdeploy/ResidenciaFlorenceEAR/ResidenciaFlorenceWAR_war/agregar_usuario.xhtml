@@ -11,50 +11,55 @@
     
     <ui:define name="contenido">
         
-        <p:growl id="mensaje" 
-                         showDetail="true"
-                         showSummary="true"
-                         sticky="true"/>
+        <p:growl id="mensaje"/>
         
         <p:panel header="Registrar Usuario" class="panel-registro">
             <p:panelGrid columns="2" layout="grid"  styleClass="ui-noborder">
-                <p:outputLabel value="Rut"/>
+                
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Rut(*)"/>
                 <p:inputText value="#{agregarUsuarioManagedBean.rut}"
                              maxlength="12"
                              required="true"
-                             requiredMessage="Debe ingresar el Rut Apoderado"/>
+                             requiredMessage="Rut: Obligatorio."/>
                 
-                <p:outputLabel value="Nombre"/>
-                <p:inputText value="#{agregarUsuarioManagedBean.nombre}" required="true" requiredMessage="Debe ingresar el nombre del usuario"/>
+                <p:outputLabel value="Nombre(*)"/>
+                <p:inputText value="#{agregarUsuarioManagedBean.nombre}" 
+                             required="true"
+                             requiredMessage="Nombre: Obligatorio."/>
                 
-                <p:outputLabel value="Tipo de Cuenta" />
+                <p:outputLabel value="Tipo de Cuenta(*)" />
                 <p:selectOneMenu required="true" id="selector-acceso" value="#{agregarUsuarioManagedBean.nivel_acceso}">
                     <f:selectItem itemLabel="Usuario Regular" itemValue="0"/>
                     <f:selectItem itemLabel="Administrador" itemValue="1"/>
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Estado"/>
+                <p:outputLabel value="Estado(*)"/>
                 <p:selectOneMenu required="true" id="selector-estado" value="#{agregarUsuarioManagedBean.estado}">
                     <f:selectItem itemLabel="Habilitado" itemValue="0"/>
                     <f:selectItem itemLabel="Deshabilitado" itemValue="1"/>
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Contraseña"/>
+                <p:outputLabel value="Contraseña(*)"/>
                 <p:password id="pass1"
                             value="#{agregarUsuarioManagedBean.clave}"
                             required="true" 
-                            requiredMessage="Debe ingresar una contraseña para el usuario"
+                            requiredMessage="Contraseña: Obligatorio."
                             match="pass2"
                             feedback="true"
                             goodLabel="Buena"
                             strongLabel="Fuerte"
                             weakLabel="Debil"
                             promptLabel="Ingrese contraseña"/>
-                <p:outputLabel value="Repita Contraseña"/>
+                
+                <p:outputLabel value="Repita Contraseña(*)"/>
                 <p:password value="#{agregarUsuarioManagedBean.clave}" 
                             id="pass2" 
                             required="true" 
-                            requiredMessage="Debe ingresar confirmación de contraseña"/>
+                            requiredMessage="Confirmar Contraseña: Obligatorio."/>
             </p:panelGrid>
             
             <p:commandButton value="Registrar" 

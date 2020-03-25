@@ -38,7 +38,7 @@ public class AgregarUsuarioManagedBean implements Serializable {
 
     public void registrar(ActionEvent e) throws IOException {
         if (usuariosDAO.compruebaExistencia(rut)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario ya existe en el sistema."));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Usuario ya existe en el sistema.", ""));
         } else {
             if (ValidadorRut.validarRut(rut)) {
                 String hash = PasswordUtils.generateSecurePassword(clave, UtilsConstants.SALT);
@@ -52,7 +52,7 @@ public class AgregarUsuarioManagedBean implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Usuario Ingresado."));
                 FacesContext.getCurrentInstance().getExternalContext().redirect("listar_usuarios.xhtml");
             } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de usuario inválido, reingrese."));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Rut inválido", ""));
             }
 
         }

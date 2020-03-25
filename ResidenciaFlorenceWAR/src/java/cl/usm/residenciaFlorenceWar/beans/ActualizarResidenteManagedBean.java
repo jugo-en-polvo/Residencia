@@ -31,7 +31,7 @@ public class ActualizarResidenteManagedBean implements Serializable {
     @Inject
     private PrevisionNombreTipoDAOLocal previsionNombreTipoDAO;
     @Inject
-    private ListarPrevisionesNombreTipoManagedBean listarPrevisionesNombreTipoBean;
+    private VerResidenteManagedBean verResidenteBEAN;
     private Residente residenteActualizado;
     private Date fechaEgreso;
     private long idNombrePrevision;
@@ -66,12 +66,16 @@ public class ActualizarResidenteManagedBean implements Serializable {
     public void actualizarResidente(ActionEvent e) throws IOException {
         this.residenteActualizado.setPrevisionNombreTipo(previsionNombreTipoDAO.find(idNombrePrevision));
 
-        Calendar fechaEgresoConvertida = Calendar.getInstance();
-        fechaEgresoConvertida.setTime(fechaEgreso);
-        residenteActualizado.setFecha_egreso(fechaEgresoConvertida);
-
+        if (fechaEgreso == null) {
+            residenteActualizado.setFecha_egreso(null);
+        } else {
+            Calendar fechaEgresoConvertida = Calendar.getInstance();
+            fechaEgresoConvertida.setTime(fechaEgreso);
+            residenteActualizado.setFecha_egreso(fechaEgresoConvertida);
+        }
         this.residenteDAO.update(residenteActualizado);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("lista_residentes.xhtml");
+        this.verResidenteBEAN.setResidenteDetalle(residenteActualizado);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("ver_residente_detalle.xhtml");
 
     }
 

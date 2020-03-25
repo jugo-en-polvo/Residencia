@@ -10,40 +10,41 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje" 
-                 showDetail="true"
-                 showSummary="true"
-                 sticky="true"/>
+        <p:growl id="mensaje"/>
 
         <p:panel class="panel-registro" header="Registro Apoderado">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Rut Apoderado"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+
+                <p:outputLabel value="Rut Apoderado(*)"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.rutApoderado}"
                              maxlength="12"
                              required="true"
-                             requiredMessage="Debe ingresar el Rut del Apoderado"/>
+                             requiredMessage="Rut Apoderado: Obligatorio."/>
 
-                <p:outputLabel value="Nombre"/>                
+                <p:outputLabel value="Nombre Completo(*)"/>                
                 <p:inputText value="#{agregarApoderadoManagedBean.nombreApoderado}"
                              required="true"
-                             requiredMessage="Debe ingresar el Nombre de Apoderado"/>
+                             requiredMessage="Nombre Apoderado: Obligatorio."/>
 
-                <p:outputLabel value="Teléfono"/>
+                <p:outputLabel value="Teléfono(*)"/>
                 <p:inputText id="txt" 
                              rendered="#{residentesManagedBean.hidden}"
                              value="#{agregarApoderadoManagedBean.fonoApoderado}"
                              required="true"
-                             maxlength="10"
-                             requiredMessage="Debe ingresar un Fono de Contacto"
+                             maxlength="9"
+                             requiredMessage="Teléfono Apoderado: Obligatorio."
                              >
                     <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>
 
-                <p:outputLabel value="Dirección"/>
+                <p:outputLabel value="Dirección(*)"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
-                             requiredMessage="Debe ingresar una Dirección"/>
+                             requiredMessage="Dirección Apoderado: Obligatorio."/>
 
                 <p:outputLabel value="Email"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.emailApoderado}"/>

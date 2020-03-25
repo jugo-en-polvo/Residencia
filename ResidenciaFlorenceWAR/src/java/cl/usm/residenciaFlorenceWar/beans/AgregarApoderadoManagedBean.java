@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ApoderadoDAOLocal;
 import cl.usm.residenciaEjb.dto.Apoderado;
+import cl.usm.residenciaFlorenceWar.utils.ValidadorEmail;
 import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
 import java.io.IOException;
 import java.io.Serializable;
@@ -79,24 +80,41 @@ public class AgregarApoderadoManagedBean implements Serializable {
     public void agregar(ActionEvent e) throws IOException {
 
         if (apoderadosDAO.compruebaExistencia(rutApoderado)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Apoderado ya existe en el sistema."));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Apoderado ya existe en el sistema.", ""));
         } else {
-            if (ValidadorRut.validarRut(rutApoderado)) {
-                Apoderado a = new Apoderado();
-                a.setRut_apoderado(rutApoderado);
-                a.setNombre_apoderado(nombreApoderado);
-                a.setFono_apoderado(Integer.toString(fonoApoderado));
-                a.setDireccion_apoderado(direccionApoderado);
-                a.setEmail_apoderado(emailApoderado);
+            if (VerificarEmail(emailApoderado)) {
+                if (ValidadorRut.validarRut(rutApoderado)) {
+                    Apoderado a = new Apoderado();
+                    a.setRut_apoderado(rutApoderado);
+                    a.setNombre_apoderado(nombreApoderado);
+                    a.setFono_apoderado(Integer.toString(fonoApoderado));
+                    a.setDireccion_apoderado(direccionApoderado);
+                    a.setEmail_apoderado(emailApoderado);
 
-                this.apoderadosDAO.add(a);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
-                FacesContext.getCurrentInstance().getExternalContext().redirect("listar_apoderados.xhtml");
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de apoderado inválido, reingrese"));
+                    this.apoderadosDAO.add(a);
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Agregado"));
+                    FacesContext.getCurrentInstance().getExternalContext().redirect("listar_apoderados.xhtml");
+                } else {
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Rut inválido", ""));
+                }
             }
         }
 
+    }
+
+    private boolean VerificarEmail(String email) {
+    
+        if("".equals(email)){
+            return true;
+        }else{
+             if(!ValidadorEmail.ValidardorEmail(email)){
+                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Email inválido", ""));
+                 return false;
+             }else{
+                 return true;
+             }
+        }
+        
     }
 
 }

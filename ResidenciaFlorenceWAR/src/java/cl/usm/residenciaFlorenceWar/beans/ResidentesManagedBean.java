@@ -210,10 +210,10 @@ public class ResidentesManagedBean implements Serializable {
     public void agregarResidente(ActionEvent e) throws IOException {
 
         if (residenteDAO.compruebaExistencia(rutResidente)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Residente ya existe en el sistema."));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Residente ya existe en el sistema.", ""));
         } else {
             if (!ValidadorRut.validarRut(rutResidente)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Rut de residente inválido, reingrese."));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Rut inválido.", ""));
             } else {
 
                 Residente r = new Residente();
@@ -234,11 +234,10 @@ public class ResidentesManagedBean implements Serializable {
                 r.setObservaciones(observaciones);
                 r.setRegimen_alimentario(regimenAlimentario);
                 r.setApoderado(this.apoderadoDAO.find(rutApoderado));
-                //r.setPrevision(this.previsionDAO.find(idPrevision));
                 r.setPrevisionNombreTipo(this.previsionNombreTipoDAO.find(idPrevision));
 
                 this.residenteDAO.add(r);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Residente Agregado"));
+
                 FacesContext.getCurrentInstance().getExternalContext().redirect("lista_residentes.xhtml");
 
             }

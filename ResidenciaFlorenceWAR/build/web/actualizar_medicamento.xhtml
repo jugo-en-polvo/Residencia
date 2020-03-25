@@ -15,11 +15,15 @@
         <p:panel header="Actualizar Medicamento" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Nombre(*)"/>
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.nombre}"
                              placeholder="Ejemplo: Paracetamol"
                              required="true"
-                             requiredMessage="Ingrese un Nombre"/>
+                             requiredMessage="Nombre: Obligatorio."/>
 
                 <p:outputLabel value="Concentración"/>
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.concentracion}"
@@ -38,14 +42,14 @@
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
-                               requiredMessage="Debe ingresar un Stock"/>
+                               requiredMessage="Stock: Obligatorio."/>
 
                 <p:outputLabel value="Stock Crítico"/>
                 <p:inputNumber value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.stock_critico}"
                                decimalPlaces="0"
                                decimalSeparator=","
                                required="true"
-                               requiredMessage="Debe ingresar un Stock Crítico"/>
+                               requiredMessage="Stock mínimo: Obligatorio."/>
 
                 <p:outputLabel value="Detalle"/>
                 <p:inputTextarea value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.detalle}"/>

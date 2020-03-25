@@ -15,11 +15,15 @@
         <p:panel header="Actualizar Previsión" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Nombre Previsión: "/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+
+                <p:outputLabel value="Nombre Previsión(*): "/>
                 <p:inputText value="#{actualizarPrevisionManagedBean.previsionActualizado.tipo_prevision}"
                              required="true"
-                             requiredMessage="Ingrese un nombre para la previsión"/>
-                
+                             requiredMessage="Nombre Previsión: Obligatorio."/>
+
                 <p:outputLabel value="Descripción"/>
                 <p:inputTextarea value="#{actualizarPrevisionManagedBean.previsionActualizado.descripcion}"/>    
 

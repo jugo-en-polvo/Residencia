@@ -15,19 +15,23 @@
         <p:panel header="Actualizar Nombre/Tipo Previsión" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Tipo Previsión"/>
-                <p:selectOneMenu value="#{actualizarNombreTipoPrevisoiinManagedBean.idPrevision}">
-                   <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
-                </p:selectOneMenu>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
                 
-                <p:outputLabel value="Nombre/Categotría previsión"/>
+                <p:outputLabel value="Tipo Previsión(*)"/>
+                <p:selectOneMenu value="#{actualizarNombreTipoPrevisoiinManagedBean.idPrevision}">
+                    <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="Nombre/Categotría previsión(*)"/>
                 <p:inputText value="#{actualizarNombreTipoPrevisoiinManagedBean.previsionNombreTipoActualizado.nombre_prevision}"
                              required="true"
-                             requiredMessage="Debe ingresar un nombre para la previsión"/>
-                
+                             requiredMessage="Nombre/Categoría Previsión: Obligatorio."/>
+
                 <p:outputLabel value="Descripción"/>
                 <p:inputTextarea value="#{actualizarNombreTipoPrevisoiinManagedBean.previsionNombreTipoActualizado.descripcion}"/>
-                
+
             </p:panelGrid>
 
             <p:commandButton 

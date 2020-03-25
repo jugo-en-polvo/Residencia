@@ -14,49 +14,56 @@
 
         <p:panel header="Actualizar Residente" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+                
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
 
-                <p:outputLabel value="Rut Residente"/>
+                <p:outputLabel value="Rut Residente(*)"/>
                 <p:outputLabel value="#{actualizarResidenteManagedBean.residenteActualizado.rut_residente}" />
 
-                <p:outputLabel value="Nombre completo"/>
+                <p:outputLabel value="Nombre completo(*)"/>
                 <p:inputText value="#{actualizarResidenteManagedBean.residenteActualizado.nombre_residente}"
                              required="true"
                              maxlength="60"
                              requiredMessage="Debe ingresar el Nombre del Residente"/>
 
-                <p:outputLabel value="Fecha de Naciemiento"/>
+                <p:outputLabel value="Fecha de Naciemiento(*)"/>
                 <p:calendar value="#{actualizarResidenteManagedBean.residenteActualizado.fecha_nacimiento.time}" placeholder="Presione"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"/>
+                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
-                <p:outputLabel value="Fecha de ingreso"/>
+                <p:outputLabel value="Fecha de Ingreso(*)"/>
                 <p:calendar value="#{actualizarResidenteManagedBean.residenteActualizado.fecha_ingreso.time}" placeholder="Presione"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de ingreso del residente"/>
+                            requiredMessage="Debe ingresar fecha de ingreso del residente"
+                            locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
-                <p:outputLabel value="Fecha de egreso"/>
-                <p:calendar value="#{actualizarResidenteManagedBean.fechaEgreso}" placeholder="Presione"/>
+                <p:outputLabel value="Fecha de Egreso"/>
+                <p:calendar value="#{actualizarResidenteManagedBean.fechaEgreso}"
+                            locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
 
-                            <p:outputLabel value="Sexo"/>
+                <p:outputLabel value="Sexo(*)"/>
                 <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.sexo}">
                     <f:selectItem itemLabel="Masculino" itemValue="M"/>
                     <f:selectItem itemLabel="Femenino" itemValue="F"/>
                 </p:selectOneMenu>   
 
-                <p:outputLabel value="Régimen Alimentario"/>
+                <p:outputLabel value="Régimen Alimentario(*)"/>
                 <p:selectOneMenu value="#{actualizarResidenteManagedBean.residenteActualizado.regimen_alimentario}">
                     <f:selectItem itemLabel="Dieta Normal" itemValue="Normal"/>
                     <f:selectItem itemLabel="Dieta Diabetica" itemValue="Diabetica"/>
                 </p:selectOneMenu> 
 
-                <p:outputLabel value="Tipo Previsión"/>
+                <p:outputLabel value="Tipo Previsión(*)"/>
                 <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
                     <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
                     <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Categoría/Nombre Previsión"/>
+                <p:outputLabel value="Categoría/Nombre Previsión(*)"/>
                 <p:selectOneMenu id="Items-Prevision" value="#{actualizarResidenteManagedBean.idNombrePrevision}">
                     <f:selectItems value="#{listarPrevisionesNombreTipoManagedBean.previsionesNombreTipoCombo}"/>
                 </p:selectOneMenu>

@@ -15,10 +15,14 @@
         <p:panel header="Registrar Previsión" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
                 
-                <p:outputLabel value="Nombre"/>
+                 <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Nombre(*)"/>
                 <p:inputText value="#{agregarPrevisionManagedBean.nombrePrevision}"
                              required="true"
-                             requiredMessage="Debe llenar el campo"/>
+                             requiredMessage="Nombre Previsión: Obligatorio"/>
                 
                 <p:outputLabel value="Descripción"/>
                 <p:inputTextarea value="#{agregarPrevisionManagedBean.descripcion}"/>

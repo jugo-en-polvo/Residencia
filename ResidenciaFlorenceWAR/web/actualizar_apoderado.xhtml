@@ -15,24 +15,28 @@
         <p:panel header="Actualizar Apoderado" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Rut: "/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Rut(*) "/>
                 <p:outputLabel value="#{actualizarApoderadoManagedBean.apoderadoActualizado.rut_apoderado}"/>
 
-                <p:outputLabel value="Nombre: "/>
+                <p:outputLabel value="Nombre Completo(*) "/>
                 <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.nombre_apoderado}"
                              required="true"
-                             requiredMessage="Debe ingresar un nombre para el Apoderado"/>
+                             requiredMessage="Nombre: Obligatorio."/>
 
-                <p:outputLabel value="Dirección: "/>
+                <p:outputLabel value="Dirección(*) "/>
                 <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.direccion_apoderado}"
                              required="true"
-                             requiredMessage="Debe ingresar una dirección para el Apoderado"/>
+                             requiredMessage="Dirección: Obligatorio."/>
 
-                <p:outputLabel value="Teléfono"/>
+                <p:outputLabel value="Teléfono(*)"/>
                 <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.fono_apoderado}"
                              required="true"
-                             maxlength="10"
-                             requiredMessage="Debe ingresar un Fono de Contacto"
+                             maxlength="9"
+                             requiredMessage="Teléfono: Obligatorio."
                              >
                     <p:keyFilter regEx="/[\d\.]/"/> 
                 </p:inputText>

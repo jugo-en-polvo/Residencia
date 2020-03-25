@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.ResidenteDAOLocal;
 import cl.usm.residenciaEjb.dto.Residente;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Calendar;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -50,6 +51,12 @@ public class VerResidenteManagedBean implements Serializable{
         this.listarPrevisionesNombreTipoBEAN.setFiltro(Long.toString(residenteDetalle.getPrevisionNombreTipo().getPrevision().getId_prevision()));
         this.actualizarResidenteBEAN.setIdNombrePrevision(residenteDetalle.getPrevisionNombreTipo().getId_prevision_nombre_tipo());
         this.listarPrevisionesNombreTipoBEAN.manejarCombo();
+        if(this.residenteDetalle.getFecha_egreso() != null){
+            Calendar fechaEgreso =  this.residenteDetalle.getFecha_egreso();
+            this.actualizarResidenteBEAN.setFechaEgreso(fechaEgreso.getTime());
+        }else{
+            this.actualizarResidenteBEAN.setFechaEgreso(null);
+        }
         this.actualizarResidenteBEAN.setResidenteActualizado(residenteDetalle);
         FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_residente.xhtml");
     }
