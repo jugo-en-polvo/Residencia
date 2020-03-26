@@ -68,5 +68,19 @@ public class ControlesMedicosDAO implements ControlesMedicosDAOLocal {
         }
     }
 
+    @Override
+    public void update(Control_Medico cm) {
+    
+        
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.merge(cm);
+        } catch (Exception e) {
+            System.out.println(e);
+        }finally{
+            em.close();
+        }
+    }
+
     
 }

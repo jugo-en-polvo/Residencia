@@ -20,17 +20,20 @@
                 <p:outputLabel value=""/>
                 
                 <p:outputLabel value="Tipo Previsión(*)"/>
-                <p:selectOneMenu value="#{actualizarNombreTipoPrevisoiinManagedBean.idPrevision}">
+                <p:selectOneMenu value="#{actualizarNombreTipoPrevisoiinManagedBean.idPrevision}"
+                                 autoWidth="false">
                     <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Nombre/Categotría previsión(*)"/>
                 <p:inputText value="#{actualizarNombreTipoPrevisoiinManagedBean.previsionNombreTipoActualizado.nombre_prevision}"
                              required="true"
-                             requiredMessage="Nombre/Categoría Previsión: Obligatorio."/>
+                             requiredMessage="Nombre/Categoría Previsión: Obligatorio."
+                             maxlength="45"/>
 
                 <p:outputLabel value="Descripción"/>
-                <p:inputTextarea value="#{actualizarNombreTipoPrevisoiinManagedBean.previsionNombreTipoActualizado.descripcion}"/>
+                <p:inputTextarea value="#{actualizarNombreTipoPrevisoiinManagedBean.previsionNombreTipoActualizado.descripcion}"
+                                 maxlength="300"/>
 
             </p:panelGrid>
 

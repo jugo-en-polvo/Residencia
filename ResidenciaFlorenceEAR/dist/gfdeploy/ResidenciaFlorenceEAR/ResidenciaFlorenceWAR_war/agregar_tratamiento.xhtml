@@ -10,44 +10,51 @@
 
     <ui:define name="contenido">
 
-        <p:growl id="mensaje" showDetail="true" showSummary="true"/>
+        <p:growl id="mensaje"/>
 
         <p:panel header="Registrar Tratamiento" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
                 
-                <p:outputLabel value="Residente"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Residente(*)"/>
                 <p:selectOneMenu value="#{agregarTratamientoManagedBean.rutResidente}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
+                                 requiredMessage="Seleccionar Residente: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Medicamento"/>
+                <p:outputLabel value="Medicamento(*)"/>
                 <p:selectOneMenu value="#{agregarTratamientoManagedBean.idMedicamento}" 
                                  required="true" 
-                                 requiredMessage="Debe ingresar Medicamento">
+                                 autoWidth="false"
+                                 requiredMessage="Seleccionar Medicamento: Obligatorio.">
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{listarMedicamentosManagedBean.medicamentosCombo}"/>
                 </p:selectOneMenu>
                 
-                <p:outputLabel value="Dosis"/>
+                <p:outputLabel value="Dosis(*)"/>
                 <p:inputNumber value="#{agregarTratamientoManagedBean.dosis}"
                                decimalPlaces="2"
                                required="true"
-                               requiredMessage="Debe ingresar dosis"/>
+                               requiredMessage="Dosis: Obligatorio."/>
                 
-                <p:outputLabel value="Hora"/>
+                <p:outputLabel value="Hora(*)"/>
                 <p:inputMask value="#{agregarTratamientoManagedBean.hora}"
                              mask="99:99"
                              required="true"
-                             requiredMessage="Debe ingrear una hora">
+                             requiredMessage="Hora: Obligatorio">
                 </p:inputMask>
                 
-                <p:outputLabel value="Periocidad"/>
+                <p:outputLabel value="Periocidad(*)"/>
                 <p:inputTextarea value="#{agregarTratamientoManagedBean.periodo}"
+                                 required="true"
+                                 requiredMessage="Periodo: Obligatorio"
                                  placeholder="Ejemplo: Todos los días."
                                  maxlength="100"/>
                 

@@ -22,10 +22,12 @@
                 <p:outputLabel value="Nombre(*)"/>
                 <p:inputText value="#{agregarPrevisionManagedBean.nombrePrevision}"
                              required="true"
-                             requiredMessage="Nombre Previsión: Obligatorio"/>
+                             requiredMessage="Nombre Previsión: Obligatorio"
+                             maxlength="45"/>
                 
                 <p:outputLabel value="Descripción"/>
-                <p:inputTextarea value="#{agregarPrevisionManagedBean.descripcion}"/>
+                <p:inputTextarea value="#{agregarPrevisionManagedBean.descripcion}"
+                                 maxlength="310"/>
                 
             </p:panelGrid>
             <p:commandButton value="Registrar" 

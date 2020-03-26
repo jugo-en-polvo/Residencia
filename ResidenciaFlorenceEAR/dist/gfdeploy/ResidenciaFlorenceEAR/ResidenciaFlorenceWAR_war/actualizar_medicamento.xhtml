@@ -23,19 +23,23 @@
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.nombre}"
                              placeholder="Ejemplo: Paracetamol"
                              required="true"
-                             requiredMessage="Nombre: Obligatorio."/>
+                             requiredMessage="Nombre: Obligatorio."
+                             maxlength="40"/>
 
                 <p:outputLabel value="Concentración"/>
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.concentracion}"
-                             placeholder="Ejemlplo: 400mg"/>
+                             placeholder="Ejemlplo: 400mg"
+                             maxlength="40"/>
 
                 <p:outputLabel value="Presentación"/>
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.presentacion}"
-                             placeholder="Ejemlplo: 20"/>
+                             placeholder="Ejemlplo: 20"
+                             maxlength="5"/>
 
                 <p:outputLabel value="Tipo"/>
                 <p:inputText value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.tipo}"
-                             placeholder="Ejemplo: Comprimidos"/>
+                             placeholder="Ejemplo: Comprimidos"
+                             maxlength="20"/>
 
                 <p:outputLabel value="Stock"/>
                 <p:inputNumber value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.stock}"
@@ -52,7 +56,8 @@
                                requiredMessage="Stock mínimo: Obligatorio."/>
 
                 <p:outputLabel value="Detalle"/>
-                <p:inputTextarea value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.detalle}"/>
+                <p:inputTextarea value="#{actualizarMedicamentoManagedBean.medicamentoActualizado.detalle}"
+                                 maxlength="60"/>
 
             </p:panelGrid>
 

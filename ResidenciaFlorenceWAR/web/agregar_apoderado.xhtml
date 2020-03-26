@@ -27,6 +27,7 @@
 
                 <p:outputLabel value="Nombre Completo(*)"/>                
                 <p:inputText value="#{agregarApoderadoManagedBean.nombreApoderado}"
+                             maxlength="60"
                              required="true"
                              requiredMessage="Nombre Apoderado: Obligatorio."/>
 
@@ -44,10 +45,12 @@
                 <p:outputLabel value="Dirección(*)"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.direccionApoderado}"
                              required="true"
+                             maxlength="45"
                              requiredMessage="Dirección Apoderado: Obligatorio."/>
 
                 <p:outputLabel value="Email"/>
-                <p:inputText value="#{agregarApoderadoManagedBean.emailApoderado}"/>
+                <p:inputText value="#{agregarApoderadoManagedBean.emailApoderado}"
+                             maxlength="30"/>
 
             </p:panelGrid>
 

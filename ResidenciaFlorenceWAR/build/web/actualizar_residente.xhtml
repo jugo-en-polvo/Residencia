@@ -19,8 +19,9 @@
                                styleClass="texto-negrita"/>
                 <p:outputLabel value=""/>
 
-                <p:outputLabel value="Rut Residente(*)"/>
-                <p:outputLabel value="#{actualizarResidenteManagedBean.residenteActualizado.rut_residente}" />
+                <p:outputLabel value="Rut Residente"/>
+                <p:outputLabel value="#{actualizarResidenteManagedBean.residenteActualizado.rut_residente}" 
+                               styleClass="texto-negrita"/>
 
                 <p:outputLabel value="Nombre completo(*)"/>
                 <p:inputText value="#{actualizarResidenteManagedBean.residenteActualizado.nombre_residente}"
@@ -58,13 +59,16 @@
                 </p:selectOneMenu> 
 
                 <p:outputLabel value="Tipo Previsión(*)"/>
-                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
+                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}"
+                                 autoWidth="false">
                     <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
                     <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Categoría/Nombre Previsión(*)"/>
-                <p:selectOneMenu id="Items-Prevision" value="#{actualizarResidenteManagedBean.idNombrePrevision}">
+                <p:selectOneMenu id="Items-Prevision" 
+                                 value="#{actualizarResidenteManagedBean.idNombrePrevision}"
+                                 autoWidth="false">
                     <f:selectItems value="#{listarPrevisionesNombreTipoManagedBean.previsionesNombreTipoCombo}"/>
                 </p:selectOneMenu>
 

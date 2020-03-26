@@ -22,10 +22,12 @@
                 <p:outputLabel value="Nombre Previsión(*): "/>
                 <p:inputText value="#{actualizarPrevisionManagedBean.previsionActualizado.tipo_prevision}"
                              required="true"
-                             requiredMessage="Nombre Previsión: Obligatorio."/>
+                             requiredMessage="Nombre Previsión: Obligatorio."
+                             maxlength="45"/>
 
                 <p:outputLabel value="Descripción"/>
-                <p:inputTextarea value="#{actualizarPrevisionManagedBean.previsionActualizado.descripcion}"/>    
+                <p:inputTextarea value="#{actualizarPrevisionManagedBean.previsionActualizado.descripcion}"
+                                 maxlength="310"/>    
 
             </p:panelGrid>
 

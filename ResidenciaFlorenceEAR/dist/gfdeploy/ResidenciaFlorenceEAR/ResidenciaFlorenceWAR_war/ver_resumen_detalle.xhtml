@@ -91,10 +91,6 @@
                             <h:outputText value="#{diagnostico.descripcion}"/>
 
                             <p:outputLabel value=""/>
-                            <p:commandLink value="Editar"
-                                           actionListener="#{listarDiagnosticosManagedBean.editar(diagnostico)}"
-                                           style="text-decoration: none;
-                                           color: blue"/>
 
                         </p:panelGrid>
                         <p:separator/>
@@ -144,37 +140,6 @@
                     </p:dataGrid>
                 </p:tab>
 
-                <p:tab title="Emergencias">
-                    <p:dataGrid  var="emergencia"
-                                 value="#{verResumenDetalleManagedBean.emergencias}"
-                                 paginator="true"
-                                 columns="1" rows="10" 
-                                 styleClass="contenedor-resumen-residente"
-                                 style="width: 95%"
-                                 emptyMessage="No hay Emergencias Registradas">
-                        <f:facet name="header">
-                            <h2>Emergencias</h2>
-                        </f:facet>
-                        <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
-
-                            <p:outputLabel value="Lugar:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.lugar.nombre_lugar}"/>
-
-                            <p:outputLabel value="Fecha"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.fecha_emergencia.time}">
-                                <f:convertDateTime dateStyle="medium" type="both"/>
-                            </h:outputText>
-
-                            <p:outputLabel value="Obervaciones:"
-                                           styleClass="texto-negrita"/>
-                            <h:outputText value="#{emergencia.observaciones}"/>
-
-                        </p:panelGrid>
-                        <p:separator/>
-                    </p:dataGrid>
-                </p:tab>
             </p:accordionPanel>
 
             <p:panelGrid columns="3" layout="grid" styleClass="grid" style="margin-top: 1rem; margin-bottom: 1rem">

@@ -11,63 +11,67 @@
     <ui:define name="contenido">
         <p:growl id="mensaje"/>
 
-        <p:panel header="Registro de Medicamentos" class="panel-registro">
-            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Residente"/>
-                <p:selectOneMenu id="selector" value="#{agregarAdministracionMedicacionManagedBean.rutResidente}" 
-                                 autoWidth="false"
-                                 style="width: 100%">    
-                    <p:ajax listener="#{agregarAdministracionMedicacionManagedBean.manejarCreacionRegistro}"
-                            partialSubmit="true"
-                            process="selector"
-                            update="mensaje :formulario:vista-administrar"/>
+        <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem; margin-bottom: 1rem">
+            <p:selectOneMenu value="#{agregarAdministracionMedicacionManagedBean.rutResidente}"
+                             autoWidth="false">
+                <p:ajax listener="#{agregarAdministracionMedicacionManagedBean.manejarCreacionRegistro}"
+                        update="mensaje :formulario:vista-administrar"/>
+                <f:selectItem itemLabel="-Seleccione-" itemValue="vacio" noSelectionOption="true"/>
+                <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>
+            </p:selectOneMenu>
+        </h:panelGroup>
 
-                    <f:selectItem itemLabel="Selecciona" itemValue="vacio" noSelectionOption="true"/>
-                    <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
-                </p:selectOneMenu>
+        <h:panelGroup id="vista-administrar" layout="block" style="margin-top: 1rem">
+            <p:dataGrid var="medicacion"
+                        value="${agregarAdministracionMedicacionManagedBean.medicacionFiltro}"
+                        paginator="true"
+                        columns="1" rows="5" 
+                        styleClass="contenedor-resumen-residente">
+                <f:facet name="header">
+                    <h2>Medicación</h2>
+                </f:facet>
+                <p:panelGrid columns="1" layout="grid" style="padding-bottom: 1rem">
 
-            </p:panelGrid>
+                    <h:panelGroup layout="block">
+                        <p:outputLabel value="Hora: "
+                                       styleClass="texto-negrita"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.hora}hrs"/>
+                    </h:panelGroup>
 
-            <h:panelGroup id="vista-administrar" layout="block" style="margin-top: 1rem">
-                <p:repeat value="#{agregarAdministracionMedicacionManagedBean.medicacionFiltro}" var="medicacion">
-                    <p:panelGrid columns="4" layout="grid" style="padding-bottom: 1rem">
+                    <h:panelGroup layout="block">
+                        <p:outputLabel value="Medicamento: "
+                                       styleClass="texto-negrita"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre}" style="text-align: center"/>
+                    </h:panelGroup>
 
-                        <h:panelGroup layout="block">
-                            <p:outputLabel value="Hora: "
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{medicacion.tratamiento.hora}hrs"/>
-                        </h:panelGroup>
+                    <h:panelGroup layout="block">
+                        <p:outputLabel value="Dosis: "
+                                       styleClass="texto-negrita"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.dosis}">
+                            <f:convertNumber integerOnly="true"/>
+                        </p:outputLabel>
+                    </h:panelGroup>
 
-                        <h:panelGroup layout="block">
-                            <p:outputLabel value="Medicamento: "
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{medicacion.tratamiento.medicamento.nombre}" style="text-align: center"/>
-                        </h:panelGroup>
+                    <h:panelGroup layout="block">
+                        <p:outputLabel value="Estado: "
+                                       styleClass="texto-negrita"/>
+                        <p:outputLabel value="#{agregarAdministracionMedicacionManagedBean.verificarEstado(medicacion)}"/>
+                    </h:panelGroup>
 
-                        <h:panelGroup layout="block">
-                            <p:outputLabel value="Dosis: "
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{medicacion.tratamiento.dosis}">
-                                <f:convertNumber integerOnly="true"/>
-                            </p:outputLabel>
-                        </h:panelGroup>
+                    <h:panelGroup layout="block">
+                        <p:outputLabel value="Periodo: "
+                                       styleClass="texto-negrita"/>
+                        <p:outputLabel value="#{medicacion.tratamiento.periodo}"/>
+                    </h:panelGroup>
 
-                        <h:panelGroup layout="block">
-                            <p:outputLabel value="Estado: "
-                                           styleClass="texto-negrita"/>
-                            <p:outputLabel value="#{agregarAdministracionMedicacionManagedBean.verificarEstado(medicacion)}"/>
-                        </h:panelGroup>
+                    <p:commandLink value="Actualizar"
+                                   style="text-decoration: none; color: blue"
+                                   actionListener="#{agregarAdministracionMedicacionManagedBean.update(medicacion)}"/>
+                </p:panelGrid>
+            </p:dataGrid>
 
-                        <p:commandLink value="Actualizar"
-                                       style="text-decoration: none; color: blue"
-                                       actionListener="#{agregarAdministracionMedicacionManagedBean.update(medicacion)}"/>
-                    </p:panelGrid>
-
-
-                </p:repeat>
-            </h:panelGroup>
-        </p:panel>
+        </h:panelGroup>
 
     </ui:define>
 </ui:composition>

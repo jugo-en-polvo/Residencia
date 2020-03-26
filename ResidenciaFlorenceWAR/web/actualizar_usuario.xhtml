@@ -19,8 +19,10 @@
                                styleClass="texto-negrita"/>
                 <p:outputLabel value=""/>
                 
-                <p:outputLabel value="Rut"/>
-                <p:outputLabel value="#{actualizarUsuarioManagedBean.usuarioActualizado.rut_usuario}"/>
+                <p:outputLabel value="Rut Usuario"
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value="#{actualizarUsuarioManagedBean.usuarioActualizado.rut_usuario}"
+                               styleClass="texto-negrita"/>
                 
                 <p:outputLabel value="Tipo de Cuenta(*)" />
                 <p:selectOneMenu required="true" id="selector-acceso" value="#{actualizarUsuarioManagedBean.usuarioActualizado.nivel_acceso}">

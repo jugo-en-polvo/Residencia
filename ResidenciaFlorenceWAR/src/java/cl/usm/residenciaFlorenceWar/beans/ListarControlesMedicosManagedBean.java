@@ -7,8 +7,10 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.ControlesMedicosDAOLocal;
 import cl.usm.residenciaEjb.dto.Control_Medico;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -23,6 +25,8 @@ public class ListarControlesMedicosManagedBean implements Serializable{
 
     @Inject
     private ControlesMedicosDAOLocal controlesMedicosDAO;
+    @Inject
+    private EditarControlMedicoManagedBean editarControlBEAN;
     
     private String rutResidente;
     private List<Control_Medico> controlesMedicos;
@@ -62,6 +66,13 @@ public class ListarControlesMedicosManagedBean implements Serializable{
         }else{
             return "REALIZADO";
         }
+        
+    }
+    
+    public void editar(Control_Medico cm) throws IOException{
+        
+        this.editarControlBEAN.setControlMedicoEditado(cm);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("editar_control_medico.xhtml");
         
     }
     

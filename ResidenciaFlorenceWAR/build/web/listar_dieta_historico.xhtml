@@ -21,50 +21,54 @@
         </h:panelGroup>
 
         <h:panelGroup id="vista-tratamientos" layout="block" class="ui-g" style="margin-top: 1rem">
-            <p:repeat value="#{listadoDietaHistoricoManagedBean.dietasFiltro}" var="dieta">
-                <h:panelGroup layout="block" class="ui-g-12 ui-md-6 ui-lg-4">
+            <p:dataGrid var="dieta"
+                        layout="grid"
+                        value="${listadoDietaHistoricoManagedBean.dietasFiltro}"
+                        paginator="true"
+                        columns="1" rows="10" 
+                        styleClass="contenedor-resumen-residente">
+                <f:facet name="header">
+                    <h2>Dietas</h2>
+                </f:facet>
+                <p:panelGrid columns="2" layout="grid">
 
-                    <p:panel header="Detalles">
-                    <p:panelGrid columns="2" layout="grid">
-                        
-                        <p:outputLabel value="Fecha Dieta: "
-                                       styleClass="texto-negrita"/>
-                        <p:outputLabel value="#{dieta.fecha_dieta.time}">
-                            <f:convertDateTime type="date"  dateStyle="long"/>
-                        </p:outputLabel>
-                        
-                        <p:outputLabel value="Desayuno:"
-                                       styleClass="texto-negrita"/>
-                        <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarDesayuno(dieta)}"/>
-                       
-                         <p:outputLabel value="Primera colacion:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarColacion1(dieta)}"/>
-                         
-                         <p:outputLabel value="Almuerzo:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarAlmuerzo(dieta)}"/>
-                         
-                         <p:outputLabel value="Segunda Colacion:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarColacion2(dieta)}"/>
-                         
-                         <p:outputLabel value="Once:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarOnce(dieta)}"/>
-                         
-                         <p:outputLabel value="Cena:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarCena(dieta)}"/>
-                         
-                         <p:outputLabel value="Observaciones:"
-                                       styleClass="texto-negrita"/>
-                         <h:outputText value="#{dieta.observaciones}"/>
-                        
-                    </p:panelGrid>
-                    </p:panel>
-                </h:panelGroup>
-            </p:repeat>
+                    <p:outputLabel value="Fecha Dieta: "
+                                   styleClass="texto-negrita"/>
+                    <p:outputLabel value="#{dieta.fecha_dieta.time}">
+                        <f:convertDateTime type="date"  dateStyle="long"/>
+                    </p:outputLabel>
+
+                    <p:outputLabel value="Desayuno:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarDesayuno(dieta)}"/>
+
+                    <p:outputLabel value="Primera colacion:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarColacion1(dieta)}"/>
+
+                    <p:outputLabel value="Almuerzo:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarAlmuerzo(dieta)}"/>
+
+                    <p:outputLabel value="Segunda Colacion:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarColacion2(dieta)}"/>
+
+                    <p:outputLabel value="Once:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarOnce(dieta)}"/>
+
+                    <p:outputLabel value="Cena:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{listadoDietaHistoricoManagedBean.verificarCena(dieta)}"/>
+
+                    <p:outputLabel value="Observaciones:"
+                                   styleClass="texto-negrita"/>
+                    <h:outputText value="#{dieta.observaciones}"/>
+
+                </p:panelGrid>
+
+            </p:dataGrid>
         </h:panelGroup> 
     </ui:define>
 </ui:composition>

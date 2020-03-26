@@ -19,5 +19,6 @@ public interface ControlesMedicosDAOLocal {
     List<Control_Medico> findAll();
     List<Control_Medico> findByRut(String rut);
     void add(Control_Medico cm);
+    void update(Control_Medico cm);
     
 }

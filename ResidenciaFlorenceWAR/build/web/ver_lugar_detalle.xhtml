@@ -14,13 +14,16 @@
             <h1>#{verLugarManagedBean.lugarDetalle.nombre_lugar}</h1>
 
             <p:panelGrid columns="2" layout="grid" styleClass="grid">
-                <p:outputLabel value="Nombre: "/>
+                <p:outputLabel value="Nombre: "
+                               styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.nombre_lugar}"/>
                 
-                <p:outputLabel value="Dirección: "/>
+                <p:outputLabel value="Dirección: "
+                               styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.direccion_lugar}"/>
                 
-                <p:outputLabel value="Teléfono: "/>
+                <p:outputLabel value="Teléfono: "
+                               styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.fono_lugar}"/>
             </p:panelGrid>
             

@@ -15,35 +15,40 @@
         <p:panel header="Registrar Controles Médicos" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Residente"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Residente(*)"/>
                 <p:selectOneMenu value="#{agregarControlMedicoManagedBean.rut_residente}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
+                                 requiredMessage="Seleccionar Residente: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Lugar"/>
+                <p:outputLabel value="Lugar(*)"/>
                 <p:selectOneMenu value="#{agregarControlMedicoManagedBean.id_lugar}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
+                                 requiredMessage="Seleccionar Lugar: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{listarLugaresManagedBean.comboLugares}"/>                              
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Fecha Control"/>
+                <p:outputLabel value="Fecha Control/Hora(*)"/>
                 <p:calendar value="#{agregarControlMedicoManagedBean.fecha_hora_contro}"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            requiredMessage="Fecha Control: Obligatorio"
                             locale="es" pattern="dd/MM/yyyy HH:mm" mask="99/99/9999 99:99"
-                            validatorMessage="Ingrese una Fecha válida"/>
+                            validatorMessage="Fecha inválida"/>
 
                 <p:outputLabel value="Observaciones"/>
-                <p:inputTextarea value="#{agregarControlMedicoManagedBean.observaciones}"/>
+                <p:inputTextarea value="#{agregarControlMedicoManagedBean.observaciones}"
+                                 maxlength="150"/>
 
             </p:panelGrid>
 

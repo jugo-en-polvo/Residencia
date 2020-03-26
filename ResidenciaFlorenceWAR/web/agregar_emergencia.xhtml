@@ -15,27 +15,31 @@
         <p:panel header="Registrar Emergencia" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Residente"/>
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
+                
+                <p:outputLabel value="Residente(*)"/>
                 <p:selectOneMenu value="#{agregarEmergenciaManagedBean.rut_residente}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
+                                 requiredMessage="Seleccionar Residente: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Fecha de emergencia"/>
+                <p:outputLabel value="Fecha de emergencia(*)"/>
                 <p:calendar value="#{agregarEmergenciaManagedBean.fecha_emergencia}"
                             required="true"
-                            requiredMessage="Debe ingresar fecha de nacimiento de Residente"
+                            requiredMessage="Fecha Emergenia: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy HH:mm" mask="99/99/9999 99:99" 
                             validatorMessage="Ingrese una Fecha válida"/>
 
-                <p:outputLabel value="Lugar"/>
+                <p:outputLabel value="Lugar(*)"/>
                 <p:selectOneMenu value="#{agregarEmergenciaManagedBean.id_lugar}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Lugar"
+                                 requiredMessage="Seleccionar Lugar: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
@@ -43,7 +47,8 @@
                 </p:selectOneMenu>
                 
                 <p:outputLabel value="Observaciones"/>
-                <p:inputTextarea value="#{agregarEmergenciaManagedBean.observaciones}"/>
+                <p:inputTextarea value="#{agregarEmergenciaManagedBean.observaciones}"
+                                 maxlength="200"/>
 
             </p:panelGrid>
             <p:commandButton value="Registrar" 

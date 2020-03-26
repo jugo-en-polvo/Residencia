@@ -14,28 +14,32 @@
 
         <p:panel header="Actualizar Diagnóstico" class="panel-registro">
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+                
+                <p:outputLabel value="(*)Campos obligatorios."
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value=""/>
 
-                <p:outputLabel value="Residente"/>
+                <p:outputLabel value="Residente(*)"/>
                 <p:selectOneMenu value="#{actualizarDiagnosticoManagedBean.rutResidente}" 
                                  required="true"
-                                 requiredMessage="Debe seleccionar un Residente"
+                                 requiredMessage="Seleccionar Residente: Obligatorio."
                                  autoWidth="false"
                                  style="width: 100%">                    
                     <f:selectItem itemLabel="Selecciona" itemValue="" noSelectionOption="true"/>
                     <f:selectItems value="#{residentesManagedBean.residentesCombo}"/>                              
                 </p:selectOneMenu>
 
-                <p:outputLabel value="Enfermedad/Malestar"/>
+                <p:outputLabel value="Enfermedad/Malestar(*)"/>
                 <p:inputText value="#{actualizarDiagnosticoManagedBean.diagnosticoActualizado.enfermedad}"
                              required="true"
                              maxlength="30"
-                             requiredMessage="Debe Ingresar un Nombre para la Enfermedad"/>
+                             requiredMessage="Enfermedad/Malestar: Obligatorio."/>
 
-                <p:outputLabel value="Descripción"/>
+                <p:outputLabel value="Descripción(*)"/>
                 <p:inputTextarea value="#{actualizarDiagnosticoManagedBean.diagnosticoActualizado.descripcion}"
                                  required="true"
                                  maxlength="150"
-                                 requiredMessage="Debe Ingresar una Desripción"/>
+                                 requiredMessage="Descripción: Obligatorio."/>
 
             </p:panelGrid>
 

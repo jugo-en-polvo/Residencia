@@ -92,10 +92,10 @@ public class AgregarAdministracionMedicacionManagedBean implements Serializable 
             }
         }
         if (proceso) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se Crearon " + cont + " Registtros para Hoy"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se Crearon " + cont + " Registros para Hoy"));
         } else {
             if (cont > 0) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se Cargaron " + cont + " Registtros para Hoy"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Se Cargaron " + cont + " Registros para Hoy"));
             }
         }
         manejarFiltro();

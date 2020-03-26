@@ -5,14 +5,16 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="index.xhtml"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <ui:define name="contenido">
 
         <p:growl id="mensaje"/>
 
         <h:panelGroup layout="block" style="width: 300px; margin: 0 auto; margin-top: 1rem; margin-bottom: 1rem">
-            <p:selectOneMenu value="#{listarDiagnosticosManagedBean.rutResidente}">
+            <p:selectOneMenu value="#{listarDiagnosticosManagedBean.rutResidente}"
+                             autoWidth="false">
                 <p:ajax listener="#{listarDiagnosticosManagedBean.filtroDiagnotico}"
                         update="mensaje :formulario:vista-tratamientos"/>
                 <f:selectItem itemLabel="-Seleccione-" itemValue="" noSelectionOption="true"/>
@@ -21,6 +23,7 @@
         </h:panelGroup>
 
         <p:dataGrid  id="vista-tratamientos"
+                     layout="grid"
                      var="diagnostico"
                      value="#{listarDiagnosticosManagedBean.diagnosticosFiltro}"
                      paginator="true"
@@ -35,23 +38,23 @@
                 <p:commandButton value="Cancelar" oncomplete="PF('sidebar2').hide()"/>
                 <p:commandButton style="margin-top: " value="Eliminar" actionListener="#{listarDiagnosticosManagedBean.eliminar(diagnostico)}" oncomplete="PF('sidebar2').hide()"/>
             </p:sidebar>
-            <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
+            <p:panelGrid columns="2" layout="grid" styleClass="ui-fluid ui-noborder prueba" style="width: 100%">
 
-                <p:outputLabel value="Observación:"
-                               styleClass="texto-negrita"/>
-                <h:outputText value="#{diagnostico.enfermedad}"
-                              style="font-size: 30px"/>
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Malestar: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{diagnostico.enfermedad}"/> 
+                </h:panelGroup>
 
-                <p:outputLabel value=""
-                               styleClass="texto-negrita"/>
-                <h:outputText value="#{diagnostico.descripcion}"/>
+                <h:panelGroup layout="block">
+                    <p:outputLabel value="Descripción: " style="font-weight: bold"/>
+                    <p:outputLabel value="#{diagnostico.descripcion}"/> 
+                </h:panelGroup>
 
-                <p:outputLabel value=""/>
                 <p:commandLink value="Editar"
                                actionListener="#{listarDiagnosticosManagedBean.editar(diagnostico)}"
                                style="text-decoration: none;
                                color: blue"/>
-                <p:outputLabel value=""/>
+
                 <p:commandLink value="Eliminar"
                                oncomplete="PF('sidebar2').show()"
                                style="text-decoration: none;
@@ -59,10 +62,8 @@
                 </p:commandLink>
 
             </p:panelGrid>
-            <p:separator/>
+            <p:separator style="width: 100%"/>
         </p:dataGrid>
-
-
 
     </ui:define>
 </ui:composition>

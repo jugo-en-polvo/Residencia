@@ -89,11 +89,11 @@ public class AgregarTratamientoManagedBean implements Serializable {
     public void agregar(ActionEvent e) throws IOException {
 
         if (!validaHora(hora)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Hora no válida"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Hora: Hora ingresada inválida.", ""));
         } else {
 
             if (tratamientosDAO.verExistencia(rutResidente, Long.parseLong(idMedicamento), hora)) {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Advertencia", "Ya existe un tratamiento similar para este Residente"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Advertencia: Ya existe un tratamiento similar para este Residente", ""));
             } else {
                 Tratamiento t = new Tratamiento();
                 t.setResidente(residenteDAO.find(rutResidente));

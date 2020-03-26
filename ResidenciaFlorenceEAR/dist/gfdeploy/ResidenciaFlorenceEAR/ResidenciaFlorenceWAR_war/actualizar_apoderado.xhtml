@@ -19,17 +19,21 @@
                                styleClass="texto-negrita"/>
                 <p:outputLabel value=""/>
                 
-                <p:outputLabel value="Rut(*) "/>
-                <p:outputLabel value="#{actualizarApoderadoManagedBean.apoderadoActualizado.rut_apoderado}"/>
+                <p:outputLabel value="Rut"
+                               styleClass="texto-negrita"/>
+                <p:outputLabel value="#{actualizarApoderadoManagedBean.apoderadoActualizado.rut_apoderado}"
+                               styleClass="texto-negrita"/>
 
                 <p:outputLabel value="Nombre Completo(*) "/>
                 <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.nombre_apoderado}"
                              required="true"
+                             maxlength="60"
                              requiredMessage="Nombre: Obligatorio."/>
 
                 <p:outputLabel value="Dirección(*) "/>
                 <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.direccion_apoderado}"
                              required="true"
+                             maxlength="45"
                              requiredMessage="Dirección: Obligatorio."/>
 
                 <p:outputLabel value="Teléfono(*)"/>
@@ -42,7 +46,8 @@
                 </p:inputText>
                 
                 <p:outputLabel value="Email: "/>
-                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.email_apoderado}"/>
+                <p:inputText value="#{actualizarApoderadoManagedBean.apoderadoActualizado.email_apoderado}"
+                             maxlength="30"/>
 
             </p:panelGrid>
 

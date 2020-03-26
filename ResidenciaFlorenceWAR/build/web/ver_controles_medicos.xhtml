@@ -37,7 +37,7 @@
                                    styleClass="texto-negrita"/>
                     <p:outputLabel value="#{controles.lugar.nombre_lugar}"/>
                 </h:panelGroup>
-                
+
                 <h:panelGroup layout="block">
                     <p:outputLabel value="Fecha: "
                                    styleClass="texto-negrita"/>
@@ -45,7 +45,7 @@
                         <f:convertDateTime type="date" dateStyle="short"/>
                     </p:outputLabel>
                 </h:panelGroup>
-                
+
                 <h:panelGroup layout="block">
                     <p:outputLabel value="Hora: "
                                    styleClass="texto-negrita"/>
@@ -54,13 +54,16 @@
                     </p:outputLabel>
                     <span>hrs</span>
                 </h:panelGroup>
-                
+
                 <h:panelGroup layout="block">
                     <p:outputLabel value="Estado: "
                                    styleClass="texto-negrita"/>
                     <p:outputLabel value="#{listarControlesMedicosManagedBean.DeterminaEstado(controles)}"/>
                 </h:panelGroup>
-                
+
+                <p:commandLink value="Editar" 
+                               style="text-decoration: none; color: blue"
+                               actionListener="#{listarControlesMedicosManagedBean.editar(controles)}"/>
 
             </p:panelGrid>
             <p:separator/>
