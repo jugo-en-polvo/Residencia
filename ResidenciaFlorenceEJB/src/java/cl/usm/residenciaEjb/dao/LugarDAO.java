@@ -20,63 +20,74 @@ import javax.persistence.Persistence;
 public class LugarDAO implements LugarDAOLocal {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ResidenciaFlorenceEJBPU");
-    
+
     @Override
     public List<Lugar> findAll() {
-        
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Lugar.findAll", Lugar.class).getResultList();
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
     }
 
     @Override
     public void add(Lugar l) {
-        
+
         EntityManager em = emf.createEntityManager();
         try {
             em.persist(l);
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public Lugar find(long id) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Lugar.class, id);
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public void update(Lugar l) {
-        
+
         EntityManager em = emf.createEntityManager();
         try {
             em.merge(l);
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
-    
+    @Override
+    public void delete(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.remove(em.find(Lugar.class, id));
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+    }
+
 }

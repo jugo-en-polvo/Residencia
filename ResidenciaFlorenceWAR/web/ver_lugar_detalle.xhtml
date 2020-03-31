@@ -10,6 +10,14 @@
     <ui:define name="contenido">
 
         <h:panelGroup layout="block" styleClass="contenedor-resumen-residente">
+            
+            <p:sidebar widgetVar="sidebar2" position="left" styleClass="confirmacion-lateral" baseZIndex="10000">
+            <h1 style="font-weight:normal">¿Seguro que desea eliminar?</h1>
+            
+            <p:commandButton value="Eliminar" actionListener="#{verLugarManagedBean.eliminar}"/>
+            <p:commandButton value="Cancelar" style="margin-top: 1rem" oncomplete="PF('sidebar2').hide()"/>
+            
+        </p:sidebar>
 
             <h1>#{verLugarManagedBean.lugarDetalle.nombre_lugar}</h1>
 
@@ -17,22 +25,22 @@
                 <p:outputLabel value="Nombre: "
                                styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.nombre_lugar}"/>
-                
+
                 <p:outputLabel value="Dirección: "
                                styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.direccion_lugar}"/>
-                
+
                 <p:outputLabel value="Teléfono: "
                                styleClass="texto-negrita"/>
                 <p:outputLabel value="#{verLugarManagedBean.lugarDetalle.fono_lugar}"/>
             </p:panelGrid>
-            
-            <p:panelGrid columns="3" layout="grid" styleClass="grid">
+
+            <p:panelGrid columns="3" layout="grid" styleClass="contenedor-botones">
                 <p:commandLink value="«Atrás" styleClass="botones" actionListener="#{verLugarManagedBean.atras}"/>
-                <p:commandLink value="Eliminar«X»" styleClass="botones" actionListener="#{verLugarManagedBean.eliminar}"/>
                 <p:commandLink value="Editar»" styleClass="botones" actionListener="#{verLugarManagedBean.editar}"/>
+                <p:commandLink value="Eliminar«X»" styleClass="botones" oncomplete="PF('sidebar2').show()"/>
             </p:panelGrid>
-                
+
         </h:panelGroup>
 
     </ui:define>

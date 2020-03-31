@@ -103,6 +103,7 @@ public class AgregarMedicamentoManagedBean implements Serializable{
         m.setDetalle(detalle);
         m.setStock(stock);
         m.setStock_critico(stockCritico);
+        m.setEstado(true);
         
         medicamentosDAO.add(m);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Medicamento Agregado"));

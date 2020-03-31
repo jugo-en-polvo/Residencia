@@ -20,5 +20,6 @@ public interface LugarDAOLocal {
     Lugar find(long id);
     void add(Lugar l);
     void update(Lugar l);
+    void delete(Long id);
     
 }

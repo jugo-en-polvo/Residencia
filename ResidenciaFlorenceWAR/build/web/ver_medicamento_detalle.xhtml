@@ -8,6 +8,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="contenido">
+        <p:sidebar widgetVar="sidebar2" position="left" styleClass="confirmacion-lateral" baseZIndex="10000">
+            <h1 style="font-weight:normal">¿Seguro que desea eliminar?</h1>
+            
+            <p:commandButton value="Eliminar" actionListener="#{verMedicamentoManagedBean.eliminar()}"/>
+            <p:commandButton value="Cancelar" style="margin-top: 1rem" oncomplete="PF('sidebar2').hide()"/>
+            
+        </p:sidebar>
 
         <h:panelGroup layout="block" styleClass="contenedor-resumen-residente">
 
@@ -46,7 +53,7 @@
 
             <p:panelGrid columns="3" layout="grid" styleClass="grid">
                 <p:commandLink value="«Atrás" styleClass="botones" actionListener="#{verMedicamentoManagedBean.atrar()}"/>
-                <p:commandLink value="Eliminar«X»" styleClass="botones" />
+                <p:commandLink value="Eliminar«X»" oncomplete="PF('sidebar2').show()" styleClass="botones" />
                 <p:commandLink value="Editar»" styleClass="botones" actionListener="#{verMedicamentoManagedBean.editar()}"/>
             </p:panelGrid>
 

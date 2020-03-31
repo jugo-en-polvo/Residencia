@@ -5,6 +5,7 @@
  */
 package cl.usm.residenciaFlorenceWar.beans;
 
+import cl.usm.residenciaEjb.dao.MedicamentoDAOLocal;
 import cl.usm.residenciaEjb.dto.Medicamento;
 import java.io.IOException;
 import javax.inject.Named;
@@ -23,6 +24,8 @@ public class VerMedicamentoManagedBean implements Serializable {
     
     @Inject
     private ActualizarMedicamentoManagedBean actualizarMedicamentoBEAN;
+    @Inject
+    private MedicamentoDAOLocal medicamentoDAO;
     
     private Medicamento medicamentoDetalle;
 
@@ -45,6 +48,19 @@ public class VerMedicamentoManagedBean implements Serializable {
         
         this.actualizarMedicamentoBEAN.setMedicamentoActualizado(medicamentoDetalle);
         FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_medicamento.xhtml");
+        
+    }
+    
+    public void eliminar() throws IOException{
+        
+        if(medicamentoDetalle.getTratamientos().isEmpty()){
+            this.medicamentoDAO.delete(medicamentoDetalle.getId_medicamento());
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_medicamento.xhtml");
+        }else{
+            this.medicamentoDetalle.setEstado(false);
+            this.medicamentoDAO.update(medicamentoDetalle);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_medicamento.xhtml");
+        }
         
     }
     

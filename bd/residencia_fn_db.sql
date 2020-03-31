@@ -43,6 +43,7 @@ CREATE TABLE `administrar_medicamento` (
 
 LOCK TABLES `administrar_medicamento` WRITE;
 /*!40000 ALTER TABLE `administrar_medicamento` DISABLE KEYS */;
+INSERT INTO `administrar_medicamento` VALUES (27,'2020-03-25 00:00:00',NULL,0,''),(27,'2020-03-26 00:00:00','19.014.691-k',1,'Todo bien'),(29,'2020-03-26 00:00:00',NULL,0,'');
 /*!40000 ALTER TABLE `administrar_medicamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +70,7 @@ CREATE TABLE `apoderado` (
 
 LOCK TABLES `apoderado` WRITE;
 /*!40000 ALTER TABLE `apoderado` DISABLE KEYS */;
-INSERT INTO `apoderado` VALUES ('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com');
+INSERT INTO `apoderado` VALUES ('14.922.017-8','Pedro González Pereira Martines','932957392','Avenida los Canelos 299','pedro@gmai.l.com'),('16.388.825-4','Marianella González','9312312321','Avenida Rodelillo 3900','marianela@gmail.com'),('19.176.758-6','Pabla Vergara','950718288','Los Guindos 667','Esteban.lagos.lobos@gmail.com'),('8.979.152-9','pruebamaxlenghthdsajdiasjdikasjdiadsakdakdokaosdkoaskdoaskdo','213123123','dadasda dnasd jasndjkasnkdmaskdmkasmdklasmdkl','adsandsajkdmaskmdklsam@das.com'),('9.513.628-1','Don Pedro Fuenzalida','932167327','Su casa','');
 /*!40000 ALTER TABLE `apoderado` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,6 +107,7 @@ CREATE TABLE `control` (
 
 LOCK TABLES `control` WRITE;
 /*!40000 ALTER TABLE `control` DISABLE KEYS */;
+INSERT INTO `control` VALUES ('2020-03-25 09:21:06','19.014.691-k','19.014.691-k','120/80','90','95','','','','','');
 /*!40000 ALTER TABLE `control` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +137,7 @@ CREATE TABLE `controles_medicos` (
 
 LOCK TABLES `controles_medicos` WRITE;
 /*!40000 ALTER TABLE `controles_medicos` DISABLE KEYS */;
-INSERT INTO `controles_medicos` VALUES ('19.014.691-k','2020-03-24 10:00:00',4,'N','1');
+INSERT INTO `controles_medicos` VALUES ('19.014.691-k','2020-03-24 10:00:00',4,'S','Nop');
 /*!40000 ALTER TABLE `controles_medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +156,7 @@ CREATE TABLE `diagnostico` (
   PRIMARY KEY (`id_diagnostico`),
   KEY `rut_residente` (`rut_residente`),
   CONSTRAINT `diagnostico_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,6 +165,7 @@ CREATE TABLE `diagnostico` (
 
 LOCK TABLES `diagnostico` WRITE;
 /*!40000 ALTER TABLE `diagnostico` DISABLE KEYS */;
+INSERT INTO `diagnostico` VALUES (10,'19.014.691-k','Calvo','No tiene mucho pelo y lo perderá todo.');
 /*!40000 ALTER TABLE `diagnostico` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,6 +198,7 @@ CREATE TABLE `dieta` (
 
 LOCK TABLES `dieta` WRITE;
 /*!40000 ALTER TABLE `dieta` DISABLE KEYS */;
+INSERT INTO `dieta` VALUES ('2020-03-24 00:00:00','19.014.691-k',0,0,0,0,0,0,NULL),('2020-03-24 00:00:00','20.780.507-6',0,0,0,0,0,0,NULL),('2020-03-25 00:00:00','19.014.691-k',0,0,0,0,0,0,NULL);
 /*!40000 ALTER TABLE `dieta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,6 +227,7 @@ CREATE TABLE `emergencia` (
 
 LOCK TABLES `emergencia` WRITE;
 /*!40000 ALTER TABLE `emergencia` DISABLE KEYS */;
+INSERT INTO `emergencia` VALUES ('19.014.691-k','2020-03-25 00:00:00',3,'sadsadn sadj nndjwdnakjwh dajwndjwandansjdaskjdnjasndjasndksjdnasdjasndjksandjkasnjdknasjkdnsjakndjkandjskandjkasndjkasndjkasndjkasndjkasndjnasjkdnasjdnasndjkasndjkasndjn aw djawndjnawjdnawjndawmdkawm');
 /*!40000 ALTER TABLE `emergencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +245,7 @@ CREATE TABLE `lugar` (
   `direccion_lugar` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `estado` tinyint NOT NULL,
   PRIMARY KEY (`id_lugar`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +254,7 @@ CREATE TABLE `lugar` (
 
 LOCK TABLES `lugar` WRITE;
 /*!40000 ALTER TABLE `lugar` DISABLE KEYS */;
-INSERT INTO `lugar` VALUES (1,'Hospital Naval','123456789','Avenida Freire',1),(2,'Hospital VanAlgo','123456789','Avenida CasaMucho 213',0),(3,'Residencia','2003000400','5 Norte, 5 Poniente',1),(4,'Hospital Van Buren','1234','1234',1);
+INSERT INTO `lugar` VALUES (2,'Hospital VanAlgo','123456789','Avenida CasaMucho 213',0),(3,'Residencia','2003000400','6 Norte, 6 Poniente',1),(4,'Hospital Van Buren','1234','1234',1),(7,'Hospital Van Buren','1234','1234',1);
 /*!40000 ALTER TABLE `lugar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,8 +274,9 @@ CREATE TABLE `medicamento` (
   `detalle` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `stock` int NOT NULL,
   `stock_critico` int NOT NULL,
+  `estado` tinyint DEFAULT NULL,
   PRIMARY KEY (`id_medicamento`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -279,7 +285,7 @@ CREATE TABLE `medicamento` (
 
 LOCK TABLES `medicamento` WRITE;
 /*!40000 ALTER TABLE `medicamento` DISABLE KEYS */;
-INSERT INTO `medicamento` VALUES (7,'Paracetamol','600mg','20','Comprimidos','El de siempre. Muy Bueno.',20,10),(8,'Ibuprofeno','600mg','30','Píldoras','Para el dolor.',20,5),(9,'Tapsin Noche','5gr','1','Sobre','Tapsin noche para noche',20,5);
+INSERT INTO `medicamento` VALUES (7,'Paracetamol','600mg','20','Comprimidos','Para el dolor de cabeza.',20,10,1),(8,'Ibuprofeno','600mg','30','Píldoras','Para el dolor.',20,5,1),(9,'Tapsin Noche','5gr','1','Sobre','Tapsin noche para noche.',20,5,0);
 /*!40000 ALTER TABLE `medicamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +301,7 @@ CREATE TABLE `prevision` (
   `tipo_prevision` varchar(45) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(310) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_prevision`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -304,7 +310,7 @@ CREATE TABLE `prevision` (
 
 LOCK TABLES `prevision` WRITE;
 /*!40000 ALTER TABLE `prevision` DISABLE KEYS */;
-INSERT INTO `prevision` VALUES (1,'FONASA','El Fondo Nacional de Salud (Fonasa) es el organismo público que administra los fondos estatales destinados a salud en Chile, para dar cobertura a sus beneficiarios y beneficiarias. Fonasa es la alternativa pública al sistema privado de salud, representado por las Instituciones de Salud Previsional (ISAPRES).'),(2,'ISAPRE','Las Instituciones de Salud Previsional (Isapres) son entidades privadas que funcionan en base a un esquema de seguros, las cuales están facultados para administrar la cotización obligatoria de salud de los personas que libre e individualmente optaron por ellas en lugar del sistema de salud estatal (FONASA).'),(3,'Fuerzas Armandas','Previsión dada las fuerzas de orden público.'),(4,'Mauricio','dsa');
+INSERT INTO `prevision` VALUES (1,'FONASA','El Fondo Nacional de Salud (Fonasa) es el organismo público que administra los fondos estatales destinados a salud en Chile, para dar cobertura a sus beneficiarios y beneficiarias. Fonasa es la alternativa pública al sistema privado de salud, representado por las Instituciones de Salud Previsional (ISAPRES).'),(2,'ISAPRE','Las Instituciones de Salud Previsional (Isapres) son entidades privadas que funcionan en base a un esquema de seguros, las cuales están facultados para administrar la cotización obligatoria de salud de los personas que libre e individualmente optaron por ellas en lugar del sistema de salud estatal (FONASA).'),(5,'Juan',''),(6,'dasdsadasdsadjkashuhdadsadsadsadwdmnqjdkwdmqw','dasdsadasdsadjkashuhdasjndjasdkasdmkasdnsajndjasnjdnjasndjasndkjsjnaskjndjkasndjkasndjsanjdnsajkdnjksandjkasndjkasnjkdnajdnjkwndjkwndjkawndjkawndjkjkndasdsadasdsadjkashuhdasjndjasdkasdmkasdnsajndjasnjdnjasndjasndkjsjnaskjndjkasndjkasndjsanjdnsajkdnjksandjkasndjkasnjkdnajdnjkwndjkwndjkawndjkawndjkjkndasdsadasd');
 /*!40000 ALTER TABLE `prevision` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +329,7 @@ CREATE TABLE `previsionnombretipo` (
   PRIMARY KEY (`id_prevision_nombre_tipo`),
   KEY `id_prevision` (`id_prevision`),
   CONSTRAINT `previsionnombretipo_ibfk_1` FOREIGN KEY (`id_prevision`) REFERENCES `prevision` (`id_prevision`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,7 +338,7 @@ CREATE TABLE `previsionnombretipo` (
 
 LOCK TABLES `previsionnombretipo` WRITE;
 /*!40000 ALTER TABLE `previsionnombretipo` DISABLE KEYS */;
-INSERT INTO `previsionnombretipo` VALUES (6,1,'A','Son consideradas en este grupo las personas carentes de recursos y los causantes de subsidio único familiar, por lo que se atienden de manera gratuita en Hospitales y Consultorios públicos.'),(7,1,'B','Son consideradas en este grupo las personas cuyo Ingreso Imponible Mensual sea menor o igual a $276.000 y las personas beneficiarias de Pensiones Básicas Solidarias, por lo que se atienden de manera gratuita en Hospitales y Consultorios públicos.'),(8,1,'C',''),(9,1,'D',''),(10,2,'Chuqicamata Ltda.',''),(11,2,'Consalud S.A',''),(12,2,'Colmena Golden Cross S.A',''),(13,1,'-No Sabe-',NULL),(14,2,'-No Sabe-',NULL),(15,2,'Banmédica S.A','');
+INSERT INTO `previsionnombretipo` VALUES (6,1,'A','Son consideradas en este grupo las personas carentes de recursos y los causantes de subsidio único familiar, por lo que se atienden de manera gratuita en Hospitales y Consultorios públicos.'),(7,1,'B','Son consideradas en este grupo las personas cuyo Ingreso Imponible Mensual sea menor o igual a $276.000 y las personas beneficiarias de Pensiones Básicas Solidarias, por lo que se atienden de manera gratuita en Hospitales y Consultorios públicos.'),(8,1,'C',''),(9,1,'D',''),(10,2,'Chuqicamata Ltda.',''),(11,2,'Consalud S.A',''),(12,2,'Colmena Golden Cross S.A',''),(13,1,'-No Sabe-',NULL),(14,2,'-No Sabe-',NULL),(15,2,'Banmédica S.A',''),(16,5,'Juan lvl 1','Juan te provee de una segurdad de bajo rango, mandando a unos de sus matones a obligar al medico a que te atienda, 50% de éxito.');
 /*!40000 ALTER TABLE `previsionnombretipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,7 +375,7 @@ CREATE TABLE `residente` (
 
 LOCK TABLES `residente` WRITE;
 /*!40000 ALTER TABLE `residente` DISABLE KEYS */;
-INSERT INTO `residente` VALUES ('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos.');
+INSERT INTO `residente` VALUES ('14.540.178-k','9.513.628-1',11,'pruebamaximodnjaskndnsjadjandsdasjdiajdiosjdijsaiojdisajdiaj','2020-03-25 00:00:00','2020-03-25 00:00:00',NULL,'M','','Normal',''),('19.014.691-k','19.176.758-6',11,'Andreas Demian Manríquez Ramírez','1996-01-01 00:00:00','2020-03-16 00:00:00',NULL,'M','Polvo.','Normal','Esta obeso.'),('20.780.507-6','19.176.758-6',11,'Salyan Elizabeth Manríquez Ramírez','2001-05-21 00:00:00','2020-03-16 00:00:00',NULL,'F','Perros.','Normal','Le gustan los gatos y perros.'),('7.541.289-4','19.176.758-6',15,'Gervacio Hernandez','1996-01-01 00:00:00','2020-03-25 00:00:00',NULL,'M','Gatos.','Diabetica','');
 /*!40000 ALTER TABLE `residente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,7 +401,7 @@ CREATE TABLE `tratamientos` (
   CONSTRAINT `tratamientos_ibfk_1` FOREIGN KEY (`rut_residente`) REFERENCES `residente` (`rut_residente`),
   CONSTRAINT `tratamientos_ibfk_2` FOREIGN KEY (`id_medicamento`) REFERENCES `medicamento` (`id_medicamento`),
   CONSTRAINT `tratamientos_ibfk_3` FOREIGN KEY (`rut_usuario`) REFERENCES `usuarios` (`rut_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,7 +410,7 @@ CREATE TABLE `tratamientos` (
 
 LOCK TABLES `tratamientos` WRITE;
 /*!40000 ALTER TABLE `tratamientos` DISABLE KEYS */;
-INSERT INTO `tratamientos` VALUES (27,'19.014.691-k',9,1,'22:00','19.014.691-k','Todos los días.'),(28,'19.014.691-k',9,1,'22:00','19.014.691-k','Todos los días.');
+INSERT INTO `tratamientos` VALUES (27,'19.014.691-k',9,1,'22:00','19.014.691-k','Todos los días.'),(29,'20.780.507-6',7,2,'10:00','19.014.691-k','Lunes.'),(30,'19.014.691-k',9,2,'20:00','19.014.691-k','Todos los días.');
 /*!40000 ALTER TABLE `tratamientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,4 +450,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-24  8:35:42
+-- Dump completed on 2020-03-31 22:29:01

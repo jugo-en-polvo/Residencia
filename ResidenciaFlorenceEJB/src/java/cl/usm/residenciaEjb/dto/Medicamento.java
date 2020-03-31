@@ -24,7 +24,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "medicamento")
 @NamedQueries({
-    @NamedQuery(name = "Medicamento.findAll", query = "SELECT m FROM Medicamento m")
+    @NamedQuery(name = "Medicamento.findAll", query = "SELECT m FROM Medicamento m WHERE m.estado = TRUE")
 })
 public class Medicamento implements Serializable{
     
@@ -38,6 +38,7 @@ public class Medicamento implements Serializable{
     private String detalle;
     private int stock;
     private int stock_critico;
+    private boolean estado;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicamento")
     private List<Tratamiento> tratamientos;
@@ -113,5 +114,12 @@ public class Medicamento implements Serializable{
     public void setTratamientos(List<Tratamiento> tratamientos) {
         this.tratamientos = tratamientos;
     }
-    
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }

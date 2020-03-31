@@ -20,64 +20,74 @@ import javax.persistence.Persistence;
 public class MedicamentoDAO implements MedicamentoDAOLocal {
 
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("ResidenciaFlorenceEJBPU");
-    
+
     @Override
     public List<Medicamento> findAll() {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.createNamedQuery("Medicamento.findAll", Medicamento.class).getResultList();
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
     }
 
     @Override
     public void add(Medicamento m) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             em.persist(m);
         } catch (Exception e) {
-            
-        }finally{
+
+        } finally {
             em.close();
         }
-    
+
     }
 
     @Override
     public Medicamento find(long id) {
-        
+
         EntityManager em = emf.createEntityManager();
         try {
             return em.find(Medicamento.class, id);
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }finally{
+        } finally {
             em.close();
         }
-        
+
     }
 
     @Override
     public void update(Medicamento m) {
-    
+
         EntityManager em = emf.createEntityManager();
         try {
             em.merge(m);
         } catch (Exception e) {
             System.out.println(e);
-        }finally{
+        } finally {
             em.close();
         }
-    
+
     }
 
-    
-    
+    @Override
+    public void delete(Long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.remove(em.find(Medicamento.class, id));
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+        }
+    }
+
 }

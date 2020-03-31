@@ -21,7 +21,7 @@ import javax.inject.Inject;
 @Named(value = "verLugarManagedBean")
 @SessionScoped
 public class VerLugarManagedBean implements Serializable {
-    
+
     @Inject
     private ActualizarLugarManagedBean actualizarLugarBEAN;
     @Inject
@@ -35,23 +35,28 @@ public class VerLugarManagedBean implements Serializable {
     public void setLugarDetalle(Lugar lugarDetalle) {
         this.lugarDetalle = lugarDetalle;
     }
-    
+
     public VerLugarManagedBean() {
     }
-    
-    public void atras() throws IOException{
+
+    public void atras() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("listar_lugares.xhtml");
     }
-    
-    public void editar() throws IOException{
+
+    public void editar() throws IOException {
         this.actualizarLugarBEAN.setLugarActualizado(lugarDetalle);
         FacesContext.getCurrentInstance().getExternalContext().redirect("actualizar_lugar.xhtml");
     }
-    
-    public void eliminar() throws IOException{
-        this.lugarDetalle.setEstado(false);
-        this.lugarDAODAO.update(lugarDetalle);
-        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_lugares.xhtml");
+
+    public void eliminar() throws IOException {
+        if (lugarDetalle.getControlesMedicos().isEmpty() || lugarDetalle.getEmergencias().isEmpty()) {
+            this.lugarDAODAO.delete(lugarDetalle.getId_lugar());
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_lugares.xhtml");
+        } else {
+            this.lugarDetalle.setEstado(false);
+            this.lugarDAODAO.update(lugarDetalle);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("listar_lugares.xhtml");
+        }
     }
-    
+
 }

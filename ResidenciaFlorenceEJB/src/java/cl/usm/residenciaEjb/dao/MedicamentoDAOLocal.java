@@ -19,6 +19,7 @@ public interface MedicamentoDAOLocal {
     List<Medicamento> findAll();
     void add(Medicamento m);
     void update(Medicamento m);
+    void delete(Long id);
     Medicamento find(long id);
     
 }

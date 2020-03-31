@@ -20,7 +20,9 @@
                 <p:outputLabel value=""/>
                 
                 <p:outputLabel value="Nombre Apoderado(*)"/>
-                <p:selectOneMenu id="selector-apoderados" value="#{residentesManagedBean.rutApoderado}">
+                <p:selectOneMenu id="selector-apoderados" 
+                                 value="#{residentesManagedBean.rutApoderado}"
+                                 autoWidth="false">
                     <p:ajax update=":formulario" listener="#{residentesManagedBean.showOrHide}"/>
 
                     <f:selectItem itemLabel="Nuevo Apoderado" itemValue="true" noSelectionOption="true"/>
@@ -121,7 +123,8 @@
                 </p:selectOneMenu>
 
                 <p:outputLabel value="Tipo Previsión(*)"/>
-                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}">
+                <p:selectOneMenu value="#{listarPrevisionesNombreTipoManagedBean.filtro}"
+                                 autoWidth="false">
                     <p:ajax update=":formulario:Items-Prevision" listener="#{listarPrevisionesNombreTipoManagedBean.manejarCombo}"/>
                     <f:selectItems value="#{listarPrevisionesManagedBean.previsionesCombo}"/>
                 </p:selectOneMenu>

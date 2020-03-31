@@ -27,7 +27,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "Lugar.findAll", query = "SELECT l FROM Lugar l WHERE l.estado = true"),
     @NamedQuery(name = "Lugar.findByName", query = "SELECT l FROM Lugar l WHERE l.nombre_lugar = :nombre_lugar")
 })
-public class Lugar implements Serializable{
+public class Lugar implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +36,12 @@ public class Lugar implements Serializable{
     private String fono_lugar;
     private String direccion_lugar;
     private boolean estado;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lugar")
     private List<Control_Medico> controlesMedicos;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lugar")
+    private List<Emergencia> emergencias;
 
     public boolean isEstado() {
         return estado;
@@ -47,7 +50,7 @@ public class Lugar implements Serializable{
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-    
+
     public long getId_lugar() {
         return id_lugar;
     }
@@ -87,5 +90,13 @@ public class Lugar implements Serializable{
     public void setControlesMedicos(List<Control_Medico> controlesMedicos) {
         this.controlesMedicos = controlesMedicos;
     }
-    
+
+    public List<Emergencia> getEmergencias() {
+        return emergencias;
+    }
+
+    public void setEmergencias(List<Emergencia> emergencias) {
+        this.emergencias = emergencias;
+    }
+
 }
