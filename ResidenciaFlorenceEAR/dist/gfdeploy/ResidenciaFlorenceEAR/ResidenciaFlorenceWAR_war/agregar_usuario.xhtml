@@ -23,8 +23,13 @@
                 <p:outputLabel value="Rut(*)"/>
                 <p:inputText value="#{agregarUsuarioManagedBean.rut}"
                              maxlength="12"
+                             id="rutUsuario"
                              required="true"
-                             requiredMessage="Rut: Obligatorio."/>
+                             requiredMessage="Rut: Obligatorio.">
+                    <p:ajax event="blur" 
+                            update="rutUruario" 
+                            listener="#{agregarUsuarioManagedBean.formatearRut(agregarUsuarioManagedBean.rut)}"/>
+                </p:inputText>
                 
                 <p:outputLabel value="Nombre(*)"/>
                 <p:inputText value="#{agregarUsuarioManagedBean.nombre}" 

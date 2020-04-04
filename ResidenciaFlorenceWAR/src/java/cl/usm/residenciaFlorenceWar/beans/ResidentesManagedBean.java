@@ -244,6 +244,15 @@ public class ResidentesManagedBean implements Serializable {
         }
 
     }
+    
+    public void formatearRut(String rut){
+        ValidadorRut formatero = new ValidadorRut();
+        this.setRutResidente(formatero.formatearRut(rut));
+    }
+    
+    public Date getHoy() {
+        return new Date();
+    }
 
     //Metodo para ir al detalle
     public void verDetalle(Residente r) throws IOException {

@@ -25,7 +25,12 @@
                     <p:panelGrid columns="2" layout="grid">
                         <p:outputLabel value="Rut Usuario"/>
                         <p:inputText value="#{loginManagedBean.rut}"
-                                     maxlength="12"/>
+                                     id="rut"
+                                     maxlength="12">
+                            <p:ajax event="blur" 
+                                    listener="#{loginManagedBean.formatearRut(loginManagedBean.rut)}"
+                                    update="rut"/>
+                        </p:inputText>
                         <p:outputLabel value="Contraseña" />
                         <p:password value="#{loginManagedBean.clave}" 
                                     placeholder="Ingrese Contraseña"/>

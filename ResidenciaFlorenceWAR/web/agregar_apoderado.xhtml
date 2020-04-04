@@ -21,9 +21,14 @@
 
                 <p:outputLabel value="Rut Apoderado(*)"/>
                 <p:inputText value="#{agregarApoderadoManagedBean.rutApoderado}"
+                             id="rutApoderado"
                              maxlength="12"
                              required="true"
-                             requiredMessage="Rut Apoderado: Obligatorio."/>
+                             requiredMessage="Rut Apoderado: Obligatorio.">
+                    <p:ajax event="blur" 
+                            update="rutApoderado" 
+                            listener="#{agregarApoderadoManagedBean.formatearRut(agregarApoderadoManagedBean.rutApoderado)}" />
+                </p:inputText>
 
                 <p:outputLabel value="Nombre Completo(*)"/>                
                 <p:inputText value="#{agregarApoderadoManagedBean.nombreApoderado}"

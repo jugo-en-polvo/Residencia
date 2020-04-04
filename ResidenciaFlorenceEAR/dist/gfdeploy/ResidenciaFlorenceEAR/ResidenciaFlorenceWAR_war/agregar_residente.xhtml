@@ -48,7 +48,12 @@
                              value="#{agregarApoderadoManagedBean.rutApoderado}"
                              maxlength="12"
                              required="true"
-                             requiredMessage="Rut de Apoderado: Obligatorio."/>
+                             id="rutApoderado"
+                             requiredMessage="Rut de Apoderado: Obligatorio.">
+                    <p:ajax event="blur" 
+                            update="rutApoderado" 
+                            listener="#{agregarApoderadoManagedBean.formatearRut(agregarApoderadoManagedBean.rutApoderado)}"/>
+                </p:inputText>
 
                 <p:outputLabel rendered="#{residentesManagedBean.hidden}"
                                value="Nombre Completo(*)"/>                
@@ -90,7 +95,12 @@
                 <p:inputText value="#{residentesManagedBean.rutResidente}" 
                              maxlength="12"
                              required="true"
-                             requiredMessage="Rut de Residente: Obligatorio."/>
+                             id="rutResidente"
+                             requiredMessage="Rut de Residente: Obligatorio.">
+                    <p:ajax event="blur" 
+                            update="rutResidente" 
+                            listener="#{residentesManagedBean.formatearRut(residentesManagedBean.rutResidente)}"/>
+                </p:inputText>
 
                 <p:outputLabel value="Nombre completo(*)"/>
                 <p:inputText value="#{residentesManagedBean.nombre}"
@@ -101,12 +111,14 @@
                 <p:outputLabel value="Fecha de Naciemiento(*)"/>
                 <p:calendar value="#{residentesManagedBean.fechaNacimieto}"
                             required="true"
+                            maxdate="#{residentesManagedBean.getHoy()}"
                             requiredMessage="Fecha de Nacimiento: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 
                 <p:outputLabel value="Fecha de Ingreso(*)"/>
                 <p:calendar value="#{residentesManagedBean.fechaIngreso}"
                             required="true"
+                            maxdate="#{residentesManagedBean.getHoy()}"
                             requiredMessage="Fecha de Ingreso: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy" mask="99/99/9999"/>
 

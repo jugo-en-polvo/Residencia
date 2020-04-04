@@ -6,10 +6,11 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-03-16T16:05:16")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2020-04-03T23:16:40")
 @StaticMetamodel(Prevision.class)
 public class Prevision_ { 
 
+    public static volatile SingularAttribute<Prevision, String> descripcion;
     public static volatile SingularAttribute<Prevision, String> tipo_prevision;
     public static volatile ListAttribute<Prevision, PrevisionNombreTipo> previsionNombreTipos;
     public static volatile SingularAttribute<Prevision, Long> id_prevision;

@@ -9,6 +9,7 @@ import cl.usm.residenciaEjb.dao.UsuariosDAOLocal;
 import cl.usm.residenciaEjb.dto.Usuario;
 import cl.usm.residenciaFlorenceWar.utils.PasswordUtils;
 import cl.usm.residenciaFlorenceWar.utils.UtilsConstants;
+import cl.usm.residenciaFlorenceWar.utils.ValidadorRut;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -71,6 +72,11 @@ public class LoginManagedBean implements Serializable {
                                     , "Ingreso fallido"
                                     , "Credenciales incorrectas"));
         }
+    }
+    
+    public void formatearRut(String rut){
+        ValidadorRut formatero = new ValidadorRut();
+        this.setRut(formatero.formatearRut(rut));
     }
     
     public void cerrarSesion(ActionEvent e) throws IOException{

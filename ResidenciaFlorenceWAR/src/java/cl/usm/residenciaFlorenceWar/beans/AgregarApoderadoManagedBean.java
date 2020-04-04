@@ -101,6 +101,11 @@ public class AgregarApoderadoManagedBean implements Serializable {
         }
 
     }
+    
+    public void formatearRut(String rut){
+        ValidadorRut formatero = new ValidadorRut();
+        this.setRutApoderado(formatero.formatearRut(rut));
+    }
 
     private boolean VerificarEmail(String email) {
     

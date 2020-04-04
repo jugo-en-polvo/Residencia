@@ -57,6 +57,11 @@ public class AgregarUsuarioManagedBean implements Serializable {
 
         }
     }
+    
+    public void formatearRut(String rut){
+        ValidadorRut formatero = new ValidadorRut();
+        this.setRut(formatero.formatearRut(rut));
+    }
 
     public int getNivel_acceso() {
         return nivel_acceso;
