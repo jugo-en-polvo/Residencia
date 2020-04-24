@@ -60,6 +60,10 @@ public class AgregarEmergenciaManagedBean implements Serializable{
     public long getId_lugar() {
         return id_lugar;
     }
+    
+    public Date getHoy() {
+        return new Date();
+    }
 
     public void setId_lugar(long id_lugar) {
         this.id_lugar = id_lugar;
