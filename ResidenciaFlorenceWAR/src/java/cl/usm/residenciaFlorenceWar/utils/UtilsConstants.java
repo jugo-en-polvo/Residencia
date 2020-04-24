@@ -5,10 +5,15 @@
  */
 package cl.usm.residenciaFlorenceWar.utils;
 
+
+
 /**
  *
  * @author Esteban
  */
 public class UtilsConstants {
     public static final String SALT = "usm-residencia-florence-salt";
+    
+    
+    
 }

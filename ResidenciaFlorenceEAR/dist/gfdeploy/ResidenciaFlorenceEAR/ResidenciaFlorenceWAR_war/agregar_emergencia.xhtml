@@ -32,6 +32,7 @@
                 <p:outputLabel value="Fecha de emergencia(*)"/>
                 <p:calendar value="#{agregarEmergenciaManagedBean.fecha_emergencia}"
                             required="true"
+                            maxdate="#{residentesManagedBean.getHoy()}"
                             requiredMessage="Fecha Emergenia: Obligatorio."
                             locale="es" pattern="dd/MM/yyyy HH:mm" mask="99/99/9999 99:99" 
                             validatorMessage="Ingrese una Fecha válida"/>
