@@ -55,4 +55,14 @@ public class ListarMedicacionManagedBean implements Serializable{
         
     }
     
+     public String verificarEstado(Administrar_Medicamento am){
+        
+        if(am.isEstado()){
+            return "Consumido";
+        }else{
+            return "No Consumido";
+        }
+        
+    }
+     
 }

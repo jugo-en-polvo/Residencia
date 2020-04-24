@@ -53,9 +53,9 @@ public class ListarLugaresManagedBean implements Serializable{
     @PostConstruct
     public void init(){
         this.lugares = this.lugarDao.findAll();
-        for(Lugar l: lugares){
+        lugares.forEach((l) -> {
             comboLugares.put(l.getNombre_lugar(), String.valueOf(l.getId_lugar()));
-        }
+        });
     }
     
     public ListarLugaresManagedBean() {

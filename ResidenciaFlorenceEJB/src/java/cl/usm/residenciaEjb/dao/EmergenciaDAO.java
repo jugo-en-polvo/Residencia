@@ -6,6 +6,7 @@
 package cl.usm.residenciaEjb.dao;
 
 import cl.usm.residenciaEjb.dto.Emergencia;
+import cl.usm.residenciaEjb.dto.EmergenciaID;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -65,6 +66,19 @@ public class EmergenciaDAO implements EmergenciaDAOLocal {
             em.close();
         }
 
+    }
+
+    @Override
+    public void delete(Emergencia e) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            EmergenciaID compositeKey = new EmergenciaID(e.getFecha_emergencia(), e.getResidente().getRut_residente());
+            em.remove(em.find(Emergencia.class, compositeKey));
+        } catch (Exception err) {
+            System.out.println(err);
+        } finally {
+            em.close();
+        }
     }
 
 }

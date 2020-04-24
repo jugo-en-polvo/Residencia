@@ -41,13 +41,18 @@
             <f:facet name="header">
                 <h2>Emergencias de un Residente</h2>
             </f:facet>
+            <p:sidebar widgetVar="sidebar2" position="left" styleClass="confirmacion-lateral" baseZIndex="10000">
+                <h1 style="font-weight:normal">¿Seguro que desea eliminar?</h1>
+                <p:commandButton value="Eliminar" actionListener="#{listarEmergenciasManagedBean.eliminar(emergencia)}" oncomplete="PF('sidebar2').hide()"/>
+                <p:commandButton value="Cancelar" style="margin-top: 1rem;" oncomplete="PF('sidebar2').hide()"/>
+            </p:sidebar>
             <p:panelGrid columns="2" layout="grid" styleClass="ui-noborder">
 
-                <p:outputLabel value="Lugar:"
+                <p:outputLabel value="Lugar de atención:"
                                styleClass="texto-negrita"/>
                 <h:outputText value="#{emergencia.lugar.nombre_lugar}"/>
 
-                <p:outputLabel value="Fecha"
+                <p:outputLabel value="Fecha:"
                                styleClass="texto-negrita"/>
                 <h:outputText value="#{emergencia.fecha_emergencia.time}">
                     <f:convertDateTime dateStyle="medium" type="both"/>
@@ -56,6 +61,12 @@
                 <p:outputLabel value="Obervaciones:"
                                styleClass="texto-negrita"/>
                 <h:outputText value="#{emergencia.observaciones}"/>
+                
+                <p:commandLink value="Eliminar"
+                               oncomplete="PF('sidebar2').show()"
+                               style="text-decoration: none;
+                               color: blue">
+                </p:commandLink>
 
             </p:panelGrid>
             <p:separator/>

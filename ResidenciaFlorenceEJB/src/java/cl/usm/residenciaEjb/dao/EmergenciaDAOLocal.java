@@ -19,5 +19,6 @@ public interface EmergenciaDAOLocal {
     void add(Emergencia e);
     List<Emergencia> FindAllByRut(String rut);
     List<Emergencia> findAll();
+    void delete(Emergencia e);
     
 }

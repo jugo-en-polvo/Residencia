@@ -27,6 +27,7 @@
                         <p:inputText value="#{loginManagedBean.rut}"
                                      id="rut"
                                      maxlength="12">
+                            <p:keyFilter regEx="/[0-9-k]/i"/>  
                             <p:ajax event="blur" 
                                     listener="#{loginManagedBean.formatearRut(loginManagedBean.rut)}"
                                     update="rut"/>

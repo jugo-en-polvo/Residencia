@@ -7,6 +7,7 @@ package cl.usm.residenciaFlorenceWar.beans;
 
 import cl.usm.residenciaEjb.dao.EmergenciaDAOLocal;
 import cl.usm.residenciaEjb.dto.Emergencia;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -83,6 +84,12 @@ public class ListarEmergenciasManagedBean implements Serializable {
                 break;
         }
 
+    }
+    
+     public void eliminar(Emergencia e) throws IOException{
+        
+        this.emergenciaDAO.delete(e);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("listar_emergencias.xhtml");
     }
 
 }
